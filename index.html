@@ -1,63 +1,46 @@
-<!DOCTYPE html>
+﻿<!doctype html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Nobre Imóveis — Curadoria exclusiva de imóveis de luxo para quem valoriza espaço, design e bem-viver.">
-  <title>Nobre Imóveis — Imóveis de Alto Padrão</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Nobre ImÃ³veis â€” Curadoria exclusiva de imÃ³veis de luxo para quem valoriza espaÃ§o, design e bem-viver.">
+  <title>Nobre ImÃ³veis â€” ImÃ³veis de Alto PadrÃ£o</title>
 
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600&display=swap" rel="stylesheet">
 
-  <!-- GSAP -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
   <style>
-    /* ================================================
-       DESIGN TOKENS
-       ================================================ */
     :root {
-      /* Palette */
       --color-white:            #FFFFFF;
       --color-beige:            #F5F0E8;
       --color-terracotta:       #C4956A;
       --color-terracotta-hover: #B38358;
-      --color-terracotta-light: rgba(196, 149, 106, 0.12);
+      --color-terracotta-soft:  rgba(196, 149, 106, 0.12);
       --color-dark:             #1A1A1A;
       --color-muted:            #6B6B6B;
-      --color-border:           rgba(196, 149, 106, 0.25);
+      --color-border:           rgba(196, 149, 106, 0.2);
 
-      /* Typography */
       --font-display: 'Playfair Display', Georgia, 'Times New Roman', serif;
       --font-body:    'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
 
-      /* Fluid type scale */
       --text-eyebrow:  clamp(0.6875rem, 0.6rem + 0.25vw, 0.8125rem);
       --text-body:     clamp(0.875rem, 0.8rem + 0.25vw, 1rem);
       --text-subline:  clamp(1rem, 0.9rem + 0.35vw, 1.1875rem);
       --text-headline: clamp(2.25rem, 1.5rem + 3vw, 4.5rem);
       --text-nav:      clamp(0.8125rem, 0.75rem + 0.2vw, 0.9375rem);
 
-      /* Spacing */
-      --space-2xs: clamp(0.25rem, 0.2rem + 0.15vw, 0.375rem);
-      --space-xs:  clamp(0.5rem, 0.4rem + 0.3vw, 0.75rem);
-      --space-sm:  clamp(0.75rem, 0.6rem + 0.5vw, 1.25rem);
-      --space-md:  clamp(1.25rem, 1rem + 0.8vw, 2rem);
-      --space-lg:  clamp(2rem, 1.5rem + 1.5vw, 3.5rem);
-      --space-xl:  clamp(3rem, 2rem + 3vw, 6rem);
-
-      /* Layout */
       --nav-height: clamp(3.5rem, 3rem + 1.5vw, 5rem);
       --content-max: 1440px;
       --content-padding: clamp(1.25rem, 1rem + 1.5vw, 4rem);
+      --space-sm:  clamp(0.75rem, 0.6rem + 0.5vw, 1.25rem);
+      --space-md:  clamp(1.25rem, 1rem + 0.8vw, 2rem);
+      --space-lg:  clamp(2rem, 1.5rem + 1.5vw, 3.5rem);
     }
 
-    /* ================================================
-       RESET & BASE
-       ================================================ */
     *,
     *::before,
     *::after {
@@ -76,10 +59,13 @@
       font-family: var(--font-body);
       font-weight: 400;
       color: var(--color-dark);
-      background-color: var(--color-white);
+      background: var(--color-white);
       line-height: 1.6;
       overflow-x: hidden;
     }
+
+    p { text-wrap: pretty; }
+    h1 { text-wrap: balance; }
 
     img {
       display: block;
@@ -98,9 +84,6 @@
       font-family: inherit;
     }
 
-    /* ================================================
-       NAVIGATION
-       ================================================ */
     .nav {
       position: fixed;
       top: 0;
@@ -177,7 +160,7 @@
       left: 0;
       width: 0;
       height: 1px;
-      background-color: var(--color-terracotta);
+      background: var(--color-terracotta);
       transition: width 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
 
@@ -200,11 +183,10 @@
     }
 
     .nav__cta:hover {
-      background-color: var(--color-terracotta);
+      background: var(--color-terracotta);
       color: var(--color-white);
     }
 
-    /* Mobile menu toggle */
     .nav__toggle {
       display: none;
       flex-direction: column;
@@ -218,7 +200,7 @@
       display: block;
       width: 100%;
       height: 1.5px;
-      background-color: var(--color-dark);
+      background: var(--color-dark);
       transition: transform 0.3s ease, opacity 0.3s ease;
       transform-origin: center;
     }
@@ -235,9 +217,6 @@
       transform: translateY(-6.5px) rotate(-45deg);
     }
 
-    /* ================================================
-       HERO SECTION
-       ================================================ */
     .hero {
       position: relative;
       min-height: 100vh;
@@ -245,10 +224,9 @@
       display: flex;
       align-items: center;
       overflow: hidden;
-      background-color: var(--color-beige);
+      background: var(--color-beige);
     }
 
-    /* Background image with Ken Burns */
     .hero__bg {
       position: absolute;
       inset: 0;
@@ -264,7 +242,6 @@
       will-change: transform;
     }
 
-    /* Left gradient overlay for text legibility */
     .hero__overlay {
       position: absolute;
       inset: 0;
@@ -281,7 +258,6 @@
       );
     }
 
-    /* Subtle warm bottom gradient for grounding */
     .hero__overlay::after {
       content: '';
       position: absolute;
@@ -293,7 +269,6 @@
       pointer-events: none;
     }
 
-    /* Fine noise texture overlay for editorial depth */
     .hero__noise {
       position: absolute;
       inset: 0;
@@ -306,7 +281,6 @@
       mix-blend-mode: multiply;
     }
 
-    /* Content area */
     .hero__content {
       position: relative;
       z-index: 3;
@@ -324,17 +298,15 @@
       max-width: 600px;
     }
 
-    /* Decorative accent bar above eyebrow */
     .hero__accent-line {
       width: 32px;
       height: 2px;
-      background-color: var(--color-terracotta);
+      background: var(--color-terracotta);
       margin-bottom: var(--space-md);
       opacity: 0;
       transform-origin: left center;
     }
 
-    /* Eyebrow */
     .hero__eyebrow {
       font-family: var(--font-body);
       font-size: var(--text-eyebrow);
@@ -346,7 +318,6 @@
       opacity: 0;
     }
 
-    /* Headline */
     .hero__headline {
       font-family: var(--font-display);
       font-size: var(--text-headline);
@@ -368,7 +339,6 @@
       transform: translateY(110%);
     }
 
-    /* Subline */
     .hero__subline {
       font-family: var(--font-body);
       font-size: var(--text-subline);
@@ -380,7 +350,6 @@
       opacity: 0;
     }
 
-    /* CTAs */
     .hero__ctas {
       display: flex;
       align-items: center;
@@ -405,7 +374,7 @@
     }
 
     .hero__btn-primary:hover {
-      background-color: var(--color-terracotta);
+      background: var(--color-terracotta);
       color: var(--color-white);
       transform: translateY(-1px);
     }
@@ -431,16 +400,14 @@
     }
 
     .hero__btn-secondary .arrow {
-      font-size: 1.1em;
-      transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
       display: inline-block;
+      transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
 
     .hero__btn-secondary:hover .arrow {
       transform: translateX(3px);
     }
 
-    /* Trust line */
     .hero__trust {
       display: flex;
       align-items: center;
@@ -457,12 +424,11 @@
       width: 3px;
       height: 3px;
       border-radius: 50%;
-      background-color: var(--color-terracotta);
+      background: var(--color-terracotta);
       opacity: 0.45;
       flex-shrink: 0;
     }
 
-    /* Scroll indicator */
     .hero__scroll {
       position: absolute;
       bottom: var(--space-md);
@@ -497,9 +463,6 @@
       50%      { opacity: 1;    transform: scaleY(1);   transform-origin: top; }
     }
 
-    /* ================================================
-       RESPONSIVE — 1024px
-       ================================================ */
     @media (max-width: 1024px) {
       .hero__overlay {
         background: linear-gradient(
@@ -518,9 +481,6 @@
       }
     }
 
-    /* ================================================
-       RESPONSIVE — 768px
-       ================================================ */
     @media (max-width: 768px) {
       .nav__links {
         display: none;
@@ -534,7 +494,6 @@
         display: flex;
       }
 
-      /* Mobile menu overlay */
       .nav__mobile-menu {
         position: fixed;
         top: 0;
@@ -542,7 +501,7 @@
         right: 0;
         bottom: 0;
         z-index: 99;
-        background-color: rgba(255, 255, 255, 0.97);
+        background: rgba(255, 255, 255, 0.97);
         backdrop-filter: blur(24px);
         -webkit-backdrop-filter: blur(24px);
         display: flex;
@@ -579,7 +538,6 @@
         padding: 0.75rem 2rem;
       }
 
-      /* Mobile hero: gradient goes top-to-bottom instead of left-to-right */
       .hero__overlay {
         background: linear-gradient(
           to bottom,
@@ -624,9 +582,6 @@
       }
     }
 
-    /* ================================================
-       RESPONSIVE — 480px (small phones)
-       ================================================ */
     @media (max-width: 480px) {
       .hero__overlay {
         background: linear-gradient(
@@ -649,9 +604,6 @@
       }
     }
 
-    /* ================================================
-       REDUCED MOTION
-       ================================================ */
     @media (prefers-reduced-motion: reduce) {
       *,
       *::before,
@@ -670,30 +622,1053 @@
         opacity: 0.5;
       }
     }
+
+    .featured {
+      position: relative;
+      background: var(--color-beige);
+    }
+
+    .featured__sticky {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      will-change: overflow;
+    }
+
+    .featured__track {
+      display: flex;
+      gap: 2px;
+      will-change: transform;
+    }
+
+    .featured-card {
+      position: relative;
+      width: 420px;
+      min-height: 100vh;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      overflow: hidden;
+      will-change: transform, opacity;
+    }
+
+    .featured-card__bg {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+    }
+
+    .featured-card__overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      background: linear-gradient(
+        to top,
+        rgba(26, 26, 26, 0.75) 0%,
+        rgba(26, 26, 26, 0.45) 35%,
+        rgba(26, 26, 26, 0.08) 60%,
+        transparent 80%
+      );
+    }
+
+    .featured-card__content {
+      position: relative;
+      z-index: 3;
+      padding: var(--content-padding);
+      padding-bottom: clamp(3rem, 2.5rem + 1.5vw, 5rem);
+    }
+
+    .featured-card__badge {
+      display: inline-block;
+      font-family: var(--font-body);
+      font-size: var(--text-eyebrow);
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--color-terracotta);
+      margin-bottom: var(--space-sm);
+      background: rgba(255, 255, 255, 0.08);
+      padding: 0.35rem 0.75rem;
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .featured-card__price {
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem, 1.2rem + 0.8vw, 2.125rem);
+      font-weight: 600;
+      color: var(--color-white);
+      letter-spacing: -0.02em;
+      margin-bottom: 0.25rem;
+    }
+
+    .featured-card__details {
+      font-family: var(--font-body);
+      font-size: var(--text-body);
+      font-weight: 300;
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: var(--space-md);
+    }
+
+    .featured-card__cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--font-body);
+      font-size: var(--text-body);
+      font-weight: 400;
+      color: var(--color-white);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+      padding-bottom: 2px;
+      transition: color 0.25s ease, border-color 0.25s ease, gap 0.35s ease;
+    }
+
+    .featured-card__cta:hover {
+      color: var(--color-terracotta);
+      border-color: var(--color-terracotta);
+      gap: 0.75rem;
+    }
+
+    .featured-card--intro {
+      background: var(--color-dark);
+    }
+
+    .featured-card--intro .featured-card__content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 100vh;
+      padding-bottom: var(--content-padding);
+    }
+
+    .featured__eyebrow {
+      font-family: var(--font-body);
+      font-size: var(--text-eyebrow);
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--color-terracotta);
+      margin-bottom: var(--space-sm);
+    }
+
+    .featured__headline {
+      font-family: var(--font-display);
+      font-size: clamp(1.75rem, 1.3rem + 1.2vw, 2.75rem);
+      font-weight: 500;
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      color: var(--color-white);
+      margin-bottom: var(--space-lg);
+      max-width: 12ch;
+    }
+
+    .featured__hint {
+      font-family: var(--font-body);
+      font-size: var(--text-body);
+      font-weight: 300;
+      color: var(--color-muted);
+      animation: hintPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes hintPulse {
+      0%, 100% { opacity: 0.35; transform: translateX(0); }
+      50%      { opacity: 0.8;  transform: translateX(6px); }
+    }
+
+    .featured__progress {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      z-index: 10;
+      background: rgba(196, 149, 106, 0.12);
+    }
+
+    .featured__progress-fill {
+      width: 100%;
+      height: 100%;
+      background: var(--color-terracotta);
+      transform-origin: left center;
+      transform: scaleX(0);
+      will-change: transform;
+    }
+
+    .featured__counter {
+      position: absolute;
+      bottom: clamp(1rem, 0.75rem + 0.8vw, 2rem);
+      right: var(--content-padding);
+      z-index: 10;
+      font-family: 'JetBrains Mono', ui-monospace, monospace;
+      font-size: clamp(0.75rem, 0.65rem + 0.25vw, 0.875rem);
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      color: var(--color-terracotta);
+      opacity: 0.7;
+    }
+
+    @media (max-width: 1024px) {
+      .featured-card { width: 360px; }
+    }
+
+    @media (max-width: 768px) {
+      .featured__sticky {
+        position: relative;
+        height: auto;
+        overflow: visible;
+        display: block;
+      }
+
+      .featured__track {
+        flex-direction: column;
+        gap: 2px;
+        transform: none !important;
+        will-change: auto;
+      }
+
+      .featured-card {
+        width: 100%;
+        min-height: 80vh;
+      }
+
+      .featured-card--intro {
+        min-height: auto;
+        padding: clamp(3rem, 2rem + 3vw, 5rem) 0;
+      }
+
+      .featured-card--intro .featured-card__content {
+        min-height: auto;
+      }
+
+      .featured__progress,
+      .featured__counter {
+        display: none;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .featured-card { min-height: 70vh; }
+
+      .featured-card__content {
+        padding: var(--content-padding);
+        padding-bottom: 2.5rem;
+      }
+
+      .featured__headline {
+        font-size: clamp(1.5rem, 1.2rem + 1.5vw, 2rem);
+      }
+    }
+
+    .featured-card__bg[data-gradient="jardins"]  { background: linear-gradient(160deg, #C4956A 0%, #A07852 30%, #7A5F42 60%, #4D3D30 100%); }
+    .featured-card__bg[data-gradient="itaim"]    { background: linear-gradient(160deg, #B38358 0%, #8B6B4E 30%, #5C4A3A 60%, #3D3028 100%); }
+    .featured-card__bg[data-gradient="pinheiros"] { background: linear-gradient(160deg, #A0896D 0%, #7A6850 30%, #55493C 60%, #3A3028 100%); }
+    .featured-card__bg[data-gradient="vila-nova"] { background: linear-gradient(160deg, #D4A95A 0%, #B88D4A 30%, #8B6E3E 60%, #5C4830 100%); }
+    .featured-card__bg[data-gradient="moema"]    { background: linear-gradient(160deg, #C48450 0%, #A06A3E 30%, #7A523E 60%, #4D372A 100%); }
+
+    .local-card__bg[data-gradient="jardins"]     { background: linear-gradient(145deg, #C4956A 0%, #A07852 30%, #7A5F42 70%, #4D3D30 100%); }
+    .local-card__bg[data-gradient="itaim"]       { background: linear-gradient(210deg, #B38358 0%, #8B6B4E 30%, #5C4A3A 70%, #3D3028 100%); }
+    .local-card__bg[data-gradient="vila-nova"]   { background: linear-gradient(165deg, #D4A95A 0%, #B88D4A 30%, #8B6E3E 70%, #5C4830 100%); }
+    .local-card__bg[data-gradient="moema"]       { background: linear-gradient(190deg, #A0896D 0%, #7A6850 30%, #55493C 70%, #3A3028 100%); }
+    .local-card__bg[data-gradient="pinheiros"]   { background: linear-gradient(150deg, #C4956A 0%, #907052 30%, #6B5240 70%, #45352B 100%); }
+    .local-card__bg[data-gradient="brooklin"]    { background: linear-gradient(175deg, #C48450 0%, #A06A3E 30%, #7A523E 70%, #4D372A 100%); }
+
+    .trust-num {
+      font-family: var(--font-body);
+      font-variant-numeric: tabular-nums;
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--color-terracotta);
+      outline-offset: 2px;
+    }
+
+    .depoimentos__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: clamp(2rem, 1.5rem + 1.5vw, 4rem);
+    }
+
+    @media (max-width: 900px) {
+      .depoimentos__grid { grid-template-columns: 1fr; gap: var(--space-lg); }
+    }
+    /* â”€â”€ Section 3: Sobre a Nobre â”€â”€ */
+    .sobre {
+      position: relative;
+      background: var(--color-white);
+      overflow: hidden;
+      padding: clamp(5rem, 3rem + 5vw, 9rem) 0;
+    }
+
+    .sobre__inner {
+      max-width: var(--content-max);
+      margin: 0 auto;
+      padding: 0 var(--content-padding);
+      display: grid;
+      grid-template-columns: 55fr 45fr;
+      gap: clamp(3rem, 2rem + 3vw, 6rem);
+      align-items: center;
+    }
+
+    .sobre__eyebrow {
+      font-family: var(--font-body);
+      font-size: var(--text-eyebrow);
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--color-terracotta);
+      margin-bottom: var(--space-sm);
+    }
+
+    .sobre__headline {
+      font-family: var(--font-display);
+      font-size: clamp(2.25rem, 1.6rem + 2vw, 3.75rem);
+      font-weight: 500;
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      color: var(--color-dark);
+      margin-bottom: var(--space-lg);
+      max-width: 14ch;
+    }
+
+    .sobre__headline em {
+      font-style: italic;
+      color: var(--color-terracotta);
+    }
+
+    .sobre__body {
+      font-family: var(--font-body);
+      font-size: var(--text-subline);
+      font-weight: 300;
+      line-height: 1.7;
+      color: var(--color-muted);
+      max-width: 55ch;
+    }
+
+    .sobre__body p + p {
+      margin-top: var(--space-md);
+    }
+
+    .sobre__stats {
+      display: flex;
+      gap: clamp(1.5rem, 1rem + 2vw, 3.5rem);
+      margin-top: var(--space-lg);
+      padding-top: var(--space-lg);
+      border-top: 1px solid var(--color-border);
+    }
+
+    .sobre__stat-num {
+      font-family: var(--font-display);
+      font-size: clamp(1.75rem, 1.3rem + 1.2vw, 2.75rem);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: var(--color-dark);
+      line-height: 1;
+      margin-bottom: 0.25rem;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .sobre__stat-label {
+      font-family: var(--font-body);
+      font-size: clamp(0.75rem, 0.68rem + 0.2vw, 0.8125rem);
+      font-weight: 400;
+      color: var(--color-muted);
+      letter-spacing: 0.01em;
+    }
+
+    .sobre__visual {
+      position: relative;
+      aspect-ratio: 3/4;
+      width: 100%;
+    }
+
+    .sobre__visual::before {
+      content: '';
+      position: absolute;
+      top: -12px;
+      right: -12px;
+      bottom: 12px;
+      left: 12px;
+      border: 4px solid var(--color-terracotta);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .sobre__visual-img {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(145deg, var(--color-beige) 0%, var(--color-terracotta-soft) 40%, var(--color-terracotta) 100%);
+      z-index: 2;
+      overflow: hidden;
+    }
+
+    @media (max-width: 768px) {
+      .sobre__inner {
+        grid-template-columns: 1fr;
+        gap: var(--space-lg);
+      }
+
+      .sobre__visual {
+        aspect-ratio: 4/3;
+        max-width: 100%;
+        order: -1;
+      }
+
+      .sobre__visual::before {
+        top: -8px;
+        right: -8px;
+        bottom: 8px;
+        left: 8px;
+        border-width: 3px;
+      }
+
+      .sobre__stats {
+        gap: var(--space-md);
+        flex-wrap: wrap;
+      }
+
+      .sobre__body {
+        max-width: 100%;
+      }
+    }
+
+    /* â”€â”€ Section 4: Como Funciona â”€â”€ */
+    .processo {
+      position: relative;
+      background: var(--color-beige);
+      overflow: hidden;
+      padding: clamp(5rem, 3rem + 5vw, 9rem) 0;
+    }
+
+    .processo__inner {
+      max-width: var(--content-max);
+      margin: 0 auto;
+      padding: 0 var(--content-padding);
+    }
+
+    .processo__eyebrow {
+      font-family: var(--font-body);
+      font-size: var(--text-eyebrow);
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--color-terracotta);
+      margin-bottom: var(--space-sm);
+      text-align: center;
+    }
+
+    .processo__headline {
+      font-family: var(--font-display);
+      font-size: clamp(2.25rem, 1.6rem + 2vw, 3.75rem);
+      font-weight: 500;
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      color: var(--color-dark);
+      text-align: center;
+      margin-bottom: clamp(3rem, 2.5rem + 2vw, 5rem);
+    }
+
+    .processo__steps {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: clamp(2rem, 1.5rem + 1.5vw, 4rem);
+    }
+
+    .processo__line-wrap {
+      position: absolute;
+      top: 2.5rem;
+      left: calc(16.66% + 1.5rem);
+      right: calc(16.66% + 1.5rem);
+      height: 2px;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .processo__line {
+      width: 100%;
+      height: 100%;
+    }
+
+    .processo__line path {
+      stroke: var(--color-terracotta);
+      stroke-width: 2;
+      stroke-dasharray: 100%;
+      stroke-dashoffset: 100%;
+      fill: none;
+    }
+
+    .processo-step {
+      position: relative;
+      text-align: center;
+    }
+
+    .processo-step__icon {
+      width: clamp(2.75rem, 2.25rem + 1.2vw, 3.75rem);
+      height: clamp(2.75rem, 2.25rem + 1.2vw, 3.75rem);
+      margin: 0 auto var(--space-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid var(--color-terracotta);
+    }
+
+    .processo-step__icon svg {
+      width: 50%;
+      height: 50%;
+      fill: none;
+      stroke: var(--color-terracotta);
+      stroke-width: 2;
+      vector-effect: non-scaling-stroke;
+    }
+
+    .processo-step__num {
+      font-family: var(--font-display);
+      font-size: clamp(0.875rem, 0.75rem + 0.35vw, 1.125rem);
+      font-weight: 600;
+      color: var(--color-terracotta);
+      margin-bottom: var(--space-sm);
+      letter-spacing: 0.05em;
+    }
+
+    .processo-step__title {
+      font-family: var(--font-display);
+      font-size: clamp(1.125rem, 1rem + 0.4vw, 1.5rem);
+      font-weight: 500;
+      color: var(--color-dark);
+      margin-bottom: var(--space-sm);
+      letter-spacing: -0.01em;
+    }
+
+    .processo-step__text {
+      font-family: var(--font-body);
+      font-size: var(--text-body);
+      font-weight: 300;
+      line-height: 1.7;
+      color: var(--color-muted);
+      max-width: 32ch;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 768px) {
+      .processo__steps {
+        grid-template-columns: 1fr;
+        gap: var(--space-lg);
+        padding-left: clamp(2rem, 1.5rem + 1.5vw, 3rem);
+      }
+
+      .processo__line-wrap { display: none; }
+
+      .processo-step {
+        text-align: left;
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: var(--space-md);
+        align-items: start;
+        padding: 0;
+      }
+
+      .processo-step__icon {
+        margin: 0;
+        grid-row: span 3;
+      }
+
+      .processo-step__num { margin-bottom: 0; }
+      .processo-step__title { margin-bottom: 0.25rem; }
+
+      .processo-step__text {
+        max-width: 100%;
+        margin: 0;
+      }
+
+      .processo-step::before {
+        content: '';
+        position: absolute;
+        left: calc(clamp(2rem, 1.5rem + 1.5vw, 3rem) * -1 + 1.375rem);
+        top: 3.5rem;
+        bottom: -2rem;
+        width: 2px;
+        background: var(--color-border);
+      }
+
+      .processo-step:last-child::before { display: none; }
+    }
+
+    /* â”€â”€ Section 5: Depoimentos â”€â”€ */
+    .depoimentos {
+      position: relative;
+      background: var(--color-dark);
+      overflow: hidden;
+      padding: clamp(5rem, 3rem + 5vw, 9rem) 0;
+    }
+
+    .depoimentos__inner {
+      max-width: var(--content-max);
+      margin: 0 auto;
+      padding: 0 var(--content-padding);
+    }
+
+    .depoimentos__eyebrow {
+      font-family: var(--font-body);
+      font-size: var(--text-eyebrow);
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--color-terracotta);
+      margin-bottom: clamp(2.5rem, 2rem + 2vw, 4rem);
+      text-align: center;
+    }
+
+    .depoimento-card {
+      position: relative;
+      padding-top: clamp(3rem, 2rem + 2vw, 5rem);
+    }
+
+    .depoimento-card__quote-mark {
+      font-family: var(--font-display);
+      font-size: clamp(5rem, 3rem + 5vw, 8rem);
+      font-weight: 400;
+      line-height: 0.7;
+      color: var(--color-terracotta);
+      margin-bottom: var(--space-sm);
+    }
+
+    .depoimento-card__quote {
+      font-family: var(--font-display);
+      font-size: clamp(1.125rem, 1rem + 0.5vw, 1.625rem);
+      font-weight: 400;
+      font-style: italic;
+      line-height: 1.5;
+      color: rgba(255, 255, 255, 0.92);
+      margin-bottom: var(--space-md);
+    }
+
+    .depoimento-card__separator {
+      width: 32px;
+      height: 2px;
+      background: var(--color-terracotta);
+      margin-bottom: var(--space-sm);
+    }
+
+    .depoimento-card__author {
+      font-family: var(--font-body);
+      font-size: clamp(0.8125rem, 0.75rem + 0.2vw, 0.9375rem);
+      font-weight: 400;
+      color: rgba(255, 255, 255, 0.55);
+    }
+
+    /* â”€â”€ Section 6: LocalizaÃ§Ãµes â”€â”€ */
+    .locais {
+      position: relative;
+      background: var(--color-white);
+      overflow: hidden;
+      padding: clamp(5rem, 3rem + 5vw, 9rem) 0;
+    }
+
+    .locais__inner {
+      max-width: var(--content-max);
+      margin: 0 auto;
+      padding: 0 var(--content-padding);
+    }
+
+    .locais__eyebrow {
+      font-family: var(--font-body);
+      font-size: var(--text-eyebrow);
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--color-terracotta);
+      margin-bottom: var(--space-sm);
+      text-align: center;
+    }
+
+    .locais__headline {
+      font-family: var(--font-display);
+      font-size: clamp(2.25rem, 1.6rem + 2vw, 3.75rem);
+      font-weight: 500;
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      color: var(--color-dark);
+      text-align: center;
+      margin-bottom: clamp(2.5rem, 2rem + 2vw, 4rem);
+    }
+
+    .locais__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: clamp(0.5rem, 0.25rem + 0.5vw, 1rem);
+    }
+
+    .local-card {
+      position: relative;
+      aspect-ratio: 2/3;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .local-card__bg {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .local-card:hover .local-card__bg { transform: scale(1.04); }
+
+    .local-card__overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      background: linear-gradient(to top, rgba(26, 26, 26, 0.7) 0%, rgba(26, 26, 26, 0.25) 40%, transparent 65%);
+      transition: background 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .local-card:hover .local-card__overlay {
+      background: linear-gradient(to top, rgba(26, 26, 26, 0.85) 0%, rgba(26, 26, 26, 0.4) 40%, rgba(26, 26, 26, 0.1) 65%);
+    }
+
+    .local-card__content {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 3;
+      padding: var(--content-padding);
+      padding-bottom: clamp(1.5rem, 1.2rem + 1vw, 2.5rem);
+    }
+
+    .local-card__name {
+      font-family: var(--font-display);
+      font-size: clamp(1.25rem, 1rem + 0.6vw, 1.75rem);
+      font-weight: 500;
+      color: var(--color-white);
+      letter-spacing: -0.01em;
+      margin-bottom: 0.25rem;
+    }
+
+    .local-card__count {
+      font-family: var(--font-body);
+      font-size: clamp(0.75rem, 0.68rem + 0.2vw, 0.8125rem);
+      font-weight: 400;
+      color: var(--color-terracotta);
+      letter-spacing: 0.02em;
+    }
+
+    .local-card__hover-cta {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) translateY(8px);
+      z-index: 4;
+      font-family: var(--font-body);
+      font-size: var(--text-body);
+      font-weight: 400;
+      color: var(--color-white);
+      opacity: 0;
+      transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      border-bottom: 1px solid var(--color-terracotta);
+      padding-bottom: 2px;
+      pointer-events: none;
+    }
+
+    .local-card:hover .local-card__hover-cta {
+      opacity: 1;
+      transform: translate(-50%, -50%) translateY(0);
+    }
+
+    @media (max-width: 1024px) {
+      .locais__grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 640px) {
+      .locais__grid { grid-template-columns: 1fr; }
+      .local-card { aspect-ratio: 3/2; }
+    }
+
+    /* â”€â”€ Section 7: CTA Final â”€â”€ */
+    .cta-final {
+      position: relative;
+      background: var(--color-terracotta);
+      overflow: hidden;
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .cta-final__decorative {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      font-family: var(--font-display);
+      font-size: clamp(20rem, 10rem + 20vw, 40vw);
+      font-weight: 700;
+      line-height: 0.8;
+      color: rgba(255, 255, 255, 0.04);
+      pointer-events: none;
+      user-select: none;
+      letter-spacing: -0.06em;
+    }
+
+    .cta-final__inner {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: var(--content-max);
+      padding: var(--content-padding);
+    }
+
+    .cta-final__headline {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 1.8rem + 3vw, 6rem);
+      font-weight: 500;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      color: var(--color-white);
+      margin-bottom: var(--space-md);
+    }
+
+    .cta-final__headline .word {
+      display: inline-block;
+    }
+
+    .cta-final__subtext {
+      font-family: var(--font-body);
+      font-size: clamp(1rem, 0.9rem + 0.35vw, 1.1875rem);
+      font-weight: 300;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.75);
+      max-width: 480px;
+      margin: 0 auto var(--space-lg);
+    }
+
+    .cta-final__btn {
+      display: inline-flex;
+      align-items: center;
+      font-family: var(--font-body);
+      font-size: var(--text-body);
+      font-weight: 500;
+      color: var(--color-dark);
+      background: var(--color-white);
+      padding: clamp(0.75rem, 0.6rem + 0.4vw, 1rem) clamp(1.5rem, 1.2rem + 0.8vw, 2.25rem);
+      transition: background-color 0.4s ease, color 0.4s ease, transform 0.25s ease;
+      letter-spacing: 0.02em;
+      border: 1px solid var(--color-white);
+    }
+
+    .cta-final__btn:hover {
+      background: transparent;
+      color: var(--color-white);
+      transform: translateY(-1px);
+    }
+
+    .cta-final__btn:active { transform: translateY(0); }
+
+    .cta-final__btn.is-animated {
+      animation: ctaPulse 3s ease-in-out infinite;
+    }
+
+    @keyframes ctaPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.02); }
+    }
+
+    .cta-final__link {
+      display: block;
+      font-family: var(--font-body);
+      font-size: var(--text-body);
+      font-weight: 300;
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: underline;
+      margin-top: var(--space-md);
+      transition: color 0.25s ease;
+    }
+
+    .cta-final__link:hover { color: var(--color-white); }
+
+    /* â”€â”€ Section 8: Footer â”€â”€ */
+    .footer {
+      background: var(--color-dark);
+      color: rgba(255, 255, 255, 0.7);
+      padding: clamp(3rem, 2.5rem + 2vw, 5rem) 0 clamp(2rem, 1.5rem + 1.5vw, 3rem);
+    }
+
+    .footer__inner {
+      max-width: var(--content-max);
+      margin: 0 auto;
+      padding: 0 var(--content-padding);
+    }
+
+    .footer__top {
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+      margin-bottom: clamp(2rem, 1.5rem + 1.5vw, 3.5rem);
+    }
+
+    .footer__logo {
+      font-family: var(--font-display);
+      font-size: clamp(1.125rem, 1rem + 0.5vw, 1.5rem);
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      color: var(--color-white);
+      display: flex;
+      align-items: center;
+      gap: 0.625rem;
+    }
+
+    .footer__logo-mark {
+      width: clamp(1.375rem, 1.1rem + 0.6vw, 1.75rem);
+      height: clamp(1.375rem, 1.1rem + 0.6vw, 1.75rem);
+      border: 1.5px solid var(--color-terracotta);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .footer__logo-mark span {
+      font-family: var(--font-display);
+      font-size: clamp(0.625rem, 0.5rem + 0.35vw, 0.8125rem);
+      font-weight: 700;
+      color: var(--color-terracotta);
+      line-height: 1;
+    }
+
+    .footer__tagline {
+      font-family: var(--font-body);
+      font-size: var(--text-body);
+      font-weight: 300;
+      color: rgba(255, 255, 255, 0.45);
+    }
+
+    .footer__divider {
+      height: 1px;
+      background: var(--color-border);
+      margin-bottom: clamp(2rem, 1.5rem + 1.5vw, 3rem);
+    }
+
+    .footer__cols {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: clamp(2rem, 1.5rem + 1.5vw, 4rem);
+      margin-bottom: clamp(2rem, 1.5rem + 1.5vw, 3rem);
+    }
+
+    .footer__col-title {
+      font-family: var(--font-body);
+      font-size: var(--text-eyebrow);
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-white);
+      margin-bottom: var(--space-md);
+    }
+
+    .footer__about-text {
+      font-size: var(--text-body);
+      font-weight: 300;
+      line-height: 1.7;
+      max-width: 35ch;
+    }
+
+    .footer__links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+    }
+
+    .footer__link {
+      font-size: var(--text-body);
+      font-weight: 300;
+      color: rgba(255, 255, 255, 0.55);
+      transition: color 0.25s ease;
+    }
+
+    .footer__link:hover { color: var(--color-terracotta); }
+
+    .footer__contact-item {
+      font-size: var(--text-body);
+      font-weight: 300;
+      line-height: 1.7;
+      color: rgba(255, 255, 255, 0.55);
+      margin-bottom: 0.5rem;
+    }
+
+    .footer__socials {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+    }
+
+    .footer__social {
+      font-size: var(--text-body);
+      font-weight: 300;
+      color: rgba(255, 255, 255, 0.55);
+      transition: color 0.25s ease;
+    }
+
+    .footer__social:hover { color: var(--color-terracotta); }
+
+    .footer__bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: clamp(0.6875rem, 0.62rem + 0.18vw, 0.75rem);
+      font-weight: 300;
+      color: rgba(255, 255, 255, 0.35);
+      padding-top: clamp(1.5rem, 1rem + 1vw, 2rem);
+      border-top: 1px solid var(--color-border);
+    }
+
+    @media (max-width: 768px) {
+      .footer__cols {
+        grid-template-columns: 1fr 1fr;
+        gap: var(--space-lg);
+      }
+
+      .footer__top {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--space-sm);
+      }
+
+      .footer__bottom {
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .footer__cols { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
-
 <body>
 
-  <!-- ============================================
-       NAVIGATION
-       ============================================ -->
-  <nav class="nav" id="nav" role="navigation" aria-label="Navegação principal">
-    <a href="/" class="nav__logo" aria-label="Nobre Imóveis — Página inicial">
+  <nav class="nav" id="nav" role="navigation" aria-label="NavegaÃ§Ã£o principal">
+    <a href="/" class="nav__logo" aria-label="Nobre ImÃ³veis â€” PÃ¡gina inicial">
       <div class="nav__logo-mark"><span>N</span></div>
-      Nobre Imóveis
+      Nobre ImÃ³veis
     </a>
 
     <ul class="nav__links">
-      <li><a href="#imoveis" class="nav__link">Imóveis</a></li>
+      <li><a href="#imoveis" class="nav__link">ImÃ³veis</a></li>
       <li><a href="#sobre" class="nav__link">Sobre</a></li>
-      <li><a href="#localizacoes" class="nav__link">Localizações</a></li>
+      <li><a href="#localizacoes" class="nav__link">LocalizaÃ§Ãµes</a></li>
       <li><a href="#contato" class="nav__link">Contato</a></li>
     </ul>
 
     <a href="#agendar" class="nav__cta nav__cta-desktop">Agendar visita</a>
 
-    <!-- Mobile toggle -->
     <button class="nav__toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false">
       <span></span>
       <span></span>
@@ -701,21 +1676,16 @@
     </button>
   </nav>
 
-  <!-- Mobile menu overlay -->
   <div class="nav__mobile-menu" id="mobileMenu" aria-hidden="true">
-    <a href="#imoveis">Imóveis</a>
+    <a href="#imoveis">ImÃ³veis</a>
     <a href="#sobre">Sobre</a>
-    <a href="#localizacoes">Localizações</a>
+    <a href="#localizacoes">LocalizaÃ§Ãµes</a>
     <a href="#contato">Contato</a>
     <a href="#agendar" class="nav__cta">Agendar visita</a>
   </div>
 
-  <!-- ============================================
-       HERO SECTION
-       ============================================ -->
-  <section class="hero" id="hero" aria-label="Seção principal">
+  <section class="hero" id="hero" data-od-id="hero" aria-label="SeÃ§Ã£o principal">
 
-    <!-- Background image -->
     <div class="hero__bg" aria-hidden="true">
       <img
         src="hero-bg.jpg"
@@ -726,54 +1696,49 @@
       >
     </div>
 
-    <!-- Gradient overlay -->
     <div class="hero__overlay" aria-hidden="true"></div>
 
-    <!-- Subtle noise texture -->
     <div class="hero__noise" aria-hidden="true"></div>
 
-    <!-- Content -->
     <div class="hero__content">
       <div class="hero__text">
 
-        <!-- Decorative accent bar -->
         <div class="hero__accent-line" id="heroAccentLine" aria-hidden="true"></div>
 
         <p class="hero__eyebrow" id="heroEyebrow">
-          Imóveis de Alto Padrão
+          ImÃ³veis de Alto PadrÃ£o
         </p>
 
         <h1 class="hero__headline" id="heroHeadline">
           <span class="line"><span class="line-inner">Encontre o lar</span></span>
           <span class="line"><span class="line-inner">que reflete</span></span>
-          <span class="line"><span class="line-inner">quem você é</span></span>
+          <span class="line"><span class="line-inner">quem vocÃª Ã©</span></span>
         </h1>
 
         <p class="hero__subline" id="heroSubline">
-          Curadoria exclusiva de imóveis de luxo para quem valoriza espaço, design e bem-viver.
+          Curadoria exclusiva de imÃ³veis de luxo para quem valoriza espaÃ§o, design e bem-viver.
         </p>
 
         <div class="hero__ctas" id="heroCtas">
           <a href="#imoveis" class="hero__btn-primary">
-            Explorar imóveis
+            Explorar imÃ³veis
           </a>
           <a href="#agendar" class="hero__btn-secondary">
-            Agendar visita <span class="arrow">→</span>
+            Agendar visita <span class="arrow">â†’</span>
           </a>
         </div>
 
         <div class="hero__trust" id="heroTrust">
-          <span>500+ imóveis</span>
+          <span><span class="trust-num">500+</span> imÃ³veis</span>
           <span class="hero__trust-divider"></span>
           <span>Atendimento exclusivo</span>
           <span class="hero__trust-divider"></span>
-          <span>15 anos de mercado</span>
+          <span><span class="trust-num">15</span> anos de mercado</span>
         </div>
 
       </div>
     </div>
 
-    <!-- Scroll indicator -->
     <div class="hero__scroll" id="heroScroll">
       <span class="hero__scroll-text">Scroll</span>
       <span class="hero__scroll-line"></span>
@@ -781,25 +1746,316 @@
 
   </section>
 
-  <!-- ============================================
-       SCRIPTS
-       ============================================ -->
+  <section class="featured" id="featuredSection" data-od-id="imoveis-destaque" aria-label="ImÃ³veis em Destaque">
+
+    <div class="featured__sticky" id="featuredSticky">
+      <div class="featured__track" id="featuredTrack">
+
+        <div class="featured-card featured-card--intro">
+          <div class="featured-card__content">
+            <p class="featured__eyebrow">ImÃ³veis em Destaque</p>
+            <h2 class="featured__headline">Propriedades selecionadas</h2>
+            <p class="featured__hint">Scroll para explorar â†’</p>
+          </div>
+        </div>
+
+        <div class="featured-card" data-property="apto-jardins">
+          <div class="featured-card__bg" data-gradient="jardins"></div>
+          <div class="featured-card__overlay"></div>
+          <div class="featured-card__content">
+            <span class="featured-card__badge">Apartamento Â· Jardins</span>
+            <p class="featured-card__price">R$ 4.200.000</p>
+            <p class="featured-card__details">320 mÂ² Â· 4 suÃ­tes</p>
+            <a href="#" class="featured-card__cta">Ver detalhes â†’</a>
+          </div>
+        </div>
+
+        <div class="featured-card" data-property="cobertura-itaim-bibi">
+          <div class="featured-card__bg" data-gradient="itaim"></div>
+          <div class="featured-card__overlay"></div>
+          <div class="featured-card__content">
+            <span class="featured-card__badge">Cobertura Â· Itaim Bibi</span>
+            <p class="featured-card__price">R$ 8.900.000</p>
+            <p class="featured-card__details">480 mÂ² Â· 5 suÃ­tes</p>
+            <a href="#" class="featured-card__cta">Ver detalhes â†’</a>
+          </div>
+        </div>
+
+        <div class="featured-card" data-property="casa-alto-pinheiros">
+          <div class="featured-card__bg" data-gradient="pinheiros"></div>
+          <div class="featured-card__overlay"></div>
+          <div class="featured-card__content">
+            <span class="featured-card__badge">Casa Â· Alto de Pinheiros</span>
+            <p class="featured-card__price">R$ 6.750.000</p>
+            <p class="featured-card__details">560 mÂ² Â· 4 suÃ­tes</p>
+            <a href="#" class="featured-card__cta">Ver detalhes â†’</a>
+          </div>
+        </div>
+
+        <div class="featured-card" data-property="apto-vila-nova">
+          <div class="featured-card__bg" data-gradient="vila-nova"></div>
+          <div class="featured-card__overlay"></div>
+          <div class="featured-card__content">
+            <span class="featured-card__badge">Apartamento Â· Vila Nova ConceiÃ§Ã£o</span>
+            <p class="featured-card__price">R$ 3.100.000</p>
+            <p class="featured-card__details">210 mÂ² Â· 3 suÃ­tes</p>
+            <a href="#" class="featured-card__cta">Ver detalhes â†’</a>
+          </div>
+        </div>
+
+        <div class="featured-card" data-property="penthouse-moema">
+          <div class="featured-card__bg" data-gradient="moema"></div>
+          <div class="featured-card__overlay"></div>
+          <div class="featured-card__content">
+            <span class="featured-card__badge">Penthouse Â· Moema</span>
+            <p class="featured-card__price">R$ 12.500.000</p>
+            <p class="featured-card__details">680 mÂ² Â· 6 suÃ­tes</p>
+            <a href="#" class="featured-card__cta">Ver detalhes â†’</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="featured__progress" aria-hidden="true">
+      <div class="featured__progress-fill" id="progressFill"></div>
+    </div>
+
+    <div class="featured__counter" id="featuredCounter" aria-live="polite">01 / 06</div>
+
+  </section>
+
+  <section class="sobre" id="sobre" data-od-id="sobre" aria-label="Sobre a Nobre ImÃ³veis">
+    <div class="sobre__inner">
+      <div class="sobre__text">
+        <p class="sobre__eyebrow">Nossa histÃ³ria</p>
+        <h2 class="sobre__headline">Quinze anos<br>construindo<br><em>sonhos reais</em></h2>
+        <div class="sobre__body">
+          <p>HÃ¡ quinze anos, a Nobre ImÃ³veis nasceu de uma convicÃ§Ã£o simples: encontrar o imÃ³vel ideal deveria ser uma experiÃªncia tÃ£o excepcional quanto os lares que ajudamos a conquistar.</p>
+          <p>Hoje, com centenas de famÃ­lias atendidas e mais de dois bilhÃµes em transaÃ§Ãµes, seguimos dedicados Ã  curadoria dos melhores imÃ³veis de SÃ£o Paulo â€” com o mesmo cuidado, discriÃ§Ã£o e excelÃªncia que nos definem desde o primeiro dia.</p>
+        </div>
+        <div class="sobre__stats">
+          <div class="sobre__stat">
+            <p class="sobre__stat-num" data-target="15" data-suffix="+">0</p>
+            <p class="sobre__stat-label">anos de mercado</p>
+          </div>
+          <div class="sobre__stat">
+            <p class="sobre__stat-num" data-target="500" data-suffix="+">0</p>
+            <p class="sobre__stat-label">imÃ³veis comercializados</p>
+          </div>
+          <div class="sobre__stat">
+            <p class="sobre__stat-num" data-target="2" data-prefix="R$ " data-suffix="B+">0</p>
+            <p class="sobre__stat-label">bilhÃµes negociados</p>
+          </div>
+        </div>
+      </div>
+      <div class="sobre__visual">
+        <div class="sobre__visual-img" aria-label="Interior de luxo"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="processo" id="processo" data-od-id="como-funciona" aria-label="Como funciona">
+    <div class="processo__inner">
+      <p class="processo__eyebrow">Processo</p>
+      <h2 class="processo__headline">Simples do inÃ­cio<br>ao fechamento</h2>
+      <div class="processo__steps">
+        <div class="processo__line-wrap" aria-hidden="true">
+          <svg class="processo__line" viewBox="0 0 800 2" preserveAspectRatio="none">
+            <path id="processoLinePath" d="M0,1 L800,1" vector-effect="non-scaling-stroke"/>
+          </svg>
+        </div>
+        <div class="processo-step">
+          <div class="processo-step__icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/></svg>
+          </div>
+          <p class="processo-step__num">01</p>
+          <h3 class="processo-step__title">Consultoria inicial</h3>
+          <p class="processo-step__text">Entendemos seu perfil, preferÃªncias e objetivos com atenÃ§Ã£o exclusiva.</p>
+        </div>
+        <div class="processo-step">
+          <div class="processo-step__icon">
+            <svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16"/></svg>
+          </div>
+          <p class="processo-step__num">02</p>
+          <h3 class="processo-step__title">Curadoria personalizada</h3>
+          <p class="processo-step__text">Selecionamos imÃ³veis alinhados ao seu estilo de vida, sem perda de tempo.</p>
+        </div>
+        <div class="processo-step">
+          <div class="processo-step__icon">
+            <svg viewBox="0 0 24 24"><polygon points="12,4 20,18 4,18"/></svg>
+          </div>
+          <p class="processo-step__num">03</p>
+          <h3 class="processo-step__title">Acompanhamento completo</h3>
+          <p class="processo-step__text">Da visita Ã  assinatura, cuidamos de cada detalhe do processo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="depoimentos" id="depoimentos" data-od-id="depoimentos" aria-label="Depoimentos de clientes">
+    <div class="depoimentos__inner">
+      <p class="depoimentos__eyebrow">Clientes</p>
+      <div class="depoimentos__grid">
+        <div class="depoimento-card">
+          <div class="depoimento-card__quote-mark">"</div>
+          <p class="depoimento-card__quote">Encontrei meu apartamento dos sonhos em menos de trÃªs semanas. O atendimento foi impecÃ¡vel do inÃ­cio ao fim.</p>
+          <div class="depoimento-card__separator"></div>
+          <p class="depoimento-card__author">Marina Ferreira, Jardins</p>
+        </div>
+        <div class="depoimento-card">
+          <div class="depoimento-card__quote-mark">"</div>
+          <p class="depoimento-card__quote">A Nobre nÃ£o vende imÃ³veis. Apresenta estilos de vida. Ã‰ uma diferenÃ§a que se sente desde a primeira conversa.</p>
+          <div class="depoimento-card__separator"></div>
+          <p class="depoimento-card__author">Roberto Alves, Itaim Bibi</p>
+        </div>
+        <div class="depoimento-card">
+          <div class="depoimento-card__quote-mark">"</div>
+          <p class="depoimento-card__quote">Profissionalismo, discriÃ§Ã£o e um olhar genuÃ­no para o que realmente importa para o cliente.</p>
+          <div class="depoimento-card__separator"></div>
+          <p class="depoimento-card__author">Claudia Santos, Alto de Pinheiros</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="locais" id="localizacoes" data-od-id="localizacoes" aria-label="Onde atuamos">
+    <div class="locais__inner">
+      <p class="locais__eyebrow">Onde atuamos</p>
+      <h2 class="locais__headline">Os bairros mais<br>desejados de SÃ£o Paulo</h2>
+      <div class="locais__grid" id="locaisGrid">
+        <div class="local-card" data-parallax="-5">
+          <div class="local-card__bg" data-gradient="jardins"></div>
+          <div class="local-card__overlay"></div>
+          <div class="local-card__content">
+            <p class="local-card__name">Jardins</p>
+            <p class="local-card__count">23 imÃ³veis</p>
+          </div>
+          <span class="local-card__hover-cta">Explorar â†’</span>
+        </div>
+        <div class="local-card" data-parallax="-8">
+          <div class="local-card__bg" data-gradient="itaim"></div>
+          <div class="local-card__overlay"></div>
+          <div class="local-card__content">
+            <p class="local-card__name">Itaim Bibi</p>
+            <p class="local-card__count">18 imÃ³veis</p>
+          </div>
+          <span class="local-card__hover-cta">Explorar â†’</span>
+        </div>
+        <div class="local-card" data-parallax="-6">
+          <div class="local-card__bg" data-gradient="vila-nova"></div>
+          <div class="local-card__overlay"></div>
+          <div class="local-card__content">
+            <p class="local-card__name">Vila Nova ConceiÃ§Ã£o</p>
+            <p class="local-card__count">14 imÃ³veis</p>
+          </div>
+          <span class="local-card__hover-cta">Explorar â†’</span>
+        </div>
+        <div class="local-card" data-parallax="-10">
+          <div class="local-card__bg" data-gradient="moema"></div>
+          <div class="local-card__overlay"></div>
+          <div class="local-card__content">
+            <p class="local-card__name">Moema</p>
+            <p class="local-card__count">21 imÃ³veis</p>
+          </div>
+          <span class="local-card__hover-cta">Explorar â†’</span>
+        </div>
+        <div class="local-card" data-parallax="-7">
+          <div class="local-card__bg" data-gradient="pinheiros"></div>
+          <div class="local-card__overlay"></div>
+          <div class="local-card__content">
+            <p class="local-card__name">Alto de Pinheiros</p>
+            <p class="local-card__count">10 imÃ³veis</p>
+          </div>
+          <span class="local-card__hover-cta">Explorar â†’</span>
+        </div>
+        <div class="local-card" data-parallax="-12">
+          <div class="local-card__bg" data-gradient="brooklin"></div>
+          <div class="local-card__overlay"></div>
+          <div class="local-card__content">
+            <p class="local-card__name">Brooklin</p>
+            <p class="local-card__count">16 imÃ³veis</p>
+          </div>
+          <span class="local-card__hover-cta">Explorar â†’</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-final" id="cta-final" data-od-id="cta-final" aria-label="Chamada para aÃ§Ã£o">
+    <div class="cta-final__decorative" aria-hidden="true">N</div>
+    <div class="cta-final__inner">
+      <h2 class="cta-final__headline" id="ctaHeadline">
+        <span class="word">Pronto</span>
+        <span class="word">para</span>
+        <span class="word">encontrar</span>
+        <br>
+        <span class="word">o</span>
+        <span class="word">imÃ³vel</span>
+        <span class="word">ideal?</span>
+      </h2>
+      <p class="cta-final__subtext">Fale com um consultor exclusivo. Sem compromisso.</p>
+      <a href="#" class="cta-final__btn" id="ctaFinalBtn">Falar com consultor</a>
+      <a href="mailto:contato@nobreimoveis.com.br" class="cta-final__link">contato@nobreimoveis.com.br</a>
+    </div>
+  </section>
+
+  <footer class="footer" id="contato" aria-label="RodapÃ©">
+    <div class="footer__inner">
+      <div class="footer__top">
+        <div class="footer__logo">
+          <div class="footer__logo-mark"><span>N</span></div>
+          Nobre ImÃ³veis
+        </div>
+        <span class="footer__tagline">ImÃ³veis de Alto PadrÃ£o</span>
+      </div>
+      <div class="footer__divider"></div>
+      <div class="footer__cols">
+        <div>
+          <p class="footer__col-title">Sobre</p>
+          <p class="footer__about-text">Curadoria exclusiva dos melhores imÃ³veis de SÃ£o Paulo desde 2010. DiscriÃ§Ã£o, excelÃªncia e atenÃ§Ã£o aos detalhes em cada transaÃ§Ã£o.</p>
+        </div>
+        <div>
+          <p class="footer__col-title">Links</p>
+          <ul class="footer__links">
+            <li><a href="#imoveis" class="footer__link">ImÃ³veis</a></li>
+            <li><a href="#sobre" class="footer__link">Sobre</a></li>
+            <li><a href="#localizacoes" class="footer__link">LocalizaÃ§Ãµes</a></li>
+            <li><a href="#contato" class="footer__link">Contato</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer__col-title">Contato</p>
+          <p class="footer__contact-item">Rua Oscar Freire, 900<br>Jardins, SÃ£o Paulo â€” SP</p>
+          <p class="footer__contact-item">+55 11 99999-0000</p>
+          <p class="footer__contact-item">contato@nobreimoveis.com.br</p>
+        </div>
+        <div>
+          <p class="footer__col-title">Redes</p>
+          <div class="footer__socials">
+            <a href="#" class="footer__social">Instagram â†’</a>
+            <a href="#" class="footer__social">LinkedIn â†’</a>
+            <a href="#" class="footer__social">WhatsApp â†’</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>&copy; 2026 Nobre ImÃ³veis. Todos os direitos reservados.</span>
+        <span>Desenvolvido para portfÃ³lio</span>
+      </div>
+    </div>
+  </footer>
+
   <script>
     document.addEventListener('DOMContentLoaded', () => {
 
-      /* ----------------------------------------
-         REDUCED MOTION CHECK
-         ---------------------------------------- */
       const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-      /* ----------------------------------------
-         MOBILE MENU
-         ---------------------------------------- */
       const navToggle = document.getElementById('navToggle');
       const mobileMenu = document.getElementById('mobileMenu');
       let menuOpen = false;
 
-      const toggleMenu = (forceClose = false) => {
+      const toggleMenu = (forceClose) => {
         menuOpen = forceClose ? false : !menuOpen;
         mobileMenu.classList.toggle('is-open', menuOpen);
         navToggle.classList.toggle('is-active', menuOpen);
@@ -815,9 +2071,6 @@
         link.addEventListener('click', () => toggleMenu(true));
       });
 
-      /* ----------------------------------------
-         NAV FROSTED GLASS ON SCROLL
-         ---------------------------------------- */
       const nav = document.getElementById('nav');
       let ticking = false;
 
@@ -837,11 +2090,395 @@
         }
       }, { passive: true });
 
-      /* ----------------------------------------
-         GSAP ANIMATIONS
-         ---------------------------------------- */
-      if (prefersReducedMotion.matches) {
-        /* Instantly reveal all elements without animation */
+      if (!prefersReducedMotion.matches) {
+
+        gsap.registerPlugin(ScrollTrigger);
+
+        const tl = gsap.timeline({
+          defaults: { ease: 'power3.out' }
+        });
+
+        tl.fromTo('#nav',
+          { opacity: 0, y: -16 },
+          { opacity: 1, y: 0, duration: 0.6 },
+          0.1
+        );
+
+        tl.fromTo('#heroAccentLine',
+          { opacity: 0, scaleX: 0 },
+          { opacity: 1, scaleX: 1, duration: 0.6 },
+          0.25
+        );
+
+        tl.fromTo('#heroEyebrow',
+          { opacity: 0, y: 18 },
+          { opacity: 1, y: 0, duration: 0.7 },
+          0.35
+        );
+
+        tl.to('.line-inner', {
+          y: '0%',
+          opacity: 1,
+          duration: 0.9,
+          ease: 'expo.out',
+          stagger: 0.12
+        }, 0.5);
+
+        tl.fromTo('#heroSubline',
+          { opacity: 0 },
+          { opacity: 1, duration: 0.85, ease: 'power2.out' },
+          0.95
+        );
+
+        tl.fromTo('#heroCtas',
+          { opacity: 0, y: 22 },
+          { opacity: 1, y: 0, duration: 0.7 },
+          1.1
+        );
+
+        tl.fromTo('#heroTrust',
+          { opacity: 0 },
+          { opacity: 1, duration: 0.8, ease: 'power2.out' },
+          1.3
+        );
+
+        tl.fromTo('#heroScroll',
+          { opacity: 0 },
+          { opacity: 0.65, duration: 0.8, ease: 'power2.out' },
+          1.6
+        );
+
+        const bgImg = document.getElementById('heroBgImg');
+        gsap.fromTo(bgImg,
+          { scale: 1.0 },
+          {
+            scale: 1.06,
+            duration: 20,
+            ease: 'sine.inOut',
+            repeat: -1,
+            yoyo: true
+          }
+        );
+
+        gsap.to(bgImg, {
+          yPercent: 12,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: '#hero',
+            start: 'top top',
+            end: 'bottom top',
+            scrub: 0.6
+          }
+        });
+
+        gsap.to('.hero__text', {
+          opacity: 0,
+          y: -30,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: '#hero',
+            start: '55% top',
+            end: 'bottom top',
+            scrub: 0.5
+          }
+        });
+
+        gsap.to('#heroScroll', {
+          opacity: 0,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: '#hero',
+            start: '8% top',
+            end: '20% top',
+            scrub: true
+          }
+        });
+
+        // â”€â”€ Featured Section: Horizontal Scroll Pinned â”€â”€
+
+        const featuredSection = document.getElementById('featuredSection');
+        const featuredTrack = document.getElementById('featuredTrack');
+        const progressFill = document.getElementById('progressFill');
+        const featuredCards = gsap.utils.toArray('.featured-card');
+        const featuredCounter = document.getElementById('featuredCounter');
+        const totalCards = featuredCards.length;
+
+        ScrollTrigger.matchMedia({
+          '(min-width: 769px)': function () {
+
+            const getScrollAmount = () => {
+              return featuredTrack.scrollWidth - window.innerWidth;
+            };
+
+            const tl = gsap.timeline({
+              scrollTrigger: {
+                trigger: featuredSection,
+                pin: true,
+                start: 'top top',
+                end: () => '+=' + getScrollAmount(),
+                scrub: 1.2,
+                invalidateOnRefresh: true,
+                onUpdate: (self) => {
+                  const p = self.progress;
+                  gsap.set(progressFill, { scaleX: p });
+                  const idx = Math.min(Math.floor(p * totalCards), totalCards - 1);
+                  featuredCounter.textContent = String(idx + 1).padStart(2, '0') + ' / ' + String(totalCards).padStart(2, '0');
+                }
+              }
+            });
+
+            tl.to(featuredTrack, {
+              x: () => -getScrollAmount(),
+              ease: 'none'
+            });
+
+            featuredCards.forEach((card, i) => {
+              if (i === 0) return;
+              gsap.from(card, {
+                opacity: 0,
+                x: 100,
+                ease: 'none',
+                scrollTrigger: {
+                  trigger: card,
+                  containerAnimation: tl,
+                  start: 'left right',
+                  end: 'left 45%',
+                  scrub: 1.5
+                }
+              });
+            });
+
+          }
+        });
+
+        // â”€â”€ Section 3: Sobre a Nobre â”€â”€
+
+        gsap.fromTo('.sobre', {
+          clipPath: 'inset(0 100% 0 0)'
+        }, {
+          clipPath: 'inset(0 0% 0 0)',
+          ease: 'none',
+          scrollTrigger: {
+            trigger: '.sobre',
+            start: 'top 85%',
+            end: 'top 20%',
+            scrub: 1
+          }
+        });
+
+        gsap.from('.sobre__eyebrow, .sobre__headline, .sobre__body p, .sobre__stats', {
+          x: -40,
+          opacity: 0,
+          stagger: 0.12,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: '.sobre',
+            start: 'top 85%',
+            end: 'top 50%',
+            scrub: 1.2
+          }
+        });
+
+        gsap.to('.sobre__visual-img', {
+          yPercent: -8,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: '.sobre__visual',
+            start: 'top bottom',
+            end: 'bottom top',
+            scrub: true
+          }
+        });
+
+        document.querySelectorAll('.sobre__stat-num').forEach(stat => {
+          const target = parseInt(stat.getAttribute('data-target'));
+          const suffix = stat.getAttribute('data-suffix') || '';
+          const prefix = stat.getAttribute('data-prefix') || '';
+          ScrollTrigger.create({
+            trigger: stat,
+            start: 'top 90%',
+            onEnter: () => {
+              const startVal = { val: 0 };
+              gsap.to(startVal, {
+                val: target,
+                duration: 2,
+                ease: 'power2.out',
+                snap: { val: 1 },
+                onUpdate: () => {
+                  stat.textContent = prefix + Math.round(startVal.val) + suffix;
+                },
+                onComplete: () => {
+                  stat.textContent = prefix + target + suffix;
+                }
+              });
+            },
+            once: true
+          });
+        });
+
+        // â”€â”€ Section 4: Como Funciona â”€â”€
+
+        gsap.from('.processo-step', {
+          y: 40,
+          opacity: 0,
+          stagger: 0.15,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: '.processo',
+            start: 'top 85%',
+            end: 'top 40%',
+            scrub: 1.2
+          }
+        });
+
+        const processLine = document.getElementById('processoLinePath');
+        if (processLine) {
+          const length = processLine.getTotalLength();
+          gsap.fromTo(processLine, {
+            strokeDasharray: length,
+            strokeDashoffset: length
+          }, {
+            strokeDashoffset: 0,
+            ease: 'none',
+            scrollTrigger: {
+              trigger: '.processo__line-wrap',
+              start: 'top 85%',
+              end: 'top 50%',
+              scrub: 1
+            }
+          });
+        }
+
+        // â”€â”€ Section 5: Depoimentos â”€â”€
+
+        gsap.fromTo('.depoimentos', {
+          clipPath: 'inset(100% 0 0 0)'
+        }, {
+          clipPath: 'inset(0% 0 0 0)',
+          ease: 'none',
+          scrollTrigger: {
+            trigger: '.depoimentos',
+            start: 'top 85%',
+            end: 'top 25%',
+            scrub: 1
+          }
+        });
+
+        gsap.from('.depoimento-card', {
+          opacity: 0,
+          y: 30,
+          stagger: 0.15,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: '.depoimentos__grid',
+            start: 'top 85%',
+            end: 'top 40%',
+            scrub: 1.2
+          }
+        });
+
+        gsap.from('.depoimento-card__quote-mark', {
+          scale: 0.8,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: '.depoimentos__grid',
+            start: 'top 85%',
+            end: 'top 40%',
+            scrub: 1
+          }
+        });
+
+        // â”€â”€ Section 6: LocalizaÃ§Ãµes â”€â”€
+
+        gsap.fromTo('.locais', {
+          opacity: 0,
+          scale: 0.95
+        }, {
+          opacity: 1,
+          scale: 1,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: '.locais',
+            start: 'top 85%',
+            end: 'top 50%',
+            scrub: 1
+          }
+        });
+
+        gsap.from('.local-card', {
+          y: 50,
+          opacity: 0,
+          stagger: 0.1,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: '.locais__grid',
+            start: 'top 85%',
+            end: 'top 30%',
+            scrub: 1.2
+          }
+        });
+
+        document.querySelectorAll('.local-card').forEach(card => {
+          const speed = parseFloat(card.getAttribute('data-parallax')) || -5;
+          gsap.to(card.querySelector('.local-card__bg'), {
+            yPercent: speed,
+            ease: 'none',
+            scrollTrigger: {
+              trigger: card,
+              start: 'top bottom',
+              end: 'bottom top',
+              scrub: true
+            }
+          });
+        });
+
+        // â”€â”€ Section 7: CTA Final â”€â”€
+
+        gsap.fromTo('.cta-final', {
+          clipPath: 'inset(100% 0 0 0)'
+        }, {
+          clipPath: 'inset(0% 0 0 0)',
+          ease: 'none',
+          scrollTrigger: {
+            trigger: '.cta-final',
+            start: 'top 85%',
+            end: 'top 30%',
+            scrub: 1
+          }
+        });
+
+        gsap.from('.cta-final__headline .word', {
+          y: 60,
+          opacity: 0,
+          stagger: 0.08,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: '.cta-final__headline',
+            start: 'top 85%',
+            end: 'top 50%',
+            scrub: 1.2
+          }
+        });
+
+        const finalBtn = document.getElementById('ctaFinalBtn');
+        ScrollTrigger.create({
+          trigger: '.cta-final__btn',
+          start: 'top 90%',
+          once: true,
+          onEnter: () => {
+            gsap.to(finalBtn, {
+              scale: 1.02,
+              duration: 1.5,
+              ease: 'sine.inOut',
+              repeat: -1,
+              yoyo: true,
+              delay: 1,
+              onStart: () => finalBtn.classList.add('is-animated')
+            });
+          }
+        });
+
+      } else {
         gsap.set('#nav', { opacity: 1, y: 0 });
         gsap.set('#heroAccentLine', { opacity: 1, scaleX: 1 });
         gsap.set('#heroEyebrow', { opacity: 1, y: 0 });
@@ -850,123 +2487,29 @@
         gsap.set('#heroCtas', { opacity: 1, y: 0 });
         gsap.set('#heroTrust', { opacity: 1 });
         gsap.set('#heroScroll', { opacity: 1 });
-        return;
+        gsap.set('.featured-card', { opacity: 1, y: 0, x: 0 });
+        gsap.set('#progressFill', { scaleX: 0 });
+        gsap.set('#featuredCounter', { opacity: 0.7 });
+
+        // â”€â”€ Reduced-motion fallbacks â”€â”€
+        gsap.set('.sobre', { clipPath: 'inset(0 0% 0 0)', opacity: 1 });
+        gsap.set('.sobre__eyebrow, .sobre__headline, .sobre__body p, .sobre__stats', { x: 0, opacity: 1 });
+        document.querySelectorAll('.sobre__stat-num').forEach(stat => {
+          const target = stat.getAttribute('data-target');
+          const suffix = stat.getAttribute('data-suffix') || '';
+          const prefix = stat.getAttribute('data-prefix') || '';
+          stat.textContent = prefix + target + suffix;
+        });
+        gsap.set('.processo-step', { y: 0, opacity: 1 });
+        gsap.set('.depoimentos', { clipPath: 'inset(0% 0 0 0)', opacity: 1 });
+        gsap.set('.depoimento-card', { opacity: 1, y: 0 });
+        gsap.set('.depoimento-card__quote-mark', { scale: 1 });
+        gsap.set('.locais', { opacity: 1, scale: 1 });
+        gsap.set('.local-card', { y: 0, opacity: 1 });
+        gsap.set('.cta-final', { clipPath: 'inset(0% 0 0 0)', opacity: 1 });
+        gsap.set('.cta-final__headline .word', { y: 0, opacity: 1 });
+        gsap.set('#ctaFinalBtn', { opacity: 1, scale: 1 });
       }
-
-      gsap.registerPlugin(ScrollTrigger);
-
-      /* ---- Master entrance timeline ---- */
-      const tl = gsap.timeline({
-        defaults: { ease: 'power3.out' }
-      });
-
-      /* Nav fades in from top */
-      tl.fromTo('#nav',
-        { opacity: 0, y: -16 },
-        { opacity: 1, y: 0, duration: 0.6 },
-        0.1
-      );
-
-      /* Accent line scales in from left */
-      tl.fromTo('#heroAccentLine',
-        { opacity: 0, scaleX: 0 },
-        { opacity: 1, scaleX: 1, duration: 0.6 },
-        0.25
-      );
-
-      /* Eyebrow slides up + fades in */
-      tl.fromTo('#heroEyebrow',
-        { opacity: 0, y: 18 },
-        { opacity: 1, y: 0, duration: 0.7 },
-        0.35
-      );
-
-      /* Headline: line-by-line reveal */
-      tl.to('.line-inner', {
-        y: '0%',
-        opacity: 1,
-        duration: 0.9,
-        ease: 'expo.out',
-        stagger: 0.12
-      }, 0.5);
-
-      /* Subline fades in */
-      tl.fromTo('#heroSubline',
-        { opacity: 0 },
-        { opacity: 1, duration: 0.85, ease: 'power2.out' },
-        0.95
-      );
-
-      /* CTAs slide up together */
-      tl.fromTo('#heroCtas',
-        { opacity: 0, y: 22 },
-        { opacity: 1, y: 0, duration: 0.7 },
-        1.1
-      );
-
-      /* Trust line fades in last */
-      tl.fromTo('#heroTrust',
-        { opacity: 0 },
-        { opacity: 1, duration: 0.8, ease: 'power2.out' },
-        1.3
-      );
-
-      /* Scroll indicator */
-      tl.fromTo('#heroScroll',
-        { opacity: 0 },
-        { opacity: 0.65, duration: 0.8, ease: 'power2.out' },
-        1.6
-      );
-
-      /* ---- Ken Burns effect ---- */
-      const bgImg = document.getElementById('heroBgImg');
-      gsap.fromTo(bgImg,
-        { scale: 1.0 },
-        {
-          scale: 1.06,
-          duration: 20,
-          ease: 'sine.inOut',
-          repeat: -1,
-          yoyo: true
-        }
-      );
-
-      /* ---- Parallax scroll on hero image ---- */
-      gsap.to(bgImg, {
-        yPercent: 12,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: '#hero',
-          start: 'top top',
-          end: 'bottom top',
-          scrub: 0.6
-        }
-      });
-
-      /* ---- Fade out hero content on scroll ---- */
-      gsap.to('.hero__text', {
-        opacity: 0,
-        y: -30,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: '#hero',
-          start: '55% top',
-          end: 'bottom top',
-          scrub: 0.5
-        }
-      });
-
-      /* ---- Fade out scroll indicator ---- */
-      gsap.to('#heroScroll', {
-        opacity: 0,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: '#hero',
-          start: '8% top',
-          end: '20% top',
-          scrub: true
-        }
-      });
     });
   </script>
 
