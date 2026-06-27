@@ -1,10 +1,10 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Nobre ImÃ³veis â€” Curadoria exclusiva de imÃ³veis de luxo para quem valoriza espaÃ§o, design e bem-viver.">
-  <title>Nobre ImÃ³veis â€” ImÃ³veis de Alto PadrÃ£o</title>
+  <meta name="description" content="Nobre Imóveis — Curadoria exclusiva de imóveis de luxo para quem valoriza espaço, design e bem-viver.">
+  <title>Nobre Imóveis — Imóveis de Alto Padrão</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -895,7 +895,7 @@
     @media (max-width: 900px) {
       .depoimentos__grid { grid-template-columns: 1fr; gap: var(--space-lg); }
     }
-    /* â”€â”€ Section 3: Sobre a Nobre â”€â”€ */
+    /* ── Section 3: Sobre a Nobre ── */
     .sobre {
       position: relative;
       background: var(--color-white);
@@ -1036,7 +1036,7 @@
       }
     }
 
-    /* â”€â”€ Section 4: Como Funciona â”€â”€ */
+    /* ── Section 4: Como Funciona ── */
     .processo {
       position: relative;
       background: var(--color-beige);
@@ -1198,7 +1198,7 @@
       .processo-step:last-child::before { display: none; }
     }
 
-    /* â”€â”€ Section 5: Depoimentos â”€â”€ */
+    /* ── Section 5: Depoimentos ── */
     .depoimentos {
       position: relative;
       background: var(--color-dark);
@@ -1261,7 +1261,7 @@
       color: rgba(255, 255, 255, 0.55);
     }
 
-    /* â”€â”€ Section 6: LocalizaÃ§Ãµes â”€â”€ */
+    /* ── Section 6: Localizações ── */
     .locais {
       position: relative;
       background: var(--color-white);
@@ -1389,7 +1389,7 @@
       .local-card { aspect-ratio: 3/2; }
     }
 
-    /* â”€â”€ Section 7: CTA Final â”€â”€ */
+    /* ── Section 7: CTA Final ── */
     .cta-final {
       position: relative;
       background: var(--color-terracotta);
@@ -1492,7 +1492,7 @@
 
     .cta-final__link:hover { color: var(--color-white); }
 
-    /* â”€â”€ Section 8: Footer â”€â”€ */
+    /* ── Section 8: Footer ── */
     .footer {
       background: var(--color-dark);
       color: rgba(255, 255, 255, 0.7);
@@ -1650,20 +1650,42 @@
     @media (max-width: 480px) {
       .footer__cols { grid-template-columns: 1fr; }
     }
+
+    /* ================================================
+       PERFORMANCE OPTIMIZATIONS (PONYTAIL)
+       ================================================ */
+    .nav,
+    .hero__bg img,
+    .hero__text,
+    .sobre,
+    .sobre__text,
+    .sobre__visual-img,
+    .processo-step,
+    .depoimentos,
+    .depoimento-card,
+    .locais,
+    .local-card,
+    .local-card__bg,
+    .cta-final,
+    .cta-final__headline .word {
+      will-change: transform, opacity;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+    }
   </style>
 </head>
 <body>
 
-  <nav class="nav" id="nav" role="navigation" aria-label="NavegaÃ§Ã£o principal">
-    <a href="/" class="nav__logo" aria-label="Nobre ImÃ³veis â€” PÃ¡gina inicial">
+  <nav class="nav" id="nav" role="navigation" aria-label="Navegação principal">
+    <a href="/" class="nav__logo" aria-label="Nobre Imóveis — Página inicial">
       <div class="nav__logo-mark"><span>N</span></div>
-      Nobre ImÃ³veis
+      Nobre Imóveis
     </a>
 
     <ul class="nav__links">
-      <li><a href="#imoveis" class="nav__link">ImÃ³veis</a></li>
+      <li><a href="#imoveis" class="nav__link">Imóveis</a></li>
       <li><a href="#sobre" class="nav__link">Sobre</a></li>
-      <li><a href="#localizacoes" class="nav__link">LocalizaÃ§Ãµes</a></li>
+      <li><a href="#localizacoes" class="nav__link">Localizações</a></li>
       <li><a href="#contato" class="nav__link">Contato</a></li>
     </ul>
 
@@ -1677,14 +1699,14 @@
   </nav>
 
   <div class="nav__mobile-menu" id="mobileMenu" aria-hidden="true">
-    <a href="#imoveis">ImÃ³veis</a>
+    <a href="#imoveis">Imóveis</a>
     <a href="#sobre">Sobre</a>
-    <a href="#localizacoes">LocalizaÃ§Ãµes</a>
+    <a href="#localizacoes">Localizações</a>
     <a href="#contato">Contato</a>
     <a href="#agendar" class="nav__cta">Agendar visita</a>
   </div>
 
-  <section class="hero" id="hero" data-od-id="hero" aria-label="SeÃ§Ã£o principal">
+  <section class="hero" id="hero" data-od-id="hero" aria-label="Seção principal">
 
     <div class="hero__bg" aria-hidden="true">
       <img
@@ -1706,30 +1728,30 @@
         <div class="hero__accent-line" id="heroAccentLine" aria-hidden="true"></div>
 
         <p class="hero__eyebrow" id="heroEyebrow">
-          ImÃ³veis de Alto PadrÃ£o
+          Imóveis de Alto Padrão
         </p>
 
         <h1 class="hero__headline" id="heroHeadline">
           <span class="line"><span class="line-inner">Encontre o lar</span></span>
           <span class="line"><span class="line-inner">que reflete</span></span>
-          <span class="line"><span class="line-inner">quem vocÃª Ã©</span></span>
+          <span class="line"><span class="line-inner">quem você é</span></span>
         </h1>
 
         <p class="hero__subline" id="heroSubline">
-          Curadoria exclusiva de imÃ³veis de luxo para quem valoriza espaÃ§o, design e bem-viver.
+          Curadoria exclusiva de imóveis de luxo para quem valoriza espaço, design e bem-viver.
         </p>
 
         <div class="hero__ctas" id="heroCtas">
           <a href="#imoveis" class="hero__btn-primary">
-            Explorar imÃ³veis
+            Explorar imóveis
           </a>
           <a href="#agendar" class="hero__btn-secondary">
-            Agendar visita <span class="arrow">â†’</span>
+            Agendar visita <span class="arrow">→</span>
           </a>
         </div>
 
         <div class="hero__trust" id="heroTrust">
-          <span><span class="trust-num">500+</span> imÃ³veis</span>
+          <span><span class="trust-num">500+</span> imóveis</span>
           <span class="hero__trust-divider"></span>
           <span>Atendimento exclusivo</span>
           <span class="hero__trust-divider"></span>
@@ -1746,71 +1768,71 @@
 
   </section>
 
-  <section class="featured" id="featuredSection" data-od-id="imoveis-destaque" aria-label="ImÃ³veis em Destaque">
+  <section class="featured" id="featuredSection" data-od-id="imoveis-destaque" aria-label="Imóveis em Destaque">
 
     <div class="featured__sticky" id="featuredSticky">
       <div class="featured__track" id="featuredTrack">
 
         <div class="featured-card featured-card--intro">
           <div class="featured-card__content">
-            <p class="featured__eyebrow">ImÃ³veis em Destaque</p>
+            <p class="featured__eyebrow">Imóveis em Destaque</p>
             <h2 class="featured__headline">Propriedades selecionadas</h2>
-            <p class="featured__hint">Scroll para explorar â†’</p>
+            <p class="featured__hint">Scroll para explorar →</p>
           </div>
         </div>
 
         <div class="featured-card" data-property="apto-jardins">
-          <div class="featured-card__bg" data-gradient="jardins"></div>
-          <div class="featured-card__overlay"></div>
+          <div class="featured-card__bg" data-gradient="jardins" aria-hidden="true"></div>
+          <div class="featured-card__overlay" aria-hidden="true"></div>
           <div class="featured-card__content">
-            <span class="featured-card__badge">Apartamento Â· Jardins</span>
+            <span class="featured-card__badge">Apartamento · Jardins</span>
             <p class="featured-card__price">R$ 4.200.000</p>
-            <p class="featured-card__details">320 mÂ² Â· 4 suÃ­tes</p>
-            <a href="#" class="featured-card__cta">Ver detalhes â†’</a>
+            <p class="featured-card__details">320 m² · 4 suítes</p>
+            <a href="#" class="featured-card__cta">Ver detalhes →</a>
           </div>
         </div>
 
         <div class="featured-card" data-property="cobertura-itaim-bibi">
-          <div class="featured-card__bg" data-gradient="itaim"></div>
-          <div class="featured-card__overlay"></div>
+          <div class="featured-card__bg" data-gradient="itaim" aria-hidden="true"></div>
+          <div class="featured-card__overlay" aria-hidden="true"></div>
           <div class="featured-card__content">
-            <span class="featured-card__badge">Cobertura Â· Itaim Bibi</span>
+            <span class="featured-card__badge">Cobertura · Itaim Bibi</span>
             <p class="featured-card__price">R$ 8.900.000</p>
-            <p class="featured-card__details">480 mÂ² Â· 5 suÃ­tes</p>
-            <a href="#" class="featured-card__cta">Ver detalhes â†’</a>
+            <p class="featured-card__details">480 m² · 5 suítes</p>
+            <a href="#" class="featured-card__cta">Ver detalhes →</a>
           </div>
         </div>
 
         <div class="featured-card" data-property="casa-alto-pinheiros">
-          <div class="featured-card__bg" data-gradient="pinheiros"></div>
-          <div class="featured-card__overlay"></div>
+          <div class="featured-card__bg" data-gradient="pinheiros" aria-hidden="true"></div>
+          <div class="featured-card__overlay" aria-hidden="true"></div>
           <div class="featured-card__content">
-            <span class="featured-card__badge">Casa Â· Alto de Pinheiros</span>
+            <span class="featured-card__badge">Casa · Alto de Pinheiros</span>
             <p class="featured-card__price">R$ 6.750.000</p>
-            <p class="featured-card__details">560 mÂ² Â· 4 suÃ­tes</p>
-            <a href="#" class="featured-card__cta">Ver detalhes â†’</a>
+            <p class="featured-card__details">560 m² · 4 suítes</p>
+            <a href="#" class="featured-card__cta">Ver detalhes →</a>
           </div>
         </div>
 
         <div class="featured-card" data-property="apto-vila-nova">
-          <div class="featured-card__bg" data-gradient="vila-nova"></div>
-          <div class="featured-card__overlay"></div>
+          <div class="featured-card__bg" data-gradient="vila-nova" aria-hidden="true"></div>
+          <div class="featured-card__overlay" aria-hidden="true"></div>
           <div class="featured-card__content">
-            <span class="featured-card__badge">Apartamento Â· Vila Nova ConceiÃ§Ã£o</span>
+            <span class="featured-card__badge">Apartamento · Vila Nova Conceição</span>
             <p class="featured-card__price">R$ 3.100.000</p>
-            <p class="featured-card__details">210 mÂ² Â· 3 suÃ­tes</p>
-            <a href="#" class="featured-card__cta">Ver detalhes â†’</a>
+            <p class="featured-card__details">210 m² · 3 suítes</p>
+            <a href="#" class="featured-card__cta">Ver detalhes →</a>
           </div>
         </div>
 
         <div class="featured-card" data-property="penthouse-moema">
-          <div class="featured-card__bg" data-gradient="moema"></div>
-          <div class="featured-card__overlay"></div>
+          <div class="featured-card__bg" data-gradient="moema" aria-hidden="true"></div>
+          <div class="featured-card__overlay" aria-hidden="true"></div>
           <div class="featured-card__content">
-            <span class="featured-card__badge">Penthouse Â· Moema</span>
+            <span class="featured-card__badge">Penthouse · Moema</span>
             <p class="featured-card__price">R$ 12.500.000</p>
-            <p class="featured-card__details">680 mÂ² Â· 6 suÃ­tes</p>
-            <a href="#" class="featured-card__cta">Ver detalhes â†’</a>
+            <p class="featured-card__details">680 m² · 6 suítes</p>
+            <a href="#" class="featured-card__cta">Ver detalhes →</a>
           </div>
         </div>
 
@@ -1825,14 +1847,14 @@
 
   </section>
 
-  <section class="sobre" id="sobre" data-od-id="sobre" aria-label="Sobre a Nobre ImÃ³veis">
+  <section class="sobre" id="sobre" data-od-id="sobre" aria-label="Sobre a Nobre Imóveis">
     <div class="sobre__inner">
       <div class="sobre__text">
-        <p class="sobre__eyebrow">Nossa histÃ³ria</p>
+        <p class="sobre__eyebrow">Nossa história</p>
         <h2 class="sobre__headline">Quinze anos<br>construindo<br><em>sonhos reais</em></h2>
         <div class="sobre__body">
-          <p>HÃ¡ quinze anos, a Nobre ImÃ³veis nasceu de uma convicÃ§Ã£o simples: encontrar o imÃ³vel ideal deveria ser uma experiÃªncia tÃ£o excepcional quanto os lares que ajudamos a conquistar.</p>
-          <p>Hoje, com centenas de famÃ­lias atendidas e mais de dois bilhÃµes em transaÃ§Ãµes, seguimos dedicados Ã  curadoria dos melhores imÃ³veis de SÃ£o Paulo â€” com o mesmo cuidado, discriÃ§Ã£o e excelÃªncia que nos definem desde o primeiro dia.</p>
+          <p>Há quinze anos, a Nobre Imóveis nasceu de uma convicção simples: encontrar o imóvel ideal deveria ser uma experiência tão excepcional quanto os lares que ajudamos a conquistar.</p>
+          <p>Hoje, com centenas de famílias atendidas e mais de dois bilhões em transações, seguimos dedicados à curadoria dos melhores imóveis de São Paulo — com o mesmo cuidado, discrição e excelência que nos definem desde o primeiro dia.</p>
         </div>
         <div class="sobre__stats">
           <div class="sobre__stat">
@@ -1841,16 +1863,16 @@
           </div>
           <div class="sobre__stat">
             <p class="sobre__stat-num" data-target="500" data-suffix="+">0</p>
-            <p class="sobre__stat-label">imÃ³veis comercializados</p>
+            <p class="sobre__stat-label">imóveis comercializados</p>
           </div>
           <div class="sobre__stat">
             <p class="sobre__stat-num" data-target="2" data-prefix="R$ " data-suffix="B+">0</p>
-            <p class="sobre__stat-label">bilhÃµes negociados</p>
+            <p class="sobre__stat-label">bilhões negociados</p>
           </div>
         </div>
       </div>
       <div class="sobre__visual">
-        <div class="sobre__visual-img" aria-label="Interior de luxo"></div>
+        <div class="sobre__visual-img" role="img" aria-label="Interior de luxo"></div>
       </div>
     </div>
   </section>
@@ -1858,7 +1880,7 @@
   <section class="processo" id="processo" data-od-id="como-funciona" aria-label="Como funciona">
     <div class="processo__inner">
       <p class="processo__eyebrow">Processo</p>
-      <h2 class="processo__headline">Simples do inÃ­cio<br>ao fechamento</h2>
+      <h2 class="processo__headline">Simples do início<br>ao fechamento</h2>
       <div class="processo__steps">
         <div class="processo__line-wrap" aria-hidden="true">
           <svg class="processo__line" viewBox="0 0 800 2" preserveAspectRatio="none">
@@ -1871,7 +1893,7 @@
           </div>
           <p class="processo-step__num">01</p>
           <h3 class="processo-step__title">Consultoria inicial</h3>
-          <p class="processo-step__text">Entendemos seu perfil, preferÃªncias e objetivos com atenÃ§Ã£o exclusiva.</p>
+          <p class="processo-step__text">Entendemos seu perfil, preferências e objetivos com atenção exclusiva.</p>
         </div>
         <div class="processo-step">
           <div class="processo-step__icon">
@@ -1879,7 +1901,7 @@
           </div>
           <p class="processo-step__num">02</p>
           <h3 class="processo-step__title">Curadoria personalizada</h3>
-          <p class="processo-step__text">Selecionamos imÃ³veis alinhados ao seu estilo de vida, sem perda de tempo.</p>
+          <p class="processo-step__text">Selecionamos imóveis alinhados ao seu estilo de vida, sem perda de tempo.</p>
         </div>
         <div class="processo-step">
           <div class="processo-step__icon">
@@ -1887,7 +1909,7 @@
           </div>
           <p class="processo-step__num">03</p>
           <h3 class="processo-step__title">Acompanhamento completo</h3>
-          <p class="processo-step__text">Da visita Ã  assinatura, cuidamos de cada detalhe do processo.</p>
+          <p class="processo-step__text">Da visita à assinatura, cuidamos de cada detalhe do processo.</p>
         </div>
       </div>
     </div>
@@ -1899,19 +1921,19 @@
       <div class="depoimentos__grid">
         <div class="depoimento-card">
           <div class="depoimento-card__quote-mark">"</div>
-          <p class="depoimento-card__quote">Encontrei meu apartamento dos sonhos em menos de trÃªs semanas. O atendimento foi impecÃ¡vel do inÃ­cio ao fim.</p>
+          <p class="depoimento-card__quote">Encontrei meu apartamento dos sonhos em menos de três semanas. O atendimento foi impecável do início ao fim.</p>
           <div class="depoimento-card__separator"></div>
           <p class="depoimento-card__author">Marina Ferreira, Jardins</p>
         </div>
         <div class="depoimento-card">
           <div class="depoimento-card__quote-mark">"</div>
-          <p class="depoimento-card__quote">A Nobre nÃ£o vende imÃ³veis. Apresenta estilos de vida. Ã‰ uma diferenÃ§a que se sente desde a primeira conversa.</p>
+          <p class="depoimento-card__quote">A Nobre não vende imóveis. Apresenta estilos de vida. É uma diferença que se sente desde a primeira conversa.</p>
           <div class="depoimento-card__separator"></div>
           <p class="depoimento-card__author">Roberto Alves, Itaim Bibi</p>
         </div>
         <div class="depoimento-card">
           <div class="depoimento-card__quote-mark">"</div>
-          <p class="depoimento-card__quote">Profissionalismo, discriÃ§Ã£o e um olhar genuÃ­no para o que realmente importa para o cliente.</p>
+          <p class="depoimento-card__quote">Profissionalismo, discrição e um olhar genuíno para o que realmente importa para o cliente.</p>
           <div class="depoimento-card__separator"></div>
           <p class="depoimento-card__author">Claudia Santos, Alto de Pinheiros</p>
         </div>
@@ -1922,67 +1944,67 @@
   <section class="locais" id="localizacoes" data-od-id="localizacoes" aria-label="Onde atuamos">
     <div class="locais__inner">
       <p class="locais__eyebrow">Onde atuamos</p>
-      <h2 class="locais__headline">Os bairros mais<br>desejados de SÃ£o Paulo</h2>
+      <h2 class="locais__headline">Os bairros mais<br>desejados de São Paulo</h2>
       <div class="locais__grid" id="locaisGrid">
         <div class="local-card" data-parallax="-5">
-          <div class="local-card__bg" data-gradient="jardins"></div>
-          <div class="local-card__overlay"></div>
+          <div class="local-card__bg" data-gradient="jardins" aria-hidden="true"></div>
+          <div class="local-card__overlay" aria-hidden="true"></div>
           <div class="local-card__content">
             <p class="local-card__name">Jardins</p>
-            <p class="local-card__count">23 imÃ³veis</p>
+            <p class="local-card__count">23 imóveis</p>
           </div>
-          <span class="local-card__hover-cta">Explorar â†’</span>
+          <span class="local-card__hover-cta">Explorar →</span>
         </div>
         <div class="local-card" data-parallax="-8">
-          <div class="local-card__bg" data-gradient="itaim"></div>
-          <div class="local-card__overlay"></div>
+          <div class="local-card__bg" data-gradient="itaim" aria-hidden="true"></div>
+          <div class="local-card__overlay" aria-hidden="true"></div>
           <div class="local-card__content">
             <p class="local-card__name">Itaim Bibi</p>
-            <p class="local-card__count">18 imÃ³veis</p>
+            <p class="local-card__count">18 imóveis</p>
           </div>
-          <span class="local-card__hover-cta">Explorar â†’</span>
+          <span class="local-card__hover-cta">Explorar →</span>
         </div>
         <div class="local-card" data-parallax="-6">
-          <div class="local-card__bg" data-gradient="vila-nova"></div>
-          <div class="local-card__overlay"></div>
+          <div class="local-card__bg" data-gradient="vila-nova" aria-hidden="true"></div>
+          <div class="local-card__overlay" aria-hidden="true"></div>
           <div class="local-card__content">
-            <p class="local-card__name">Vila Nova ConceiÃ§Ã£o</p>
-            <p class="local-card__count">14 imÃ³veis</p>
+            <p class="local-card__name">Vila Nova Conceição</p>
+            <p class="local-card__count">14 imóveis</p>
           </div>
-          <span class="local-card__hover-cta">Explorar â†’</span>
+          <span class="local-card__hover-cta">Explorar →</span>
         </div>
         <div class="local-card" data-parallax="-10">
-          <div class="local-card__bg" data-gradient="moema"></div>
-          <div class="local-card__overlay"></div>
+          <div class="local-card__bg" data-gradient="moema" aria-hidden="true"></div>
+          <div class="local-card__overlay" aria-hidden="true"></div>
           <div class="local-card__content">
             <p class="local-card__name">Moema</p>
-            <p class="local-card__count">21 imÃ³veis</p>
+            <p class="local-card__count">21 imóveis</p>
           </div>
-          <span class="local-card__hover-cta">Explorar â†’</span>
+          <span class="local-card__hover-cta">Explorar →</span>
         </div>
         <div class="local-card" data-parallax="-7">
-          <div class="local-card__bg" data-gradient="pinheiros"></div>
-          <div class="local-card__overlay"></div>
+          <div class="local-card__bg" data-gradient="pinheiros" aria-hidden="true"></div>
+          <div class="local-card__overlay" aria-hidden="true"></div>
           <div class="local-card__content">
             <p class="local-card__name">Alto de Pinheiros</p>
-            <p class="local-card__count">10 imÃ³veis</p>
+            <p class="local-card__count">10 imóveis</p>
           </div>
-          <span class="local-card__hover-cta">Explorar â†’</span>
+          <span class="local-card__hover-cta">Explorar →</span>
         </div>
         <div class="local-card" data-parallax="-12">
-          <div class="local-card__bg" data-gradient="brooklin"></div>
-          <div class="local-card__overlay"></div>
+          <div class="local-card__bg" data-gradient="brooklin" aria-hidden="true"></div>
+          <div class="local-card__overlay" aria-hidden="true"></div>
           <div class="local-card__content">
             <p class="local-card__name">Brooklin</p>
-            <p class="local-card__count">16 imÃ³veis</p>
+            <p class="local-card__count">16 imóveis</p>
           </div>
-          <span class="local-card__hover-cta">Explorar â†’</span>
+          <span class="local-card__hover-cta">Explorar →</span>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="cta-final" id="cta-final" data-od-id="cta-final" aria-label="Chamada para aÃ§Ã£o">
+  <section class="cta-final" id="cta-final" data-od-id="cta-final" aria-label="Chamada para ação">
     <div class="cta-final__decorative" aria-hidden="true">N</div>
     <div class="cta-final__inner">
       <h2 class="cta-final__headline" id="ctaHeadline">
@@ -1991,7 +2013,7 @@
         <span class="word">encontrar</span>
         <br>
         <span class="word">o</span>
-        <span class="word">imÃ³vel</span>
+        <span class="word">imóvel</span>
         <span class="word">ideal?</span>
       </h2>
       <p class="cta-final__subtext">Fale com um consultor exclusivo. Sem compromisso.</p>
@@ -2000,48 +2022,48 @@
     </div>
   </section>
 
-  <footer class="footer" id="contato" aria-label="RodapÃ©">
+  <footer class="footer" id="contato" aria-label="Rodapé">
     <div class="footer__inner">
       <div class="footer__top">
         <div class="footer__logo">
           <div class="footer__logo-mark"><span>N</span></div>
-          Nobre ImÃ³veis
+          Nobre Imóveis
         </div>
-        <span class="footer__tagline">ImÃ³veis de Alto PadrÃ£o</span>
+        <span class="footer__tagline">Imóveis de Alto Padrão</span>
       </div>
       <div class="footer__divider"></div>
       <div class="footer__cols">
         <div>
           <p class="footer__col-title">Sobre</p>
-          <p class="footer__about-text">Curadoria exclusiva dos melhores imÃ³veis de SÃ£o Paulo desde 2010. DiscriÃ§Ã£o, excelÃªncia e atenÃ§Ã£o aos detalhes em cada transaÃ§Ã£o.</p>
+          <p class="footer__about-text">Curadoria exclusiva dos melhores imóveis de São Paulo desde 2010. Discrição, excelência e atenção aos detalhes em cada transação.</p>
         </div>
         <div>
           <p class="footer__col-title">Links</p>
           <ul class="footer__links">
-            <li><a href="#imoveis" class="footer__link">ImÃ³veis</a></li>
+            <li><a href="#imoveis" class="footer__link">Imóveis</a></li>
             <li><a href="#sobre" class="footer__link">Sobre</a></li>
-            <li><a href="#localizacoes" class="footer__link">LocalizaÃ§Ãµes</a></li>
+            <li><a href="#localizacoes" class="footer__link">Localizações</a></li>
             <li><a href="#contato" class="footer__link">Contato</a></li>
           </ul>
         </div>
         <div>
           <p class="footer__col-title">Contato</p>
-          <p class="footer__contact-item">Rua Oscar Freire, 900<br>Jardins, SÃ£o Paulo â€” SP</p>
+          <p class="footer__contact-item">Rua Oscar Freire, 900<br>Jardins, São Paulo — SP</p>
           <p class="footer__contact-item">+55 11 99999-0000</p>
           <p class="footer__contact-item">contato@nobreimoveis.com.br</p>
         </div>
         <div>
           <p class="footer__col-title">Redes</p>
           <div class="footer__socials">
-            <a href="#" class="footer__social">Instagram â†’</a>
-            <a href="#" class="footer__social">LinkedIn â†’</a>
-            <a href="#" class="footer__social">WhatsApp â†’</a>
+            <a href="#" class="footer__social">Instagram →</a>
+            <a href="#" class="footer__social">LinkedIn →</a>
+            <a href="#" class="footer__social">WhatsApp →</a>
           </div>
         </div>
       </div>
       <div class="footer__bottom">
-        <span>&copy; 2026 Nobre ImÃ³veis. Todos os direitos reservados.</span>
-        <span>Desenvolvido para portfÃ³lio</span>
+        <span>&copy; 2026 Nobre Imóveis. Todos os direitos reservados.</span>
+        <span>Desenvolvido para portfólio</span>
       </div>
     </div>
   </footer>
@@ -2091,32 +2113,32 @@
       }, { passive: true });
 
       if (!prefersReducedMotion.matches) {
-
         gsap.registerPlugin(ScrollTrigger);
 
-        const tl = gsap.timeline({
+        /* ---- Entrance timeline (Runs on all screens) ---- */
+        const entranceTl = gsap.timeline({
           defaults: { ease: 'power3.out' }
         });
 
-        tl.fromTo('#nav',
+        entranceTl.fromTo('#nav',
           { opacity: 0, y: -16 },
           { opacity: 1, y: 0, duration: 0.6 },
           0.1
         );
 
-        tl.fromTo('#heroAccentLine',
+        entranceTl.fromTo('#heroAccentLine',
           { opacity: 0, scaleX: 0 },
           { opacity: 1, scaleX: 1, duration: 0.6 },
           0.25
         );
 
-        tl.fromTo('#heroEyebrow',
+        entranceTl.fromTo('#heroEyebrow',
           { opacity: 0, y: 18 },
           { opacity: 1, y: 0, duration: 0.7 },
           0.35
         );
 
-        tl.to('.line-inner', {
+        entranceTl.to('.line-inner', {
           y: '0%',
           opacity: 1,
           duration: 0.9,
@@ -2124,30 +2146,31 @@
           stagger: 0.12
         }, 0.5);
 
-        tl.fromTo('#heroSubline',
+        entranceTl.fromTo('#heroSubline',
           { opacity: 0 },
           { opacity: 1, duration: 0.85, ease: 'power2.out' },
           0.95
         );
 
-        tl.fromTo('#heroCtas',
+        entranceTl.fromTo('#heroCtas',
           { opacity: 0, y: 22 },
           { opacity: 1, y: 0, duration: 0.7 },
           1.1
         );
 
-        tl.fromTo('#heroTrust',
+        entranceTl.fromTo('#heroTrust',
           { opacity: 0 },
           { opacity: 1, duration: 0.8, ease: 'power2.out' },
           1.3
         );
 
-        tl.fromTo('#heroScroll',
+        entranceTl.fromTo('#heroScroll',
           { opacity: 0 },
           { opacity: 0.65, duration: 0.8, ease: 'power2.out' },
           1.6
         );
 
+        /* Ken Burns effect (Runs on all screens) */
         const bgImg = document.getElementById('heroBgImg');
         gsap.fromTo(bgImg,
           { scale: 1.0 },
@@ -2160,136 +2183,386 @@
           }
         );
 
-        gsap.to(bgImg, {
-          yPercent: 12,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: '#hero',
-            start: 'top top',
-            end: 'bottom top',
-            scrub: 0.6
-          }
-        });
+        const mm = gsap.matchMedia();
 
-        gsap.to('.hero__text', {
-          opacity: 0,
-          y: -30,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: '#hero',
-            start: '55% top',
-            end: 'bottom top',
-            scrub: 0.5
-          }
-        });
+        /* ================================================
+           DESKTOP ONLY ANIMATIONS (> 768px)
+           ================================================ */
+        mm.add("(min-width: 769px)", () => {
+          // Parallax and fade-out on hero
+          gsap.to(bgImg, {
+            yPercent: 12,
+            ease: 'none',
+            scrollTrigger: {
+              trigger: '#hero',
+              start: 'top top',
+              end: 'bottom top',
+              scrub: true
+            }
+          });
 
-        gsap.to('#heroScroll', {
-          opacity: 0,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: '#hero',
-            start: '8% top',
-            end: '20% top',
-            scrub: true
-          }
-        });
+          gsap.to('.hero__text', {
+            opacity: 0,
+            y: -30,
+            ease: 'none',
+            scrollTrigger: {
+              trigger: '#hero',
+              start: '55% top',
+              end: 'bottom top',
+              scrub: true
+            }
+          });
 
-        // â”€â”€ Featured Section: Horizontal Scroll Pinned â”€â”€
+          gsap.to('#heroScroll', {
+            opacity: 0,
+            ease: 'none',
+            scrollTrigger: {
+              trigger: '#hero',
+              start: '8% top',
+              end: '20% top',
+              scrub: true
+            }
+          });
 
-        const featuredSection = document.getElementById('featuredSection');
-        const featuredTrack = document.getElementById('featuredTrack');
-        const progressFill = document.getElementById('progressFill');
-        const featuredCards = gsap.utils.toArray('.featured-card');
-        const featuredCounter = document.getElementById('featuredCounter');
-        const totalCards = featuredCards.length;
+          // Pinned Horizontal Scroll for Featured Section
+          const featuredSection = document.getElementById('featuredSection');
+          const featuredTrack = document.getElementById('featuredTrack');
+          const progressFill = document.getElementById('progressFill');
+          const featuredCards = gsap.utils.toArray('.featured-card');
+          const featuredCounter = document.getElementById('featuredCounter');
+          const totalCards = featuredCards.length;
 
-        ScrollTrigger.matchMedia({
-          '(min-width: 769px)': function () {
+          const getScrollAmount = () => {
+            return featuredTrack.scrollWidth - window.innerWidth;
+          };
 
-            const getScrollAmount = () => {
-              return featuredTrack.scrollWidth - window.innerWidth;
-            };
+          const trackTl = gsap.timeline({
+            scrollTrigger: {
+              trigger: featuredSection,
+              pin: true,
+              anticipatePin: 1,
+              start: 'top top',
+              end: () => '+=' + getScrollAmount(),
+              scrub: 0.5,
+              invalidateOnRefresh: true,
+              onUpdate: (self) => {
+                const p = self.progress;
+                gsap.set(progressFill, { scaleX: p });
+                const idx = Math.min(Math.floor(p * totalCards), totalCards - 1);
+                featuredCounter.textContent = String(idx + 1).padStart(2, '0') + ' / ' + String(totalCards).padStart(2, '0');
+              }
+            }
+          });
 
-            const tl = gsap.timeline({
+          trackTl.to(featuredTrack, {
+            x: () => -getScrollAmount(),
+            ease: 'none'
+          });
+
+          featuredCards.forEach((card, i) => {
+            if (i === 0) return;
+            gsap.from(card, {
+              opacity: 0,
+              x: 100,
+              ease: 'none',
               scrollTrigger: {
-                trigger: featuredSection,
-                pin: true,
-                start: 'top top',
-                end: () => '+=' + getScrollAmount(),
-                scrub: 1.2,
-                invalidateOnRefresh: true,
-                onUpdate: (self) => {
-                  const p = self.progress;
-                  gsap.set(progressFill, { scaleX: p });
-                  const idx = Math.min(Math.floor(p * totalCards), totalCards - 1);
-                  featuredCounter.textContent = String(idx + 1).padStart(2, '0') + ' / ' + String(totalCards).padStart(2, '0');
-                }
+                trigger: card,
+                containerAnimation: trackTl,
+                start: 'left right',
+                end: 'left 45%',
+                scrub: true
               }
             });
+          });
 
-            tl.to(featuredTrack, {
-              x: () => -getScrollAmount(),
-              ease: 'none'
+          // Section 3: Sobre a Nobre
+          gsap.fromTo('.sobre', {
+            clipPath: 'inset(0 100% 0 0)'
+          }, {
+            clipPath: 'inset(0 0% 0 0)',
+            ease: 'none',
+            scrollTrigger: {
+              trigger: '.sobre',
+              start: 'top 85%',
+              end: 'top 20%',
+              scrub: true
+            }
+          });
+
+          gsap.from('.sobre__eyebrow, .sobre__headline, .sobre__body p, .sobre__stats', {
+            x: -40,
+            opacity: 0,
+            stagger: 0.12,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: '.sobre',
+              start: 'top 85%',
+              end: 'top 50%',
+              scrub: true
+            }
+          });
+
+          gsap.to('.sobre__visual-img', {
+            yPercent: -8,
+            ease: 'none',
+            scrollTrigger: {
+              trigger: '.sobre__visual',
+              start: 'top bottom',
+              end: 'bottom top',
+              scrub: true
+            }
+          });
+
+          // Section 4: Como Funciona
+          gsap.from('.processo-step', {
+            y: 40,
+            opacity: 0,
+            stagger: 0.15,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: '.processo',
+              start: 'top 85%',
+              end: 'top 40%',
+              scrub: true
+            }
+          });
+
+          const processLine = document.getElementById('processoLinePath');
+          if (processLine) {
+            const length = processLine.getTotalLength();
+            gsap.fromTo(processLine, {
+              strokeDasharray: length,
+              strokeDashoffset: length
+            }, {
+              strokeDashoffset: 0,
+              ease: 'none',
+              scrollTrigger: {
+                trigger: '.processo__line-wrap',
+                start: 'top 85%',
+                end: 'top 50%',
+                scrub: true
+              }
             });
+          }
 
-            featuredCards.forEach((card, i) => {
-              if (i === 0) return;
-              gsap.from(card, {
-                opacity: 0,
-                x: 100,
-                ease: 'none',
-                scrollTrigger: {
-                  trigger: card,
-                  containerAnimation: tl,
-                  start: 'left right',
-                  end: 'left 45%',
-                  scrub: 1.5
-                }
-              });
+          // Section 5: Depoimentos
+          gsap.fromTo('.depoimentos', {
+            clipPath: 'inset(100% 0 0 0)'
+          }, {
+            clipPath: 'inset(0% 0 0 0)',
+            ease: 'none',
+            scrollTrigger: {
+              trigger: '.depoimentos',
+              start: 'top 85%',
+              end: 'top 25%',
+              scrub: true
+            }
+          });
+
+          gsap.from('.depoimento-card', {
+            opacity: 0,
+            y: 30,
+            stagger: 0.15,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: '.depoimentos__grid',
+              start: 'top 85%',
+              end: 'top 40%',
+              scrub: true
+            }
+          });
+
+          gsap.from('.depoimento-card__quote-mark', {
+            scale: 0.8,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: '.depoimentos__grid',
+              start: 'top 85%',
+              end: 'top 40%',
+              scrub: true
+            }
+          });
+
+          // Section 6: Localizações
+          gsap.fromTo('.locais', {
+            opacity: 0,
+            scale: 0.95
+          }, {
+            opacity: 1,
+            scale: 1,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: '.locais',
+              start: 'top 85%',
+              end: 'top 50%',
+              scrub: true
+            }
+          });
+
+          gsap.from('.local-card', {
+            y: 50,
+            opacity: 0,
+            stagger: 0.1,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: '.locais__grid',
+              start: 'top 85%',
+              end: 'top 30%',
+              scrub: true
+            }
+          });
+
+          document.querySelectorAll('.local-card').forEach(card => {
+            const speed = parseFloat(card.getAttribute('data-parallax')) || -5;
+            gsap.to(card.querySelector('.local-card__bg'), {
+              yPercent: speed,
+              ease: 'none',
+              scrollTrigger: {
+                trigger: card,
+                start: 'top bottom',
+                end: 'bottom top',
+                scrub: true
+              }
             });
+          });
 
-          }
+          // Section 7: CTA Final
+          gsap.fromTo('.cta-final', {
+            clipPath: 'inset(100% 0 0 0)'
+          }, {
+            clipPath: 'inset(0% 0 0 0)',
+            ease: 'none',
+            scrollTrigger: {
+              trigger: '.cta-final',
+              start: 'top 85%',
+              end: 'top 30%',
+              scrub: true
+            }
+          });
+
+          gsap.from('.cta-final__headline .word', {
+            y: 60,
+            opacity: 0,
+            stagger: 0.08,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: '.cta-final__headline',
+              start: 'top 85%',
+              end: 'top 50%',
+              scrub: true
+            }
+          });
         });
 
-        // â”€â”€ Section 3: Sobre a Nobre â”€â”€
+        /* ================================================
+           MOBILE ONLY ANIMATIONS (<= 768px)
+           (Smooth, GPU-accelerated triggered animations without scrub)
+           ================================================ */
+        mm.add("(max-width: 768px)", () => {
+          // Set initial styles for mobile
+          gsap.set('.sobre', { clipPath: 'none', opacity: 1 });
+          gsap.set('.depoimentos', { clipPath: 'none', opacity: 1 });
+          gsap.set('.cta-final', { clipPath: 'none', opacity: 1 });
+          gsap.set('.featured-card', { opacity: 0, y: 30 });
 
-        gsap.fromTo('.sobre', {
-          clipPath: 'inset(0 100% 0 0)'
-        }, {
-          clipPath: 'inset(0 0% 0 0)',
-          ease: 'none',
-          scrollTrigger: {
-            trigger: '.sobre',
-            start: 'top 85%',
-            end: 'top 20%',
-            scrub: 1
-          }
+          // Mobile Featured Section Staggered Fade-in
+          gsap.to('.featured-card', {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            stagger: 0.15,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: '.featured__track',
+              start: 'top 85%',
+              toggleActions: 'play none none none'
+            }
+          });
+
+          // Mobile Section 3: Sobre a Nobre
+          gsap.from('.sobre__eyebrow, .sobre__headline, .sobre__body p, .sobre__stats', {
+            y: 20,
+            opacity: 0,
+            duration: 0.8,
+            stagger: 0.15,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: '.sobre',
+              start: 'top 80%',
+              toggleActions: 'play none none none'
+            }
+          });
+
+          // Mobile Section 4: Como Funciona
+          gsap.from('.processo-step', {
+            y: 30,
+            opacity: 0,
+            duration: 0.8,
+            stagger: 0.15,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: '.processo',
+              start: 'top 80%',
+              toggleActions: 'play none none none'
+            }
+          });
+
+          // Mobile Section 5: Depoimentos
+          gsap.from('.depoimento-card', {
+            y: 30,
+            opacity: 0,
+            duration: 0.8,
+            stagger: 0.15,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: '.depoimentos__grid',
+              start: 'top 80%',
+              toggleActions: 'play none none none'
+            }
+          });
+
+          // Mobile Section 6: Localizações
+          gsap.from('.locais', {
+            opacity: 0,
+            scale: 0.98,
+            duration: 0.8,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: '.locais',
+              start: 'top 80%',
+              toggleActions: 'play none none none'
+            }
+          });
+
+          gsap.from('.local-card', {
+            y: 30,
+            opacity: 0,
+            duration: 0.8,
+            stagger: 0.1,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: '.locais__grid',
+              start: 'top 80%',
+              toggleActions: 'play none none none'
+            }
+          });
+
+          // Mobile Section 7: CTA Final
+          gsap.from('.cta-final__headline .word', {
+            y: 30,
+            opacity: 0,
+            duration: 0.8,
+            stagger: 0.08,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: '.cta-final',
+              start: 'top 80%',
+              toggleActions: 'play none none none'
+            }
+          });
         });
 
-        gsap.from('.sobre__eyebrow, .sobre__headline, .sobre__body p, .sobre__stats', {
-          x: -40,
-          opacity: 0,
-          stagger: 0.12,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: '.sobre',
-            start: 'top 85%',
-            end: 'top 50%',
-            scrub: 1.2
-          }
-        });
-
-        gsap.to('.sobre__visual-img', {
-          yPercent: -8,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: '.sobre__visual',
-            start: 'top bottom',
-            end: 'bottom top',
-            scrub: true
-          }
-        });
-
+        // Numeric stats counter animation (Runs on all screens)
         document.querySelectorAll('.sobre__stat-num').forEach(stat => {
           const target = parseInt(stat.getAttribute('data-target'));
           const suffix = stat.getAttribute('data-suffix') || '';
@@ -2316,150 +2589,7 @@
           });
         });
 
-        // â”€â”€ Section 4: Como Funciona â”€â”€
-
-        gsap.from('.processo-step', {
-          y: 40,
-          opacity: 0,
-          stagger: 0.15,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: '.processo',
-            start: 'top 85%',
-            end: 'top 40%',
-            scrub: 1.2
-          }
-        });
-
-        const processLine = document.getElementById('processoLinePath');
-        if (processLine) {
-          const length = processLine.getTotalLength();
-          gsap.fromTo(processLine, {
-            strokeDasharray: length,
-            strokeDashoffset: length
-          }, {
-            strokeDashoffset: 0,
-            ease: 'none',
-            scrollTrigger: {
-              trigger: '.processo__line-wrap',
-              start: 'top 85%',
-              end: 'top 50%',
-              scrub: 1
-            }
-          });
-        }
-
-        // â”€â”€ Section 5: Depoimentos â”€â”€
-
-        gsap.fromTo('.depoimentos', {
-          clipPath: 'inset(100% 0 0 0)'
-        }, {
-          clipPath: 'inset(0% 0 0 0)',
-          ease: 'none',
-          scrollTrigger: {
-            trigger: '.depoimentos',
-            start: 'top 85%',
-            end: 'top 25%',
-            scrub: 1
-          }
-        });
-
-        gsap.from('.depoimento-card', {
-          opacity: 0,
-          y: 30,
-          stagger: 0.15,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: '.depoimentos__grid',
-            start: 'top 85%',
-            end: 'top 40%',
-            scrub: 1.2
-          }
-        });
-
-        gsap.from('.depoimento-card__quote-mark', {
-          scale: 0.8,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: '.depoimentos__grid',
-            start: 'top 85%',
-            end: 'top 40%',
-            scrub: 1
-          }
-        });
-
-        // â”€â”€ Section 6: LocalizaÃ§Ãµes â”€â”€
-
-        gsap.fromTo('.locais', {
-          opacity: 0,
-          scale: 0.95
-        }, {
-          opacity: 1,
-          scale: 1,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: '.locais',
-            start: 'top 85%',
-            end: 'top 50%',
-            scrub: 1
-          }
-        });
-
-        gsap.from('.local-card', {
-          y: 50,
-          opacity: 0,
-          stagger: 0.1,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: '.locais__grid',
-            start: 'top 85%',
-            end: 'top 30%',
-            scrub: 1.2
-          }
-        });
-
-        document.querySelectorAll('.local-card').forEach(card => {
-          const speed = parseFloat(card.getAttribute('data-parallax')) || -5;
-          gsap.to(card.querySelector('.local-card__bg'), {
-            yPercent: speed,
-            ease: 'none',
-            scrollTrigger: {
-              trigger: card,
-              start: 'top bottom',
-              end: 'bottom top',
-              scrub: true
-            }
-          });
-        });
-
-        // â”€â”€ Section 7: CTA Final â”€â”€
-
-        gsap.fromTo('.cta-final', {
-          clipPath: 'inset(100% 0 0 0)'
-        }, {
-          clipPath: 'inset(0% 0 0 0)',
-          ease: 'none',
-          scrollTrigger: {
-            trigger: '.cta-final',
-            start: 'top 85%',
-            end: 'top 30%',
-            scrub: 1
-          }
-        });
-
-        gsap.from('.cta-final__headline .word', {
-          y: 60,
-          opacity: 0,
-          stagger: 0.08,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: '.cta-final__headline',
-            start: 'top 85%',
-            end: 'top 50%',
-            scrub: 1.2
-          }
-        });
-
+        // CTA pulse animation (Runs on all screens)
         const finalBtn = document.getElementById('ctaFinalBtn');
         ScrollTrigger.create({
           trigger: '.cta-final__btn',
@@ -2491,7 +2621,7 @@
         gsap.set('#progressFill', { scaleX: 0 });
         gsap.set('#featuredCounter', { opacity: 0.7 });
 
-        // â”€â”€ Reduced-motion fallbacks â”€â”€
+        // ── Reduced-motion fallbacks ──
         gsap.set('.sobre', { clipPath: 'inset(0 0% 0 0)', opacity: 1 });
         gsap.set('.sobre__eyebrow, .sobre__headline, .sobre__body p, .sobre__stats', { x: 0, opacity: 1 });
         document.querySelectorAll('.sobre__stat-num').forEach(stat => {
