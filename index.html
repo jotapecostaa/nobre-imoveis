@@ -22,7 +22,7 @@
       --color-terracotta-soft:  rgba(196, 149, 106, 0.12);
       --color-dark:             #1A1A1A;
       --color-muted:            #6B6B6B;
-      --color-border:           rgba(196, 149, 106, 0.2);
+      --color-border:           #E5E0D8;
 
       --font-display: 'Playfair Display', Georgia, 'Times New Roman', serif;
       --font-body:    'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
@@ -659,6 +659,9 @@
       position: absolute;
       inset: 0;
       z-index: 1;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
     }
 
     .featured-card__overlay {
@@ -863,18 +866,18 @@
       }
     }
 
-    .featured-card__bg[data-gradient="jardins"]  { background: linear-gradient(160deg, #C4956A 0%, #A07852 30%, #7A5F42 60%, #4D3D30 100%); }
-    .featured-card__bg[data-gradient="itaim"]    { background: linear-gradient(160deg, #B38358 0%, #8B6B4E 30%, #5C4A3A 60%, #3D3028 100%); }
-    .featured-card__bg[data-gradient="pinheiros"] { background: linear-gradient(160deg, #A0896D 0%, #7A6850 30%, #55493C 60%, #3A3028 100%); }
-    .featured-card__bg[data-gradient="vila-nova"] { background: linear-gradient(160deg, #D4A95A 0%, #B88D4A 30%, #8B6E3E 60%, #5C4830 100%); }
-    .featured-card__bg[data-gradient="moema"]    { background: linear-gradient(160deg, #C48450 0%, #A06A3E 30%, #7A523E 60%, #4D372A 100%); }
+    .featured-card__bg[data-gradient="jardins"]  { background: url('assets/jardins-apto.png') center/cover no-repeat, linear-gradient(160deg, #C4956A 0%, #A07852 30%, #7A5F42 60%, #4D3D30 100%); }
+    .featured-card__bg[data-gradient="itaim"]    { background: url('assets/itaim-cobertura.png') center/cover no-repeat, linear-gradient(160deg, #B38358 0%, #8B6B4E 30%, #5C4A3A 60%, #3D3028 100%); }
+    .featured-card__bg[data-gradient="pinheiros"] { background: url('assets/pinheiros-casa.png') center/cover no-repeat, linear-gradient(160deg, #A0896D 0%, #7A6850 30%, #55493C 60%, #3A3028 100%); }
+    .featured-card__bg[data-gradient="vila-nova"] { background: url('assets/vila-nova-apto.png') center/cover no-repeat, linear-gradient(160deg, #D4A95A 0%, #B88D4A 30%, #8B6E3E 60%, #5C4830 100%); }
+    .featured-card__bg[data-gradient="moema"]    { background: url('assets/moema-penthouse.png') center/cover no-repeat, linear-gradient(160deg, #C48450 0%, #A06A3E 30%, #7A523E 60%, #4D372A 100%); }
 
-    .local-card__bg[data-gradient="jardins"]     { background: linear-gradient(145deg, #C4956A 0%, #A07852 30%, #7A5F42 70%, #4D3D30 100%); }
-    .local-card__bg[data-gradient="itaim"]       { background: linear-gradient(210deg, #B38358 0%, #8B6B4E 30%, #5C4A3A 70%, #3D3028 100%); }
-    .local-card__bg[data-gradient="vila-nova"]   { background: linear-gradient(165deg, #D4A95A 0%, #B88D4A 30%, #8B6E3E 70%, #5C4830 100%); }
-    .local-card__bg[data-gradient="moema"]       { background: linear-gradient(190deg, #A0896D 0%, #7A6850 30%, #55493C 70%, #3A3028 100%); }
-    .local-card__bg[data-gradient="pinheiros"]   { background: linear-gradient(150deg, #C4956A 0%, #907052 30%, #6B5240 70%, #45352B 100%); }
-    .local-card__bg[data-gradient="brooklin"]    { background: linear-gradient(175deg, #C48450 0%, #A06A3E 30%, #7A523E 70%, #4D372A 100%); }
+    .local-card__bg[data-gradient="jardins"]     { background: url('assets/jardins-apto.png') center/cover no-repeat, linear-gradient(145deg, #C4956A 0%, #A07852 30%, #7A5F42 70%, #4D3D30 100%); }
+    .local-card__bg[data-gradient="itaim"]       { background: url('assets/itaim-cobertura.png') center/cover no-repeat, linear-gradient(210deg, #B38358 0%, #8B6B4E 30%, #5C4A3A 70%, #3D3028 100%); }
+    .local-card__bg[data-gradient="vila-nova"]   { background: url('assets/vila-nova-apto.png') center/cover no-repeat, linear-gradient(165deg, #D4A95A 0%, #B88D4A 30%, #8B6E3E 70%, #5C4830 100%); }
+    .local-card__bg[data-gradient="moema"]       { background: url('assets/moema-penthouse.png') center/cover no-repeat, linear-gradient(190deg, #A0896D 0%, #7A6850 30%, #55493C 70%, #3A3028 100%); }
+    .local-card__bg[data-gradient="pinheiros"]   { background: url('assets/pinheiros-casa.png') center/cover no-repeat, linear-gradient(150deg, #C4956A 0%, #907052 30%, #6B5240 70%, #45352B 100%); }
+    .local-card__bg[data-gradient="brooklin"]    { background: url('assets/brooklin-edificio.png') center/cover no-repeat, linear-gradient(175deg, #C48450 0%, #A06A3E 30%, #7A523E 70%, #4D372A 100%); }
 
     .trust-num {
       font-family: var(--font-body);
@@ -1314,6 +1317,9 @@
       position: absolute;
       inset: 0;
       z-index: 1;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
       transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
 
