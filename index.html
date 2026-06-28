@@ -366,8 +366,117 @@
       </div>
     </section>
 
-    <!-- Content Sections placeholder for subsequent phases -->
-    <div id="sobre" style="height: 100vh; background-color: var(--color-bg-dark); color: var(--color-text-light);"></div>
+    <!-- ── BRAND STATEMENT SECTION ── -->
+    <section class="c-brand-statement" id="brand-statement">
+      <div class="c-brand-statement__grain" aria-hidden="true"></div>
+      <div class="c-brand-statement__inner">
+        <blockquote class="c-brand-statement__quote" id="brand-quote">
+          Não vendemos imóveis. Apresentamos <span class="c-brand-statement__accent">estilos de vida</span>.
+        </blockquote>
+        <p class="c-brand-statement__subtext" id="brand-subtext">
+          Desde 2009, curadoria exclusiva para quem valoriza o extraordinário.
+        </p>
+      </div>
+    </section>
+
+    <!-- ── ABOUT SECTION ── -->
+    <section class="c-about" id="sobre" aria-label="Sobre a Nobre Imóveis">
+      <div class="c-about__inner">
+        <!-- Left: Narrative & Counters -->
+        <div class="c-about__text">
+          <span class="c-about__eyebrow">Nossa história</span>
+          <h2 class="c-about__headline">Quinze anos construindo sonhos <em>reais</em></h2>
+          <p class="c-about__body">
+            Nascemos da convicção de que encontrar o imóvel certo é uma experiência que merece atenção genuína, tempo e um olhar especializado. Não vendemos endereços — apresentamos estilos de vida.
+          </p>
+          <p class="c-about__body">
+            Cada cliente é único. Cada curadoria é feita sob medida, com critérios que vão além do metro quadrado.
+          </p>
+          <div class="c-about__counters" id="about-counters">
+            <div class="c-about__counter-item" data-target="15">
+              <span class="c-about__counter-num">0</span>
+              <span class="c-about__counter-label">anos de mercado</span>
+            </div>
+            <div class="c-about__counter-item" data-target="500">
+              <span class="c-about__counter-num">0</span><span class="c-about__counter-suffix">+</span>
+              <span class="c-about__counter-label">imóveis entregues</span>
+            </div>
+            <div class="c-about__counter-item" data-target="2">
+              <span class="c-about__counter-prefix">R$ </span><span class="c-about__counter-num">0</span><span class="c-about__counter-suffix">B+</span>
+              <span class="c-about__counter-label">em negócios</span>
+            </div>
+          </div>
+        </div>
+        <!-- Right: Parallax image with offset border -->
+        <div class="c-about__visual">
+          <div class="c-about__image-frame">
+            <div class="c-about__image-parallax">
+              <img src="assets/about-image.png" alt="Edifício residencial de luxo contemporâneo" class="c-about__img" loading="lazy">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── HOW IT WORKS SECTION ── -->
+    <section class="c-how" id="processo" aria-label="Como funciona">
+      <div class="c-how__inner">
+        <div class="c-how__header">
+          <span class="c-how__eyebrow">Processo</span>
+          <h2 class="c-how__headline">Simples do início ao <em>fechamento</em></h2>
+        </div>
+        <div class="c-how__steps-wrapper">
+          <!-- Horizontal line for desktop steps -->
+          <svg class="c-how__svg-line" viewBox="0 0 100 10" preserveAspectRatio="none" aria-hidden="true">
+            <path id="how-svg-path" d="M 12 5 L 88 5" fill="none" vector-effect="non-scaling-stroke"></path>
+          </svg>
+          <div class="c-how__steps">
+            <!-- Step 1 -->
+            <div class="c-how__step">
+              <div class="c-how__icon-container">
+                <svg class="c-how__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <circle cx="12" cy="8" r="4" stroke-width="1.5"></circle>
+                  <path d="M6 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2" stroke-width="1.5" stroke-linecap="round"></path>
+                </svg>
+              </div>
+              <span class="c-how__step-number">01</span>
+              <h3 class="c-how__step-title">Consultoria inicial</h3>
+              <p class="c-how__step-desc">
+                Entendemos seu perfil, preferências e objetivos com atenção exclusiva. Sem pressa, sem formulário genérico.
+              </p>
+            </div>
+            <!-- Step 2 -->
+            <div class="c-how__step">
+              <div class="c-how__icon-container">
+                <svg class="c-how__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <rect x="3" y="3" width="18" height="18" rx="2" stroke-width="1.5"></rect>
+                  <path d="M9 17v-5M12 17V9M15 17v-3" stroke-width="1.5" stroke-linecap="round"></path>
+                </svg>
+              </div>
+              <span class="c-how__step-number">02</span>
+              <h3 class="c-how__step-title">Curadoria personalizada</h3>
+              <p class="c-how__step-desc">
+                Selecionamos imóveis alinhados ao seu estilo de vida, sem perda de tempo com opções que não fazem sentido.
+              </p>
+            </div>
+            <!-- Step 3 -->
+            <div class="c-how__step">
+              <div class="c-how__icon-container">
+                <svg class="c-how__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" stroke-width="1.5" stroke-linecap="round"></path>
+                  <polyline points="22 4 12 14.01 9 11.01" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></polyline>
+                </svg>
+              </div>
+              <span class="c-how__step-number">03</span>
+              <h3 class="c-how__step-title">Acompanhamento completo</h3>
+              <p class="c-how__step-desc">
+                Da visita à assinatura, cuidamos de cada detalhe do processo com transparência e dedicação total.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
   </main>
 

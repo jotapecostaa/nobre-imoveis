@@ -348,6 +348,229 @@ function initAnimations() {
     });
   }
 
+  // ── 7. BRAND STATEMENT ANIMATIONS ──
+  const brandSection = document.querySelector('.c-brand-statement');
+  const brandQuote = document.getElementById('brand-quote');
+  const brandSubtext = document.getElementById('brand-subtext');
+
+  if (brandSection && brandQuote && !isReducedMotion) {
+    // Transition clip-path reveal coordinated with horizontal-scroll trigger exits
+    // Pinned exit phase: clip-path inset(100% 0 0 0) -> inset(0 0 0 0)
+    gsap.fromTo(brandSection,
+      { clipPath: 'inset(100% 0% 0% 0%)' },
+      {
+        clipPath: 'inset(0% 0% 0% 0%)',
+        ease: 'none',
+        scrollTrigger: {
+          trigger: hscrollSection,
+          start: 'bottom 100%',
+          end: 'bottom 90%',
+          scrub: true
+        }
+      }
+    );
+
+    // Split text into words
+    const splitQuote = new SplitText(brandQuote, { type: 'words', wordsClass: 'word' });
+    const words = splitQuote.words;
+
+    // Word by word scroll-driven reveal (scrub: 2)
+    const quoteTimeline = gsap.timeline({
+      scrollTrigger: {
+        trigger: brandSection,
+        start: 'top 50%',
+        end: 'bottom 50%',
+        scrub: 2
+      }
+    });
+
+    quoteTimeline.to(words, {
+      opacity: 1,
+      stagger: 0.1,
+      ease: 'power1.out'
+    });
+
+    // Subtext fades in once when the quote is completed
+    gsap.fromTo(brandSubtext,
+      { opacity: 0, y: 16 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: brandSection,
+          start: 'top 30%',
+          toggleActions: 'play none none none'
+        }
+      }
+    );
+  } else if (brandSection && isReducedMotion) {
+    // Direct fallbacks for reduced-motion users
+    gsap.set(brandSection, { clipPath: 'inset(0% 0% 0% 0%)' });
+    const splitQuote = new SplitText(brandQuote, { type: 'words', wordsClass: 'word' });
+    gsap.set(splitQuote.words, { opacity: 1 });
+    gsap.set(brandSubtext, { opacity: 1, y: 0 });
+  }
+
+  // ── 8. ABOUT SECTION ANIMATIONS ──
+  const aboutSection = document.querySelector('.c-about');
+  const aboutText = document.querySelector('.c-about__text');
+  const aboutVisual = document.querySelector('.c-about__visual');
+  const aboutImg = document.querySelector('.c-about__img');
+
+  if (aboutSection && !isReducedMotion) {
+    // Left column staggers
+    gsap.to(aboutText, {
+      opacity: 1,
+      x: 0,
+      duration: 1,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: aboutSection,
+        start: 'top 80%',
+        once: true
+      }
+    });
+
+    // Right column visual entry
+    if (aboutVisual) {
+      gsap.to(aboutVisual, {
+        opacity: 1,
+        x: 0,
+        duration: 1,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: aboutSection,
+          start: 'top 80%',
+          once: true
+        }
+      });
+    }
+
+    // Parallax scroll on image (yPercent: 0 -> -10)
+    if (aboutImg) {
+      gsap.to(aboutImg, {
+        yPercent: -10,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: aboutSection,
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: true
+        }
+      });
+
+      // Ken burns subtle scale
+      gsap.to(aboutImg, {
+        scale: 1.06,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: aboutSection,
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: true
+        }
+      });
+    }
+
+    // Numbers counters anim
+    const counterItems = document.querySelectorAll('.c-about__counter-item');
+    counterItems.forEach(item => {
+      const targetVal = parseFloat(item.getAttribute('data-target'));
+      const numSpan = item.querySelector('.c-about__counter-num');
+      
+      const counterObj = { val: 0 };
+      
+      gsap.to(counterObj, {
+        val: targetVal,
+        duration: 1.8,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: item,
+          start: 'top 90%',
+          once: true
+        },
+        onUpdate: () => {
+          // Format decimals if needed (for R$ 2B+)
+          if (targetVal % 1 !== 0) {
+            numSpan.textContent = counterObj.val.toFixed(0);
+          } else {
+            numSpan.textContent = Math.floor(counterObj.val);
+          }
+        }
+      });
+    });
+
+  } else if (aboutSection && isReducedMotion) {
+    // Reduced motion fallbacks
+    gsap.set([aboutText, aboutVisual], { opacity: 1, x: 0 });
+    if (aboutImg) gsap.set(aboutImg, { scale: 1, yPercent: 0 });
+    const counterItems = document.querySelectorAll('.c-about__counter-item');
+    counterItems.forEach(item => {
+      const numSpan = item.querySelector('.c-about__counter-num');
+      numSpan.textContent = item.getAttribute('data-target');
+    });
+  }
+
+  // ── 9. HOW IT WORKS ANIMATIONS ──
+  const howSection = document.querySelector('.c-how');
+  const howHeader = document.querySelector('.c-how__header');
+  const howSteps = document.querySelectorAll('.c-how__step');
+  const howSvgPath = document.getElementById('how-svg-path');
+
+  if (howSection && !isReducedMotion) {
+    // Header entry
+    gsap.to(howHeader, {
+      opacity: 1,
+      y: 0,
+      duration: 0.8,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: howSection,
+        start: 'top 82%',
+        once: true
+      }
+    });
+
+    // Steps staggered entry
+    gsap.to(howSteps, {
+      opacity: 1,
+      y: 0,
+      duration: 0.8,
+      stagger: 0.15,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: howSection,
+        start: 'top 82%',
+        once: true
+      }
+    });
+
+    // SVG Connecting Line dashoffset scrub drawing
+    if (howSvgPath) {
+      // Get length
+      const pathLength = howSvgPath.getTotalLength();
+      // Set properties
+      gsap.set(howSvgPath, { strokeDasharray: pathLength, strokeDashoffset: pathLength });
+
+      gsap.to(howSvgPath, {
+        strokeDashoffset: 0,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '.c-how__steps-wrapper',
+          start: 'top 70%',
+          end: 'top 30%',
+          scrub: true
+        }
+      });
+    }
+  } else if (howSection && isReducedMotion) {
+    // Fallback
+    gsap.set([howHeader, ...howSteps], { opacity: 1, y: 0 });
+    if (howSvgPath) gsap.set(howSvgPath, { strokeDashoffset: 0 });
+  }
+
   return {
     onScroll: updateNavState
   };
