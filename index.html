@@ -218,8 +218,155 @@
 
     </section>
 
+    <!-- ── MARQUEE SECTION ── -->
+    <section class="c-marquee" id="marquee" aria-label="Galeria de imóveis">
+
+      <!-- Row 1: scrolls left -->
+      <div class="c-marquee__row c-marquee__row--left">
+        <div class="c-marquee__track">
+          <img class="c-marquee__img" src="assets/marquee-01.png" alt="Penthouse living room com vista para São Paulo" loading="lazy">
+          <img class="c-marquee__img" src="assets/marquee-02.png" alt="Cozinha de luxo com mármore branco" loading="lazy">
+          <img class="c-marquee__img" src="assets/marquee-03.png" alt="Suíte master com vista para a cidade" loading="lazy">
+          <img class="c-marquee__img" src="assets/marquee-04.png" alt="Terraço rooftop com piscina infinita" loading="lazy">
+          <img class="c-marquee__img" src="assets/marquee-05.png" alt="Sala de jantar elegante com mesa de mármore" loading="lazy">
+          <img class="c-marquee__img" src="assets/marquee-06.png" alt="Banheiro de luxo com banheira" loading="lazy">
+          <img class="c-marquee__img" src="assets/marquee-07.png" alt="Fachada de edifício contemporâneo em São Paulo" loading="lazy">
+          <img class="c-marquee__img" src="assets/marquee-08.png" alt="Jardim privativo com plantas tropicais" loading="lazy">
+          <!-- Duplicated for seamless loop -->
+          <img class="c-marquee__img" src="assets/marquee-01.png" alt="" aria-hidden="true" loading="lazy">
+          <img class="c-marquee__img" src="assets/marquee-02.png" alt="" aria-hidden="true" loading="lazy">
+          <img class="c-marquee__img" src="assets/marquee-03.png" alt="" aria-hidden="true" loading="lazy">
+          <img class="c-marquee__img" src="assets/marquee-04.png" alt="" aria-hidden="true" loading="lazy">
+          <img class="c-marquee__img" src="assets/marquee-05.png" alt="" aria-hidden="true" loading="lazy">
+          <img class="c-marquee__img" src="assets/marquee-06.png" alt="" aria-hidden="true" loading="lazy">
+          <img class="c-marquee__img" src="assets/marquee-07.png" alt="" aria-hidden="true" loading="lazy">
+          <img class="c-marquee__img" src="assets/marquee-08.png" alt="" aria-hidden="true" loading="lazy">
+        </div>
+      </div>
+
+      <!-- Row 2: scrolls right -->
+      <div class="c-marquee__row c-marquee__row--right">
+        <div class="c-marquee__track">
+          <img class="c-marquee__img" src="assets/marquee-05.png" alt="Sala de jantar elegante" loading="lazy">
+          <img class="c-marquee__img" src="assets/marquee-08.png" alt="Jardim privativo" loading="lazy">
+          <img class="c-marquee__img" src="assets/marquee-03.png" alt="Suíte master" loading="lazy">
+          <img class="c-marquee__img" src="assets/marquee-01.png" alt="Penthouse living room" loading="lazy">
+          <img class="c-marquee__img" src="assets/marquee-06.png" alt="Banheiro de luxo" loading="lazy">
+          <img class="c-marquee__img" src="assets/marquee-04.png" alt="Terraço rooftop" loading="lazy">
+          <img class="c-marquee__img" src="assets/marquee-07.png" alt="Fachada contemporânea" loading="lazy">
+          <img class="c-marquee__img" src="assets/marquee-02.png" alt="Cozinha de luxo" loading="lazy">
+          <!-- Duplicated for seamless loop -->
+          <img class="c-marquee__img" src="assets/marquee-05.png" alt="" aria-hidden="true" loading="lazy">
+          <img class="c-marquee__img" src="assets/marquee-08.png" alt="" aria-hidden="true" loading="lazy">
+          <img class="c-marquee__img" src="assets/marquee-03.png" alt="" aria-hidden="true" loading="lazy">
+          <img class="c-marquee__img" src="assets/marquee-01.png" alt="" aria-hidden="true" loading="lazy">
+          <img class="c-marquee__img" src="assets/marquee-06.png" alt="" aria-hidden="true" loading="lazy">
+          <img class="c-marquee__img" src="assets/marquee-04.png" alt="" aria-hidden="true" loading="lazy">
+          <img class="c-marquee__img" src="assets/marquee-07.png" alt="" aria-hidden="true" loading="lazy">
+          <img class="c-marquee__img" src="assets/marquee-02.png" alt="" aria-hidden="true" loading="lazy">
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ── HORIZONTAL SCROLL — FEATURED PROPERTIES ── -->
+    <section class="c-hscroll" id="imoveis" aria-label="Imóveis em destaque">
+      <div class="c-hscroll__wrap">
+
+        <!-- Intro Panel (stays visible while cards scroll) -->
+        <div class="c-hscroll__intro">
+          <div class="c-hscroll__intro-content">
+            <p class="c-hscroll__eyebrow">Imóveis em Destaque</p>
+            <h2 class="c-hscroll__headline">Propriedades <em>selecionadas</em></h2>
+            <p class="c-hscroll__hint">Scroll para explorar →</p>
+            <p class="c-hscroll__counter">
+              <span class="c-hscroll__counter-current" id="hscroll-current">01</span>
+              <span class="c-hscroll__counter-sep">/ 05</span>
+            </p>
+          </div>
+          <div class="c-hscroll__progress">
+            <div class="c-hscroll__progress-fill" id="hscroll-progress"></div>
+          </div>
+        </div>
+
+        <!-- Cards Track -->
+        <div class="c-hscroll__track" id="hscroll-track">
+
+          <!-- Card 1 -->
+          <article class="c-hscroll-card" data-card-index="1">
+            <div class="c-hscroll-card__bg">
+              <img src="assets/jardins-apto.png" alt="Apartamento nos Jardins" loading="lazy">
+            </div>
+            <div class="c-hscroll-card__overlay"></div>
+            <span class="c-hscroll-card__badge">Apartamento · Jardins</span>
+            <div class="c-hscroll-card__content">
+              <p class="c-hscroll-card__price">R$ 4.200.000</p>
+              <p class="c-hscroll-card__details">320m² · 4 suítes</p>
+              <a href="#" class="c-hscroll-card__cta">Ver detalhes →</a>
+            </div>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="c-hscroll-card" data-card-index="2">
+            <div class="c-hscroll-card__bg">
+              <img src="assets/itaim-cobertura.png" alt="Cobertura no Itaim Bibi" loading="lazy">
+            </div>
+            <div class="c-hscroll-card__overlay"></div>
+            <span class="c-hscroll-card__badge">Cobertura · Itaim Bibi</span>
+            <div class="c-hscroll-card__content">
+              <p class="c-hscroll-card__price">R$ 8.900.000</p>
+              <p class="c-hscroll-card__details">480m² · 5 suítes</p>
+              <a href="#" class="c-hscroll-card__cta">Ver detalhes →</a>
+            </div>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="c-hscroll-card" data-card-index="3">
+            <div class="c-hscroll-card__bg">
+              <img src="assets/pinheiros-casa.png" alt="Casa em Alto de Pinheiros" loading="lazy">
+            </div>
+            <div class="c-hscroll-card__overlay"></div>
+            <span class="c-hscroll-card__badge">Casa · Alto de Pinheiros</span>
+            <div class="c-hscroll-card__content">
+              <p class="c-hscroll-card__price">R$ 6.750.000</p>
+              <p class="c-hscroll-card__details">560m² · 4 suítes</p>
+              <a href="#" class="c-hscroll-card__cta">Ver detalhes →</a>
+            </div>
+          </article>
+
+          <!-- Card 4 -->
+          <article class="c-hscroll-card" data-card-index="4">
+            <div class="c-hscroll-card__bg">
+              <img src="assets/vila-nova-apto.png" alt="Apartamento em Vila Nova" loading="lazy">
+            </div>
+            <div class="c-hscroll-card__overlay"></div>
+            <span class="c-hscroll-card__badge">Apartamento · Vila Nova</span>
+            <div class="c-hscroll-card__content">
+              <p class="c-hscroll-card__price">R$ 3.100.000</p>
+              <p class="c-hscroll-card__details">210m² · 3 suítes</p>
+              <a href="#" class="c-hscroll-card__cta">Ver detalhes →</a>
+            </div>
+          </article>
+
+          <!-- Card 5 -->
+          <article class="c-hscroll-card" data-card-index="5">
+            <div class="c-hscroll-card__bg">
+              <img src="assets/moema-penthouse.png" alt="Penthouse em Moema" loading="lazy">
+            </div>
+            <div class="c-hscroll-card__overlay"></div>
+            <span class="c-hscroll-card__badge">Penthouse · Moema</span>
+            <div class="c-hscroll-card__content">
+              <p class="c-hscroll-card__price">R$ 12.500.000</p>
+              <p class="c-hscroll-card__details">680m² · 6 suítes</p>
+              <a href="#" class="c-hscroll-card__cta">Ver detalhes →</a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
     <!-- Content Sections placeholder for subsequent phases -->
-    <div id="imoveis" style="height: 100vh; background-color: var(--color-bg-light);"></div>
     <div id="sobre" style="height: 100vh; background-color: var(--color-bg-dark); color: var(--color-text-light);"></div>
 
   </main>

@@ -184,3 +184,360 @@
     opacity: 0;
   }
 }
+
+
+/* ── MARQUEE SECTION ── */
+.c-marquee {
+  width: 100%;
+  overflow: hidden;
+  background-color: var(--color-charcoal);
+  padding: var(--space-lg) 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  /* Edge fade mask: images appear from nowhere */
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%, black 8%, black 92%, transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%, black 8%, black 92%, transparent 100%
+  );
+}
+
+.c-marquee__row {
+  width: 100%;
+  overflow: hidden;
+}
+
+.c-marquee__track {
+  display: flex;
+  gap: var(--space-md);
+  width: max-content;
+  will-change: transform;
+}
+
+/* Row 1: scrolls left */
+.c-marquee__row--left .c-marquee__track {
+  animation: marquee-left 35s linear infinite;
+}
+
+/* Row 2: scrolls right */
+.c-marquee__row--right .c-marquee__track {
+  animation: marquee-right 40s linear infinite;
+}
+
+@keyframes marquee-left {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes marquee-right {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+/* Pause row animation on hover */
+.c-marquee__row:hover .c-marquee__track {
+  animation-play-state: paused;
+}
+
+/* Individual image styling */
+.c-marquee__img {
+  flex-shrink: 0;
+  width: clamp(200px, 22vw, 320px);
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  border-radius: 4px;
+  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
+}
+
+/* Hover: scale + dark overlay on hovered image */
+.c-marquee__img:hover {
+  transform: scale(1.05);
+  filter: brightness(0.7);
+}
+
+/* Responsive: mobile */
+@media (max-width: 768px) {
+  .c-marquee__row--right {
+    display: none;
+  }
+
+  .c-marquee__img {
+    width: clamp(160px, 60vw, 240px);
+  }
+
+  .c-marquee__row--left .c-marquee__track {
+    animation-duration: 25s;
+  }
+}
+
+
+/* ── HORIZONTAL SCROLL — FEATURED PROPERTIES ── */
+.c-hscroll {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.c-hscroll__wrap {
+  display: flex;
+  height: 100vh;
+  width: max-content;
+}
+
+/* Intro Panel */
+.c-hscroll__intro {
+  flex-shrink: 0;
+  width: clamp(280px, 30vw, 420px);
+  height: 100vh;
+  background-color: var(--color-jade-deep);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+
+.c-hscroll__intro-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+  padding: var(--space-xl);
+  gap: var(--space-md);
+}
+
+.c-hscroll__eyebrow {
+  font-family: var(--font-ui);
+  font-size: var(--font-size-ui-xs);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--color-terracotta);
+}
+
+.c-hscroll__headline {
+  font-family: var(--font-display);
+  font-size: var(--font-size-display-md);
+  font-weight: 400;
+  color: var(--color-bone);
+  line-height: 1.1;
+}
+
+.c-hscroll__headline em {
+  font-style: italic;
+  font-weight: 300;
+}
+
+.c-hscroll__hint {
+  font-family: var(--font-ui);
+  font-size: var(--font-size-ui-xs);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(250, 248, 245, 0.4);
+  margin-top: var(--space-sm);
+}
+
+.c-hscroll__counter {
+  font-family: var(--font-display);
+  margin-top: var(--space-lg);
+}
+
+.c-hscroll__counter-current {
+  font-size: var(--font-size-display-lg);
+  font-weight: 400;
+  color: var(--color-bone);
+  line-height: 1;
+}
+
+.c-hscroll__counter-sep {
+  font-size: var(--font-size-ui-md);
+  font-weight: 300;
+  color: rgba(250, 248, 245, 0.35);
+  margin-left: var(--space-2xs);
+}
+
+/* Progress bar at bottom of intro panel */
+.c-hscroll__progress {
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-border-dark);
+}
+
+.c-hscroll__progress-fill {
+  height: 100%;
+  width: 0%;
+  background-color: var(--color-terracotta);
+  transition: width 0.1s linear;
+}
+
+/* Cards Track */
+.c-hscroll__track {
+  display: flex;
+  height: 100vh;
+  will-change: transform;
+}
+
+/* Individual Property Card */
+.c-hscroll-card {
+  flex-shrink: 0;
+  width: clamp(320px, 40vw, 560px);
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  border-right: 2px solid var(--color-border-dark);
+  cursor: pointer;
+}
+
+/* Card background image */
+.c-hscroll-card__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.c-hscroll-card__bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s var(--ease-out);
+  will-change: transform;
+}
+
+.c-hscroll-card:hover .c-hscroll-card__bg img {
+  transform: scale(1.04);
+}
+
+/* Dark overlay gradient: transparent top → 70% black bottom */
+.c-hscroll-card__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: linear-gradient(
+    to bottom,
+    transparent 30%,
+    rgba(20, 23, 22, 0.70) 100%
+  );
+  pointer-events: none;
+}
+
+/* Location badge (top-left) */
+.c-hscroll-card__badge {
+  position: absolute;
+  top: var(--space-lg);
+  left: var(--space-lg);
+  z-index: 3;
+  font-family: var(--font-ui);
+  font-size: var(--font-size-ui-xs);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-bone);
+  padding: var(--space-2xs) var(--space-sm);
+  background: rgba(20, 23, 22, 0.45);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(184, 92, 66, 0.35);
+  transition: background-color var(--duration-fast) var(--ease-out);
+}
+
+.c-hscroll-card:hover .c-hscroll-card__badge {
+  background: rgba(20, 23, 22, 0.65);
+}
+
+/* Card content (bottom-left) */
+.c-hscroll-card__content {
+  position: absolute;
+  bottom: var(--space-xl);
+  left: var(--space-lg);
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3xs);
+}
+
+.c-hscroll-card__price {
+  font-family: var(--font-display);
+  font-size: var(--font-size-display-sm);
+  font-weight: 400;
+  color: var(--color-bone);
+  line-height: 1.1;
+}
+
+.c-hscroll-card__details {
+  font-family: var(--font-ui);
+  font-size: var(--font-size-ui-sm);
+  font-weight: 300;
+  color: rgba(250, 248, 245, 0.65);
+}
+
+.c-hscroll-card__cta {
+  font-family: var(--font-ui);
+  font-size: var(--font-size-ui-sm);
+  font-weight: 500;
+  color: var(--color-terracotta);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: var(--space-xs);
+  position: relative;
+  display: inline-block;
+  width: fit-content;
+}
+
+.c-hscroll-card__cta::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--color-terracotta);
+  transition: width 0.35s var(--ease-out);
+}
+
+.c-hscroll-card:hover .c-hscroll-card__cta::after {
+  width: 100%;
+}
+
+/* Responsive: mobile — stack vertically */
+@media (max-width: 768px) {
+  .c-hscroll__wrap {
+    flex-direction: column;
+    height: auto;
+    width: 100%;
+  }
+
+  .c-hscroll__intro {
+    width: 100%;
+    height: auto;
+    padding: var(--space-2xl) var(--content-padding);
+  }
+
+  .c-hscroll__intro-content {
+    padding: 0;
+  }
+
+  .c-hscroll__counter,
+  .c-hscroll__hint,
+  .c-hscroll__progress {
+    display: none;
+  }
+
+  .c-hscroll__track {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .c-hscroll-card {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3/2;
+    border-right: none;
+    border-bottom: 2px solid var(--color-border-dark);
+  }
+}
+

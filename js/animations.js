@@ -270,6 +270,84 @@ function initAnimations() {
     if (heroVideo) gsap.set(heroVideo, { scale: 1 });
   }
 
+  // ── 6. HORIZONTAL SCROLL — FEATURED PROPERTIES ──
+  const hscrollSection = document.querySelector('.c-hscroll');
+  const hscrollTrack = document.getElementById('hscroll-track');
+  const hscrollCounter = document.getElementById('hscroll-current');
+  const hscrollProgress = document.getElementById('hscroll-progress');
+
+  if (hscrollSection && hscrollTrack && !isReducedMotion) {
+    // ponytail: only init on desktop
+    const mmHscroll = gsap.matchMedia();
+
+    mmHscroll.add('(min-width: 769px)', () => {
+      const cards = hscrollTrack.querySelectorAll('.c-hscroll-card');
+      const totalCards = cards.length;
+
+      // Calculate how far we need to scroll horizontally
+      function getScrollDistance() {
+        const trackWidth = hscrollTrack.scrollWidth;
+        const introWidth = document.querySelector('.c-hscroll__intro').offsetWidth;
+        return trackWidth - (window.innerWidth - introWidth);
+      }
+
+      const scrollTween = gsap.to(hscrollTrack, {
+        x: () => -getScrollDistance(),
+        ease: 'none',
+        scrollTrigger: {
+          trigger: hscrollSection,
+          pin: true,
+          anticipatePin: 1,
+          scrub: 1.2,
+          start: 'top top',
+          end: () => '+=' + getScrollDistance(),
+          invalidateOnRefresh: true,
+          onUpdate: (self) => {
+            const progress = self.progress;
+
+            // Update progress bar
+            if (hscrollProgress) {
+              hscrollProgress.style.width = (progress * 100) + '%';
+            }
+
+            // Update counter: 01–05
+            if (hscrollCounter) {
+              const currentCard = Math.min(
+                totalCards,
+                Math.floor(progress * totalCards) + 1
+              );
+              hscrollCounter.textContent = String(currentCard).padStart(2, '0');
+            }
+          }
+        }
+      });
+
+      // Cards entrance: opacity 0.4→1, x: 40→0 as each enters viewport
+      cards.forEach((card, i) => {
+        gsap.fromTo(card,
+          { opacity: 0.4, x: 40 },
+          {
+            opacity: 1,
+            x: 0,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: card,
+              containerAnimation: scrollTween,
+              start: 'left 85%',
+              end: 'left 50%',
+              scrub: true
+            }
+          }
+        );
+      });
+
+      // Return cleanup for matchMedia
+      return () => {
+        // GSAP matchMedia handles cleanup automatically
+      };
+    });
+  }
+
   return {
     onScroll: updateNavState
   };
