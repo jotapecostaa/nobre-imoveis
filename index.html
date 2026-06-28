@@ -3,989 +3,229 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nobre Imóveis — Imóveis de Alto Padrão em São Paulo</title>
-  <meta name="description" content="Curadoria exclusiva de apartamentos, coberturas e casas de luxo nos bairros mais nobres de São Paulo. Encontre o lar que reflete quem você é com a Nobre Imóveis.">
   
-  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <!-- SEO Meta Tags -->
+  <title>Nobre Imóveis — Curadoria de Ultra-Luxo</title>
+  <meta name="description" content="Curadoria exclusiva de imóveis de ultra-luxo em São Paulo. Design atemporal, privacidade e sofisticação nobre.">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="style.css">
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+  
+  <!-- Lenis CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.5/dist/lenis.css">
+  
+  <!-- Application CSS Stylesheets -->
+  <link rel="stylesheet" href="styles/tokens.css">
+  <link rel="stylesheet" href="styles/base.css">
+  <link rel="stylesheet" href="styles/components.css">
+  <link rel="stylesheet" href="styles/sections.css">
+  
+  <!-- GSAP Core & Plugins -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+  
+  <!-- Lenis Scroll -->
+  <script src="https://unpkg.com/lenis@1.1.5/dist/lenis.min.js"></script>
+  
+  <!-- Application Scripts -->
+  <script src="js/smooth-scroll.js" defer></script>
+  <script src="js/animations.js" defer></script>
+  <script src="js/main.js" defer></script>
 </head>
 <body>
 
-  <nav class="nav" id="nav" role="navigation" aria-label="Navegação principal">
-    <a href="/" class="nav__logo" aria-label="Nobre Imóveis — Página inicial">
-      <svg class="nav__logo-svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--color-terracotta)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0; margin-right: 4px;">
-        <path d="M4 20V9l8-5 8 5v11" />
-        <path d="M9 20V12h6v8" />
-        <path d="M12 4v8" />
-      </svg>
-      Nobre Imóveis
-    </a>
+  <!-- Navigation Header -->
+  <header class="c-header" id="header" role="banner">
+    <nav class="c-nav" id="main-nav" aria-label="Navegação principal">
+      <div class="c-nav__inner">
+        
+        <!-- Left: Logo -->
+        <a href="/" class="c-nav__logo" aria-label="Nobre Imóveis — Página inicial">
+          <span class="c-nav__logo-mark" aria-hidden="true">N</span>
+          <span class="c-nav__logo-text">Nobre Imóveis</span>
+        </a>
 
-    <ul class="nav__links">
-      <li><a href="#imoveis" class="nav__link">Imóveis</a></li>
-      <li><a href="#sobre" class="nav__link">Sobre</a></li>
-      <li><a href="#localizacoes" class="nav__link">Localizações</a></li>
-      <li><a href="#contato" class="nav__link">Contato</a></li>
-    </ul>
+        <!-- Center: Desktop Links -->
+        <ul class="c-nav__links" role="list">
+          <li class="c-nav__link-item c-nav__link-item--has-menu">
+            <a href="#imoveis" class="c-nav__link" id="nav-link-imoveis">
+              <span class="c-nav__link-num">01</span>
+              <span class="c-nav__link-text">Imóveis</span>
+            </a>
+          </li>
+          <li class="c-nav__link-item">
+            <a href="#sobre" class="c-nav__link">
+              <span class="c-nav__link-num">02</span>
+              <span class="c-nav__link-text">Sobre</span>
+            </a>
+          </li>
+          <li class="c-nav__link-item">
+            <a href="#localizacoes" class="c-nav__link">
+              <span class="c-nav__link-num">03</span>
+              <span class="c-nav__link-text">Localizações</span>
+            </a>
+          </li>
+          <li class="c-nav__link-item">
+            <a href="#contato" class="c-nav__link">
+              <span class="c-nav__link-num">04</span>
+              <span class="c-nav__link-text">Contato</span>
+            </a>
+          </li>
+        </ul>
 
-    <button class="nav__toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-  </nav>
-
-  <div class="nav__mobile-menu" id="mobileMenu" aria-hidden="true">
-    <a href="#imoveis">Imóveis</a>
-    <a href="#sobre">Sobre</a>
-    <a href="#localizacoes">Localizações</a>
-    <a href="#contato">Contato</a>
-  </div>
-
-  <section class="hero" id="hero" data-od-id="hero" aria-label="Seção principal">
-
-    <div class="hero__bg" aria-hidden="true">
-      <img
-        src="hero-bg.jpg"
-        alt=""
-        loading="eager"
-        fetchpriority="high"
-        id="heroBgImg"
-      >
-    </div>
-
-    <div class="hero__overlay" aria-hidden="true"></div>
-
-    <div class="hero__noise" aria-hidden="true"></div>
-
-    <div class="hero__content">
-      <div class="hero__text">
-
-        <div class="hero__accent-line" id="heroAccentLine" aria-hidden="true"></div>
-
-        <p class="hero__eyebrow" id="heroEyebrow">
-          Imóveis de Alto Padrão
-        </p>
-
-        <h1 class="hero__headline" id="heroHeadline">
-          <span class="line"><span class="line-inner">Encontre o lar</span></span>
-          <span class="line"><span class="line-inner">que reflete</span></span>
-          <span class="line"><span class="line-inner">quem você é</span></span>
-        </h1>
-
-        <p class="hero__subline" id="heroSubline">
-          Curadoria exclusiva de imóveis de luxo para quem valoriza espaço, design e bem-viver.
-        </p>
-
-        <div class="hero__ctas" id="heroCtas">
-          <a href="#imoveis" class="hero__btn-primary">
-            Explorar imóveis
-          </a>
-          <a href="#agendar" class="hero__btn-secondary">
-            Agendar visita <span class="arrow">→</span>
+        <!-- Right: Desktop CTA -->
+        <div class="c-nav__actions">
+          <a href="#contato" class="c-btn c-btn--outline c-nav__cta-btn">
+            <span class="c-btn__inner">
+              <span class="c-btn__text" data-text="Falar com Consultor">Falar com Consultor</span>
+            </span>
           </a>
         </div>
 
-        <div class="hero__trust" id="heroTrust">
-          <span><span class="trust-num">500+</span> imóveis</span>
-          <span class="hero__trust-divider"></span>
-          <span>Atendimento exclusivo</span>
-          <span class="hero__trust-divider"></span>
-          <span><span class="trust-num">15</span> anos de mercado</span>
-        </div>
+        <!-- Mobile Hamburger Menu Button -->
+        <button class="c-nav__hamburger" id="hamburger-btn" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-menu">
+          <span class="c-nav__hamburger-line"></span>
+          <span class="c-nav__hamburger-line"></span>
+          <span class="c-nav__hamburger-line"></span>
+        </button>
 
       </div>
-    </div>
 
-    <div class="hero__scroll" id="heroScroll">
-      <span class="hero__scroll-text">Scroll</span>
-      <span class="hero__scroll-line"></span>
-    </div>
+      <!-- Mega Menu Panel (Desktop Only) -->
+      <div class="c-megamenu" id="mega-menu-panel" aria-hidden="true">
+        <div class="c-megamenu__inner">
+          <div class="c-megamenu__grid">
+            
+            <!-- Card 1 -->
+            <a href="#imoveis" class="c-megamenu-card">
+              <div class="c-megamenu-card__img-wrap">
+                <img src="assets/jardins-apto.png" alt="Apartamento nos Jardins" loading="lazy">
+              </div>
+              <div class="c-megamenu-card__content">
+                <span class="c-megamenu-card__type">Apartamento</span>
+                <h4 class="c-megamenu-card__title">Jardins</h4>
+                <p class="c-megamenu-card__price">Sob Consulta</p>
+              </div>
+            </a>
 
-  </section>
+            <!-- Card 2 -->
+            <a href="#imoveis" class="c-megamenu-card">
+              <div class="c-megamenu-card__img-wrap">
+                <img src="assets/itaim-cobertura.png" alt="Cobertura no Itaim Bibi" loading="lazy">
+              </div>
+              <div class="c-megamenu-card__content">
+                <span class="c-megamenu-card__type">Cobertura</span>
+                <h4 class="c-megamenu-card__title">Itaim Bibi</h4>
+                <p class="c-megamenu-card__price">Sob Consulta</p>
+              </div>
+            </a>
 
-  <section class="featured" id="imoveis" data-od-id="imoveis-destaque" aria-label="Imóveis em Destaque">
+            <!-- Card 3 -->
+            <a href="#imoveis" class="c-megamenu-card">
+              <div class="c-megamenu-card__img-wrap">
+                <img src="assets/pinheiros-casa.png" alt="Casa em Alto de Pinheiros" loading="lazy">
+              </div>
+              <div class="c-megamenu-card__content">
+                <span class="c-megamenu-card__type">Casa Residencial</span>
+                <h4 class="c-megamenu-card__title">Alto de Pinheiros</h4>
+                <p class="c-megamenu-card__price">Sob Consulta</p>
+              </div>
+            </a>
 
-    <div class="featured__sticky" id="featuredSticky">
-      <div class="featured__track" id="featuredTrack">
-
-        <div class="featured-card featured-card--intro">
-          <div class="featured-card__content">
-            <p class="featured__eyebrow">Imóveis em Destaque</p>
-            <h2 class="featured__headline">Propriedades selecionadas</h2>
-            <p class="featured__hint">Scroll para explorar →</p>
-          </div>
-        </div>
-
-        <div class="featured-card" data-property="apto-jardins">
-          <div class="featured-card__bg" data-gradient="jardins" aria-hidden="true"></div>
-          <div class="featured-card__overlay" aria-hidden="true"></div>
-          <div class="featured-card__content">
-            <span class="featured-card__badge">Apartamento · Jardins</span>
-            <p class="featured-card__price">R$ 4.200.000</p>
-            <p class="featured-card__details">320 m² · 4 suítes</p>
-            <a href="#" class="featured-card__cta">Ver detalhes →</a>
-          </div>
-        </div>
-
-        <div class="featured-card" data-property="cobertura-itaim-bibi">
-          <div class="featured-card__bg" data-gradient="itaim" aria-hidden="true"></div>
-          <div class="featured-card__overlay" aria-hidden="true"></div>
-          <div class="featured-card__content">
-            <span class="featured-card__badge">Cobertura · Itaim Bibi</span>
-            <p class="featured-card__price">R$ 8.900.000</p>
-            <p class="featured-card__details">480 m² · 5 suítes</p>
-            <a href="#" class="featured-card__cta">Ver detalhes →</a>
-          </div>
-        </div>
-
-        <div class="featured-card" data-property="casa-alto-pinheiros">
-          <div class="featured-card__bg" data-gradient="pinheiros" aria-hidden="true"></div>
-          <div class="featured-card__overlay" aria-hidden="true"></div>
-          <div class="featured-card__content">
-            <span class="featured-card__badge">Casa · Alto de Pinheiros</span>
-            <p class="featured-card__price">R$ 6.750.000</p>
-            <p class="featured-card__details">560 m² · 4 suítes</p>
-            <a href="#" class="featured-card__cta">Ver detalhes →</a>
-          </div>
-        </div>
-
-        <div class="featured-card" data-property="apto-vila-nova">
-          <div class="featured-card__bg" data-gradient="vila-nova" aria-hidden="true"></div>
-          <div class="featured-card__overlay" aria-hidden="true"></div>
-          <div class="featured-card__content">
-            <span class="featured-card__badge">Apartamento · Vila Nova Conceição</span>
-            <p class="featured-card__price">R$ 3.100.000</p>
-            <p class="featured-card__details">210 m² · 3 suítes</p>
-            <a href="#" class="featured-card__cta">Ver detalhes →</a>
-          </div>
-        </div>
-
-        <div class="featured-card" data-property="penthouse-moema">
-          <div class="featured-card__bg" data-gradient="moema" aria-hidden="true"></div>
-          <div class="featured-card__overlay" aria-hidden="true"></div>
-          <div class="featured-card__content">
-            <span class="featured-card__badge">Penthouse · Moema</span>
-            <p class="featured-card__price">R$ 12.500.000</p>
-            <p class="featured-card__details">680 m² · 6 suítes</p>
-            <a href="#" class="featured-card__cta">Ver detalhes →</a>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <div class="featured__progress" aria-hidden="true">
-      <div class="featured__progress-fill" id="progressFill"></div>
-    </div>
-
-    <div class="featured__counter" id="featuredCounter" aria-live="polite">01 / 06</div>
-
-  </section>
-
-  <section class="sobre" id="sobre" data-od-id="sobre" aria-label="Sobre a Nobre Imóveis">
-    <div class="sobre__inner">
-      <div class="sobre__text">
-        <p class="sobre__eyebrow">Nossa história</p>
-        <h2 class="sobre__headline">Quinze anos<br>construindo<br><em>sonhos reais</em></h2>
-        <div class="sobre__body">
-          <p>Há quinze anos, a Nobre Imóveis nasceu de uma convicção simples: encontrar o imóvel ideal deveria ser uma experiência tão excepcional quanto os lares que ajudamos a conquistar.</p>
-          <p>Hoje, com centenas de famílias atendidas e mais de dois bilhões em transações, seguimos dedicados à curadoria dos melhores imóveis de São Paulo — com o mesmo cuidado, discrição e excelência que nos definem desde o primeiro dia.</p>
-        </div>
-        <div class="sobre__stats">
-          <div class="sobre__stat">
-            <p class="sobre__stat-num" data-target="15" data-suffix="+">0</p>
-            <p class="sobre__stat-label">anos de mercado</p>
-          </div>
-          <div class="sobre__stat">
-            <p class="sobre__stat-num" data-target="500" data-suffix="+">0</p>
-            <p class="sobre__stat-label">imóveis comercializados</p>
-          </div>
-          <div class="sobre__stat">
-            <p class="sobre__stat-num" data-target="2" data-prefix="R$ " data-suffix="B+">0</p>
-            <p class="sobre__stat-label">bilhões negociados</p>
           </div>
         </div>
       </div>
-      <div class="sobre__visual">
-        <div class="sobre__visual-img" role="img" aria-label="Interior de luxo"></div>
-      </div>
-    </div>
-  </section>
+    </nav>
 
-  <section class="processo" id="processo" data-od-id="como-funciona" aria-label="Como funciona">
-    <div class="processo__inner">
-      <p class="processo__eyebrow">Processo</p>
-      <h2 class="processo__headline">Simples do início<br>ao fechamento</h2>
-      <div class="processo__steps">
-        <div class="processo__line-wrap" aria-hidden="true">
-          <svg class="processo__line" viewBox="0 0 800 2" preserveAspectRatio="none">
-            <path id="processoLinePath" d="M0,1 L800,1" vector-effect="non-scaling-stroke"/>
-          </svg>
-        </div>
-        <div class="processo-step">
-          <div class="processo-step__icon">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/></svg>
-          </div>
-          <p class="processo-step__num">01</p>
-          <h3 class="processo-step__title">Consultoria inicial</h3>
-          <p class="processo-step__text">Entendemos seu perfil, preferências e objetivos com atenção exclusiva.</p>
-        </div>
-        <div class="processo-step">
-          <div class="processo-step__icon">
-            <svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16"/></svg>
-          </div>
-          <p class="processo-step__num">02</p>
-          <h3 class="processo-step__title">Curadoria personalizada</h3>
-          <p class="processo-step__text">Selecionamos imóveis alinhados ao seu estilo de vida, sem perda de tempo.</p>
-        </div>
-        <div class="processo-step">
-          <div class="processo-step__icon">
-            <svg viewBox="0 0 24 24"><polygon points="12,4 20,18 4,18"/></svg>
-          </div>
-          <p class="processo-step__num">03</p>
-          <h3 class="processo-step__title">Acompanhamento completo</h3>
-          <p class="processo-step__text">Da visita à assinatura, cuidamos de cada detalhe do processo.</p>
+    <!-- Mega Menu Backdrop Overlay -->
+    <div class="c-megamenu-backdrop" id="megamenu-backdrop" aria-hidden="true"></div>
+
+    <!-- Mobile Fullscreen Menu Overlay -->
+    <div class="c-mobile-menu" id="mobile-menu" aria-hidden="true">
+      <div class="c-mobile-menu__inner">
+        <ul class="c-mobile-menu__links" role="list">
+          <li><a href="#imoveis" class="c-mobile-menu__link">Imóveis</a></li>
+          <li><a href="#sobre" class="c-mobile-menu__link">Sobre</a></li>
+          <li><a href="#localizacoes" class="c-mobile-menu__link">Localizações</a></li>
+          <li><a href="#contato" class="c-mobile-menu__link">Contato</a></li>
+        </ul>
+        <div class="c-mobile-menu__footer">
+          <a href="#contato" class="c-btn c-btn--primary c-mobile-menu__cta">
+            <span class="c-btn__inner">
+              <span class="c-btn__text" data-text="Falar com Consultor">Falar com Consultor</span>
+            </span>
+          </a>
         </div>
       </div>
     </div>
-  </section>
+  </header>
 
-  <section class="depoimentos" id="depoimentos" data-od-id="depoimentos" aria-label="Depoimentos de clientes">
-    <div class="depoimentos__inner">
-      <p class="depoimentos__eyebrow">Clientes</p>
-      <div class="depoimentos__grid">
-        <div class="depoimento-card">
-          <div class="depoimento-card__quote-mark">"</div>
-          <p class="depoimento-card__quote">Encontrei meu apartamento dos sonhos em menos de três semanas. O atendimento foi impecável do início ao fim.</p>
-          <div class="depoimento-card__separator"></div>
-          <p class="depoimento-card__author">Marina Ferreira, Jardins</p>
-        </div>
-        <div class="depoimento-card">
-          <div class="depoimento-card__quote-mark">"</div>
-          <p class="depoimento-card__quote">A Nobre não vende imóveis. Apresenta estilos de vida. É uma diferença que se sente desde a primeira conversa.</p>
-          <div class="depoimento-card__separator"></div>
-          <p class="depoimento-card__author">Roberto Alves, Itaim Bibi</p>
-        </div>
-        <div class="depoimento-card">
-          <div class="depoimento-card__quote-mark">"</div>
-          <p class="depoimento-card__quote">Profissionalismo, discrição e um olhar genuíno para o que realmente importa para o cliente.</p>
-          <div class="depoimento-card__separator"></div>
-          <p class="depoimento-card__author">Claudia Santos, Alto de Pinheiros</p>
+  <!-- Main Content wrapper -->
+  <main id="main-content" role="main">
+    
+    <!-- Hero Section -->
+    <section class="c-hero" id="hero" role="region" aria-label="Apresentação Nobre Imóveis">
+      
+      <!-- Background Video -->
+      <div class="c-hero__video-wrap">
+        <video class="c-hero__video" autoplay muted loop playsinline preload="metadata" id="hero-video">
+          <source src="assets/hero.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <!-- Video Overlay Gradient -->
+      <div class="c-hero__overlay" aria-hidden="true"></div>
+
+      <!-- Hero Content Container -->
+      <div class="c-hero__content-wrap">
+        <div class="c-hero__content" id="hero-content">
+          
+          <!-- Eyebrow -->
+          <p class="c-hero__eyebrow" id="hero-eyebrow">
+            Imóveis de Alto Padrão · São Paulo
+          </p>
+
+          <!-- Headline -->
+          <h1 class="c-hero__headline" id="hero-headline">
+            O endereço que define quem você é
+          </h1>
+
+          <!-- Subline -->
+          <p class="c-hero__subline" id="hero-subline">
+            Curadoria exclusiva para quem valoriza o extraordinário.
+          </p>
+
+          <!-- CTA Action -->
+          <div class="c-hero__actions" id="hero-actions">
+            <a href="#imoveis" class="c-btn c-btn--primary">
+              <span class="c-btn__inner">
+                <span class="c-btn__text" data-text="Explorar imóveis">Explorar imóveis</span>
+              </span>
+            </a>
+          </div>
+
         </div>
       </div>
-    </div>
-  </section>
 
-  <section class="locais" id="localizacoes" data-od-id="localizacoes" aria-label="Onde atuamos">
-    <div class="locais__inner">
-      <p class="locais__eyebrow">Onde atuamos</p>
-      <h2 class="locais__headline">Os bairros mais<br>desejados de São Paulo</h2>
-      <div class="locais__grid" id="locaisGrid">
-        <div class="local-card" data-parallax="-5">
-          <div class="local-card__bg" data-gradient="jardins" aria-hidden="true"></div>
-          <div class="local-card__overlay" aria-hidden="true"></div>
-          <div class="local-card__content">
-            <p class="local-card__name">Jardins</p>
-            <p class="local-card__count">23 imóveis</p>
-          </div>
-          <span class="local-card__hover-cta">Explorar →</span>
-        </div>
-        <div class="local-card" data-parallax="-8">
-          <div class="local-card__bg" data-gradient="itaim" aria-hidden="true"></div>
-          <div class="local-card__overlay" aria-hidden="true"></div>
-          <div class="local-card__content">
-            <p class="local-card__name">Itaim Bibi</p>
-            <p class="local-card__count">18 imóveis</p>
-          </div>
-          <span class="local-card__hover-cta">Explorar →</span>
-        </div>
-        <div class="local-card" data-parallax="-6">
-          <div class="local-card__bg" data-gradient="vila-nova" aria-hidden="true"></div>
-          <div class="local-card__overlay" aria-hidden="true"></div>
-          <div class="local-card__content">
-            <p class="local-card__name">Vila Nova Conceição</p>
-            <p class="local-card__count">14 imóveis</p>
-          </div>
-          <span class="local-card__hover-cta">Explorar →</span>
-        </div>
-        <div class="local-card" data-parallax="-10">
-          <div class="local-card__bg" data-gradient="moema" aria-hidden="true"></div>
-          <div class="local-card__overlay" aria-hidden="true"></div>
-          <div class="local-card__content">
-            <p class="local-card__name">Moema</p>
-            <p class="local-card__count">21 imóveis</p>
-          </div>
-          <span class="local-card__hover-cta">Explorar →</span>
-        </div>
-        <div class="local-card" data-parallax="-7">
-          <div class="local-card__bg" data-gradient="pinheiros" aria-hidden="true"></div>
-          <div class="local-card__overlay" aria-hidden="true"></div>
-          <div class="local-card__content">
-            <p class="local-card__name">Alto de Pinheiros</p>
-            <p class="local-card__count">10 imóveis</p>
-          </div>
-          <span class="local-card__hover-cta">Explorar →</span>
-        </div>
-        <div class="local-card" data-parallax="-12">
-          <div class="local-card__bg" data-gradient="brooklin" aria-hidden="true"></div>
-          <div class="local-card__overlay" aria-hidden="true"></div>
-          <div class="local-card__content">
-            <p class="local-card__name">Brooklin</p>
-            <p class="local-card__count">16 imóveis</p>
-          </div>
-          <span class="local-card__hover-cta">Explorar →</span>
-        </div>
+      <!-- Scroll Indicator -->
+      <div class="c-hero__scroll" id="hero-scroll">
+        <span class="c-hero__scroll-text">Scroll</span>
+        <span class="c-hero__scroll-indicator" aria-hidden="true"></span>
       </div>
-    </div>
-  </section>
 
-  <section class="cta-final" id="cta-final" data-od-id="cta-final" aria-label="Chamada para ação">
-    <div class="cta-final__decorative" aria-hidden="true">N</div>
-    <div class="cta-final__inner">
-      <h2 class="cta-final__headline" id="ctaHeadline">
-        <span class="word">Pronto</span>
-        <span class="word">para</span>
-        <span class="word">encontrar</span>
-        <br>
-        <span class="word">o</span>
-        <span class="word">imóvel</span>
-        <span class="word">ideal?</span>
-      </h2>
-      <p class="cta-final__subtext">Fale com um consultor exclusivo. Sem compromisso.</p>
-      <a href="#" class="cta-final__btn" id="ctaFinalBtn">Falar com consultor</a>
-      <a href="mailto:contato@nobreimoveis.com.br" class="cta-final__link">contato@nobreimoveis.com.br</a>
-    </div>
-  </section>
+    </section>
 
-  <footer class="footer" id="contato" aria-label="Rodapé">
-    <div class="footer__inner">
-      <div class="footer__top">
-        <div class="footer__logo">
-          <svg class="footer__logo-svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-terracotta)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0; margin-right: 4px;">
-            <path d="M4 20V9l8-5 8 5v11" />
-            <path d="M9 20V12h6v8" />
-            <path d="M12 4v8" />
-          </svg>
-          Nobre Imóveis
-        </div>
-        <span class="footer__tagline">Imóveis de Alto Padrão</span>
-      </div>
-      <div class="footer__divider"></div>
-      <div class="footer__cols">
-        <div>
-          <p class="footer__col-title">Sobre</p>
-          <p class="footer__about-text">Curadoria exclusiva dos melhores imóveis de São Paulo desde 2010. Discrição, excelência e atenção aos detalhes em cada transação.</p>
-        </div>
-        <div>
-          <p class="footer__col-title">Links</p>
-          <ul class="footer__links">
-            <li><a href="#imoveis" class="footer__link">Imóveis</a></li>
-            <li><a href="#sobre" class="footer__link">Sobre</a></li>
-            <li><a href="#localizacoes" class="footer__link">Localizações</a></li>
-            <li><a href="#contato" class="footer__link">Contato</a></li>
-          </ul>
-        </div>
-        <div>
-          <p class="footer__col-title">Contato</p>
-          <p class="footer__contact-item">Rua Oscar Freire, 900<br>Jardins, São Paulo — SP</p>
-          <p class="footer__contact-item">+55 11 99999-0000</p>
-          <p class="footer__contact-item">contato@nobreimoveis.com.br</p>
-        </div>
-        <div>
-          <p class="footer__col-title">Redes</p>
-          <div class="footer__socials">
-            <a href="#" class="footer__social">Instagram →</a>
-            <a href="#" class="footer__social">LinkedIn →</a>
-            <a href="#" class="footer__social">WhatsApp →</a>
-          </div>
-        </div>
-      </div>
-      <div class="footer__bottom">
-        <span>&copy; 2026 Nobre Imóveis. Todos os direitos reservados.</span>
-        <span>Desenvolvido para portfólio</span>
-      </div>
-    </div>
-  </footer>
+    <!-- Content Sections placeholder for subsequent phases -->
+    <div id="imoveis" style="height: 100vh; background-color: var(--color-bg-light);"></div>
+    <div id="sobre" style="height: 100vh; background-color: var(--color-bg-dark); color: var(--color-text-light);"></div>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
+  </main>
 
-      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-
-      const navToggle = document.getElementById('navToggle');
-      const mobileMenu = document.getElementById('mobileMenu');
-      let menuOpen = false;
-
-      const toggleMenu = (forceClose) => {
-        menuOpen = forceClose ? false : !menuOpen;
-        mobileMenu.classList.toggle('is-open', menuOpen);
-        navToggle.classList.toggle('is-active', menuOpen);
-        navToggle.setAttribute('aria-expanded', String(menuOpen));
-        navToggle.setAttribute('aria-label', menuOpen ? 'Fechar menu' : 'Abrir menu');
-        mobileMenu.setAttribute('aria-hidden', String(!menuOpen));
-        document.body.style.overflow = menuOpen ? 'hidden' : '';
-      };
-
-      navToggle.addEventListener('click', () => toggleMenu());
-
-      mobileMenu.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => toggleMenu(true));
-      });
-
-      const nav = document.getElementById('nav');
-      let ticking = false;
-
-      const handleScroll = () => {
-        if (window.scrollY > 50) {
-          nav.classList.add('nav--scrolled');
-        } else {
-          nav.classList.remove('nav--scrolled');
-        }
-        ticking = false;
-      };
-
-      window.addEventListener('scroll', () => {
-        if (!ticking) {
-          requestAnimationFrame(handleScroll);
-          ticking = true;
-        }
-      }, { passive: true });
-
-      if (!prefersReducedMotion.matches) {
-        gsap.registerPlugin(ScrollTrigger);
-
-        /* ---- Entrance timeline (Runs on all screens) ---- */
-        const entranceTl = gsap.timeline({
-          defaults: { ease: 'power3.out' }
-        });
-
-        entranceTl.fromTo('#nav',
-          { opacity: 0, y: -16 },
-          { opacity: 1, y: 0, duration: 0.6 },
-          0.1
-        );
-
-        entranceTl.fromTo('#heroAccentLine',
-          { opacity: 0, scaleX: 0 },
-          { opacity: 1, scaleX: 1, duration: 0.6 },
-          0.25
-        );
-
-        entranceTl.fromTo('#heroEyebrow',
-          { opacity: 0, y: 18 },
-          { opacity: 1, y: 0, duration: 0.7 },
-          0.35
-        );
-
-        entranceTl.to('.line-inner', {
-          y: '0%',
-          opacity: 1,
-          duration: 0.9,
-          ease: 'expo.out',
-          stagger: 0.12
-        }, 0.5);
-
-        entranceTl.fromTo('#heroSubline',
-          { opacity: 0 },
-          { opacity: 1, duration: 0.85, ease: 'power2.out' },
-          0.95
-        );
-
-        entranceTl.fromTo('#heroCtas',
-          { opacity: 0, y: 22 },
-          { opacity: 1, y: 0, duration: 0.7 },
-          1.1
-        );
-
-        entranceTl.fromTo('#heroTrust',
-          { opacity: 0 },
-          { opacity: 1, duration: 0.8, ease: 'power2.out' },
-          1.3
-        );
-
-        entranceTl.fromTo('#heroScroll',
-          { opacity: 0 },
-          { opacity: 0.65, duration: 0.8, ease: 'power2.out' },
-          1.6
-        );
-
-        /* Ken Burns effect (Runs on all screens) */
-        const bgImg = document.getElementById('heroBgImg');
-        gsap.fromTo(bgImg,
-          { scale: 1.0 },
-          {
-            scale: 1.06,
-            duration: 20,
-            ease: 'sine.inOut',
-            repeat: -1,
-            yoyo: true
-          }
-        );
-
-        const mm = gsap.matchMedia();
-
-        /* ================================================
-           DESKTOP ONLY ANIMATIONS (> 768px)
-           ================================================ */
-        mm.add("(min-width: 769px)", () => {
-          // Parallax and fade-out on hero
-          gsap.to(bgImg, {
-            yPercent: 12,
-            ease: 'none',
-            scrollTrigger: {
-              trigger: '#hero',
-              start: 'top top',
-              end: 'bottom top',
-              scrub: true
-            }
-          });
-
-          gsap.to('.hero__text', {
-            opacity: 0,
-            y: -30,
-            ease: 'none',
-            scrollTrigger: {
-              trigger: '#hero',
-              start: '55% top',
-              end: 'bottom top',
-              scrub: true
-            }
-          });
-
-          gsap.to('#heroScroll', {
-            opacity: 0,
-            ease: 'none',
-            scrollTrigger: {
-              trigger: '#hero',
-              start: '8% top',
-              end: '20% top',
-              scrub: true
-            }
-          });
-
-          // Pinned Horizontal Scroll for Featured Section
-          const featuredSection = document.getElementById('imoveis');
-          const featuredTrack = document.getElementById('featuredTrack');
-          const progressFill = document.getElementById('progressFill');
-          const featuredCards = gsap.utils.toArray('.featured-card');
-          const featuredCounter = document.getElementById('featuredCounter');
-          const totalCards = featuredCards.length;
-
-          const getScrollAmount = () => {
-            return featuredTrack.scrollWidth - window.innerWidth;
-          };
-
-          const trackTl = gsap.timeline({
-            scrollTrigger: {
-              trigger: featuredSection,
-              pin: true,
-              anticipatePin: 1,
-              start: 'top top',
-              end: () => '+=' + getScrollAmount(),
-              scrub: 0.5,
-              invalidateOnRefresh: true,
-              onUpdate: (self) => {
-                const p = self.progress;
-                gsap.set(progressFill, { scaleX: p });
-                const idx = Math.min(Math.floor(p * totalCards), totalCards - 1);
-                featuredCounter.textContent = String(idx + 1).padStart(2, '0') + ' / ' + String(totalCards).padStart(2, '0');
-              }
-            }
-          });
-
-          trackTl.to(featuredTrack, {
-            x: () => -getScrollAmount(),
-            ease: 'none'
-          });
-
-          featuredCards.forEach((card, i) => {
-            if (i === 0) return;
-            gsap.from(card, {
-              opacity: 0,
-              x: 100,
-              ease: 'none',
-              scrollTrigger: {
-                trigger: card,
-                containerAnimation: trackTl,
-                start: 'left right',
-                end: 'left 45%',
-                scrub: true
-              }
-            });
-          });
-
-          // Section 3: Sobre a Nobre
-          gsap.fromTo('.sobre', {
-            clipPath: 'inset(0 100% 0 0)'
-          }, {
-            clipPath: 'inset(0 0% 0 0)',
-            ease: 'none',
-            scrollTrigger: {
-              trigger: '.sobre',
-              start: 'top 85%',
-              end: 'top 20%',
-              scrub: true
-            }
-          });
-
-          gsap.from('.sobre__eyebrow, .sobre__headline, .sobre__body p, .sobre__stats', {
-            x: -40,
-            opacity: 0,
-            stagger: 0.12,
-            ease: 'power3.out',
-            scrollTrigger: {
-              trigger: '.sobre',
-              start: 'top 85%',
-              end: 'top 50%',
-              scrub: true
-            }
-          });
-
-          gsap.to('.sobre__visual-img', {
-            yPercent: -8,
-            ease: 'none',
-            scrollTrigger: {
-              trigger: '.sobre__visual',
-              start: 'top bottom',
-              end: 'bottom top',
-              scrub: true
-            }
-          });
-
-          // Section 4: Como Funciona
-          gsap.from('.processo-step', {
-            y: 40,
-            opacity: 0,
-            stagger: 0.15,
-            ease: 'power3.out',
-            scrollTrigger: {
-              trigger: '.processo',
-              start: 'top 85%',
-              end: 'top 40%',
-              scrub: true
-            }
-          });
-
-          const processLine = document.getElementById('processoLinePath');
-          if (processLine) {
-            const length = processLine.getTotalLength();
-            gsap.fromTo(processLine, {
-              strokeDasharray: length,
-              strokeDashoffset: length
-            }, {
-              strokeDashoffset: 0,
-              ease: 'none',
-              scrollTrigger: {
-                trigger: '.processo__line-wrap',
-                start: 'top 85%',
-                end: 'top 50%',
-                scrub: true
-              }
-            });
-          }
-
-          // Section 5: Depoimentos
-          gsap.fromTo('.depoimentos', {
-            clipPath: 'inset(100% 0 0 0)'
-          }, {
-            clipPath: 'inset(0% 0 0 0)',
-            ease: 'none',
-            scrollTrigger: {
-              trigger: '.depoimentos',
-              start: 'top 85%',
-              end: 'top 25%',
-              scrub: true
-            }
-          });
-
-          gsap.from('.depoimento-card', {
-            opacity: 0,
-            y: 30,
-            stagger: 0.15,
-            ease: 'power3.out',
-            scrollTrigger: {
-              trigger: '.depoimentos__grid',
-              start: 'top 85%',
-              end: 'top 40%',
-              scrub: true
-            }
-          });
-
-          gsap.from('.depoimento-card__quote-mark', {
-            scale: 0.8,
-            ease: 'power3.out',
-            scrollTrigger: {
-              trigger: '.depoimentos__grid',
-              start: 'top 85%',
-              end: 'top 40%',
-              scrub: true
-            }
-          });
-
-          // Section 6: Localizações
-          gsap.fromTo('.locais', {
-            opacity: 0,
-            scale: 0.95
-          }, {
-            opacity: 1,
-            scale: 1,
-            ease: 'power3.out',
-            scrollTrigger: {
-              trigger: '.locais',
-              start: 'top 85%',
-              end: 'top 50%',
-              scrub: true
-            }
-          });
-
-          gsap.from('.local-card', {
-            y: 50,
-            opacity: 0,
-            stagger: 0.1,
-            ease: 'power3.out',
-            scrollTrigger: {
-              trigger: '.locais__grid',
-              start: 'top 85%',
-              end: 'top 30%',
-              scrub: true
-            }
-          });
-
-          document.querySelectorAll('.local-card').forEach(card => {
-            const speed = parseFloat(card.getAttribute('data-parallax')) || -5;
-            gsap.to(card.querySelector('.local-card__bg'), {
-              yPercent: speed,
-              ease: 'none',
-              scrollTrigger: {
-                trigger: card,
-                start: 'top bottom',
-                end: 'bottom top',
-                scrub: true
-              }
-            });
-          });
-
-          // Section 7: CTA Final
-          gsap.fromTo('.cta-final', {
-            clipPath: 'inset(100% 0 0 0)'
-          }, {
-            clipPath: 'inset(0% 0 0 0)',
-            ease: 'none',
-            scrollTrigger: {
-              trigger: '.cta-final',
-              start: 'top 85%',
-              end: 'top 30%',
-              scrub: true
-            }
-          });
-
-          gsap.from('.cta-final__headline .word', {
-            y: 60,
-            opacity: 0,
-            stagger: 0.08,
-            ease: 'power3.out',
-            scrollTrigger: {
-              trigger: '.cta-final__headline',
-              start: 'top 85%',
-              end: 'top 50%',
-              scrub: true
-            }
-          });
-        });
-
-        /* ================================================
-           MOBILE ONLY ANIMATIONS (<= 768px)
-           (Smooth, GPU-accelerated triggered animations without scrub)
-           ================================================ */
-        mm.add("(max-width: 768px)", () => {
-          // Set initial styles for mobile
-          gsap.set('.sobre', { clipPath: 'none', opacity: 1 });
-          gsap.set('.depoimentos', { clipPath: 'none', opacity: 1 });
-          gsap.set('.cta-final', { clipPath: 'none', opacity: 1 });
-          gsap.set('.featured-card', { opacity: 0, y: 30 });
-
-          // Mobile Featured Section Staggered Fade-in
-          gsap.to('.featured-card', {
-            opacity: 1,
-            y: 0,
-            duration: 0.8,
-            stagger: 0.15,
-            ease: 'power2.out',
-            scrollTrigger: {
-              trigger: '.featured__track',
-              start: 'top 85%',
-              toggleActions: 'play none none none'
-            }
-          });
-
-          // Mobile Section 3: Sobre a Nobre
-          gsap.from('.sobre__eyebrow, .sobre__headline, .sobre__body p, .sobre__stats', {
-            y: 20,
-            opacity: 0,
-            duration: 0.8,
-            stagger: 0.15,
-            ease: 'power2.out',
-            scrollTrigger: {
-              trigger: '.sobre',
-              start: 'top 80%',
-              toggleActions: 'play none none none'
-            }
-          });
-
-          // Mobile Section 4: Como Funciona
-          gsap.from('.processo-step', {
-            y: 30,
-            opacity: 0,
-            duration: 0.8,
-            stagger: 0.15,
-            ease: 'power2.out',
-            scrollTrigger: {
-              trigger: '.processo',
-              start: 'top 80%',
-              toggleActions: 'play none none none'
-            }
-          });
-
-          // Mobile Section 5: Depoimentos
-          gsap.from('.depoimento-card', {
-            y: 30,
-            opacity: 0,
-            duration: 0.8,
-            stagger: 0.15,
-            ease: 'power2.out',
-            scrollTrigger: {
-              trigger: '.depoimentos__grid',
-              start: 'top 80%',
-              toggleActions: 'play none none none'
-            }
-          });
-
-          // Mobile Section 6: Localizações
-          gsap.from('.locais', {
-            opacity: 0,
-            scale: 0.98,
-            duration: 0.8,
-            ease: 'power2.out',
-            scrollTrigger: {
-              trigger: '.locais',
-              start: 'top 80%',
-              toggleActions: 'play none none none'
-            }
-          });
-
-          gsap.from('.local-card', {
-            y: 30,
-            opacity: 0,
-            duration: 0.8,
-            stagger: 0.1,
-            ease: 'power2.out',
-            scrollTrigger: {
-              trigger: '.locais__grid',
-              start: 'top 80%',
-              toggleActions: 'play none none none'
-            }
-          });
-
-          // Mobile Section 7: CTA Final
-          gsap.from('.cta-final__headline .word', {
-            y: 30,
-            opacity: 0,
-            duration: 0.8,
-            stagger: 0.08,
-            ease: 'power2.out',
-            scrollTrigger: {
-              trigger: '.cta-final',
-              start: 'top 80%',
-              toggleActions: 'play none none none'
-            }
-          });
-        });
-
-        // Numeric stats counter animation (Runs on all screens)
-        document.querySelectorAll('.sobre__stat-num').forEach(stat => {
-          const target = parseInt(stat.getAttribute('data-target'));
-          const suffix = stat.getAttribute('data-suffix') || '';
-          const prefix = stat.getAttribute('data-prefix') || '';
-          ScrollTrigger.create({
-            trigger: stat,
-            start: 'top 90%',
-            onEnter: () => {
-              const startVal = { val: 0 };
-              gsap.to(startVal, {
-                val: target,
-                duration: 2,
-                ease: 'power2.out',
-                snap: { val: 1 },
-                onUpdate: () => {
-                  stat.textContent = prefix + Math.round(startVal.val) + suffix;
-                },
-                onComplete: () => {
-                  stat.textContent = prefix + target + suffix;
-                }
-              });
-            },
-            once: true
-          });
-        });
-
-        // CTA pulse animation (Runs on all screens)
-        const finalBtn = document.getElementById('ctaFinalBtn');
-        ScrollTrigger.create({
-          trigger: '.cta-final__btn',
-          start: 'top 90%',
-          once: true,
-          onEnter: () => {
-            gsap.to(finalBtn, {
-              scale: 1.02,
-              duration: 1.5,
-              ease: 'sine.inOut',
-              repeat: -1,
-              yoyo: true,
-              delay: 1,
-              onStart: () => finalBtn.classList.add('is-animated')
-            });
-          }
-        });
-
-      } else {
-        gsap.set('#nav', { opacity: 1, y: 0 });
-        gsap.set('#heroAccentLine', { opacity: 1, scaleX: 1 });
-        gsap.set('#heroEyebrow', { opacity: 1, y: 0 });
-        gsap.set('.line-inner', { opacity: 1, y: '0%' });
-        gsap.set('#heroSubline', { opacity: 1 });
-        gsap.set('#heroCtas', { opacity: 1, y: 0 });
-        gsap.set('#heroTrust', { opacity: 1 });
-        gsap.set('#heroScroll', { opacity: 1 });
-        gsap.set('.featured-card', { opacity: 1, y: 0, x: 0 });
-        gsap.set('#progressFill', { scaleX: 0 });
-        gsap.set('#featuredCounter', { opacity: 0.7 });
-
-        // ── Reduced-motion fallbacks ──
-        gsap.set('.sobre', { clipPath: 'inset(0 0% 0 0)', opacity: 1 });
-        gsap.set('.sobre__eyebrow, .sobre__headline, .sobre__body p, .sobre__stats', { x: 0, opacity: 1 });
-        document.querySelectorAll('.sobre__stat-num').forEach(stat => {
-          const target = stat.getAttribute('data-target');
-          const suffix = stat.getAttribute('data-suffix') || '';
-          const prefix = stat.getAttribute('data-prefix') || '';
-          stat.textContent = prefix + target + suffix;
-        });
-        gsap.set('.processo-step', { y: 0, opacity: 1 });
-        gsap.set('.depoimentos', { clipPath: 'inset(0% 0 0 0)', opacity: 1 });
-        gsap.set('.depoimento-card', { opacity: 1, y: 0 });
-        gsap.set('.depoimento-card__quote-mark', { scale: 1 });
-        gsap.set('.locais', { opacity: 1, scale: 1 });
-        gsap.set('.local-card', { y: 0, opacity: 1 });
-        gsap.set('.cta-final', { clipPath: 'inset(0% 0 0 0)', opacity: 1 });
-        gsap.set('.cta-final__headline .word', { y: 0, opacity: 1 });
-        gsap.set('#ctaFinalBtn', { opacity: 1, scale: 1 });
-      }
-    });
-  </script>
+  <!-- Footer placeholder -->
+  <footer class="c-footer" id="footer" role="contentinfo"></footer>
 
 </body>
 </html>

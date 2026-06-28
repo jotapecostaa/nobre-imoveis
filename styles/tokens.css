@@ -1,0 +1,68 @@
+:root {
+  /* ── COLOR PALETTE (Modernist Architectural Canvas) ── */
+  --color-sand:            #EFECE6; /* Travertine sand base */
+  --color-jade-deep:       #0E231F; /* Deep forest jade */
+  --color-charcoal:        #141716; /* Ink charcoal primary text */
+  --color-terracotta:      #B85C42; /* Burnt brick accent */
+  --color-bone:            #FAF8F5; /* Bone card background */
+  --color-shale:           #D4CDC2; /* Mortar grey for borders/muted */
+
+  /* Semantic mappings */
+  --color-bg-light:        var(--color-sand);
+  --color-bg-dark:         var(--color-jade-deep);
+  --color-text-light:      var(--color-bone);
+  --color-text-dark:       var(--color-charcoal);
+  --color-border-light:    rgba(20, 23, 22, 0.1);
+  --color-border-dark:     rgba(250, 248, 245, 0.1);
+
+  /* ── TYPOGRAPHY ── */
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-ui:      'Space Grotesk', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+
+  /* Font sizes: Display Scale (Fraunces) */
+  --font-size-display-2xl: clamp(2.50rem, 1.50rem + 5.00vw, 7.50rem);
+  --font-size-display-xl:  clamp(2.00rem, 1.30rem + 3.50vw, 5.50rem);
+  --font-size-display-lg:  clamp(1.75rem, 1.20rem + 2.50vw, 4.00rem);
+  --font-size-display-md:  clamp(1.50rem, 1.10rem + 2.00vw, 3.00rem);
+  --font-size-display-sm:  clamp(1.25rem, 1.00rem + 1.25vw, 2.00rem);
+
+  /* Font sizes: Grotesque UI Scale (Space Grotesk) */
+  --font-size-ui-lg: clamp(1.125rem, 1.05rem + 0.35vw, 1.375rem);
+  --font-size-ui-md: clamp(0.938rem, 0.88rem + 0.25vw, 1.125rem);
+  --font-size-ui-sm: clamp(0.813rem, 0.78rem + 0.15vw, 0.938rem);
+  --font-size-ui-xs: clamp(0.688rem, 0.65rem + 0.10vw, 0.750rem);
+
+  /* ── SPACING SCALE (4px Base Unit) ── */
+  --space-3xs: 0.25rem; /* 4px */
+  --space-2xs: 0.50rem; /* 8px */
+  --space-xs:  0.75rem; /* 12px */
+  --space-sm:  1.00rem; /* 16px */
+  --space-md:  1.50rem; /* 24px */
+  --space-lg:  2.00rem; /* 32px */
+  --space-xl:  3.00rem; /* 48px */
+  --space-2xl: 4.00rem; /* 64px */
+  --space-3xl: 6.00rem; /* 96px */
+
+  /* Fluid layout spacers */
+  --space-fluid-xl:  clamp(3.00rem, 2.00rem + 4.00vw, 8.00rem);
+  --space-fluid-3xl: clamp(6.00rem, 4.00rem + 8.00vw, 15.00rem);
+
+  /* ── MOTION TIMINGS & EASING ── */
+  --ease-out:     cubic-bezier(0.16, 1, 0.3, 1);     /* Out-expo premium deceleration */
+  --ease-in-out:  cubic-bezier(0.37, 0, 0.63, 1);    /* Smooth sine transition */
+  
+  --duration-fast: 0.25s;
+  --duration-base: 0.45s;
+  --duration-slow: 0.85s;
+
+  /* ── LAYOUT POSTURE ── */
+  --content-max:     1440px;
+  --content-padding: clamp(1.5rem, 1rem + 2vw, 5rem);
+  --nav-height:      clamp(4.5rem, 4rem + 1.5vw, 6.5rem);
+
+  /* ── Z-INDEX LAYER HIERARCHY ── */
+  --z-base:    1;
+  --z-nav:     100;
+  --z-overlay: 200;
+  --z-modal:   300;
+}
