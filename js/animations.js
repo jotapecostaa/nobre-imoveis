@@ -620,34 +620,8 @@ function initAnimations() {
   const testSection = document.querySelector('.c-testimonials');
   const testInner = document.querySelector('.c-testimonials__inner');
   
-  if (testSection && testInner && !isReducedMotion) {
-    gsap.fromTo(testSection,
-      { clipPath: 'inset(100% 0 0 0)' },
-      {
-        clipPath: 'inset(0 0 0 0)',
-        ease: 'none',
-        scrollTrigger: {
-          trigger: testSection,
-          start: 'top bottom',
-          end: 'top top',
-          scrub: 1
-        }
-      }
-    );
-    gsap.fromTo(testInner,
-      { y: 40, opacity: 0 },
-      {
-        y: 0, opacity: 1,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: testSection,
-          start: 'top bottom',
-          end: 'top top',
-          scrub: 1
-        }
-      }
-    );
-  }
+  // Removed scrubbed opacity/clip-path for testimonials section because it conflicted 
+  // with inner elements triggering independently, causing it to appear broken and slow.
 
   // ── 10. TESTIMONIALS ANIMATIONS (UPGRADED) ──
   const testEyebrow = document.querySelector('.c-testimonials__eyebrow');
@@ -662,69 +636,45 @@ function initAnimations() {
       clearProps: 'willChange',
       scrollTrigger: {
         trigger: testSection,
-        start: 'top 82%',
+        start: 'top 75%',
         once: true
       }
     });
 
-    testItems.forEach(item => {
+    testItems.forEach((item, index) => {
       const quoteMark = item.querySelector('.c-testimonials__quote-mark');
       const decNumber = item.querySelector('.c-testimonials__right');
 
-      gsap.fromTo(item,
-        { y: 50, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.9,
-          stagger: 0.25,
-          ease: 'expo.out',
-          scrollTrigger: {
-            trigger: item,
-            start: 'top 88%',
-            once: true
-          }
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: item,
+          start: 'top 85%',
+          once: true
         }
+      });
+
+      tl.fromTo(item,
+        { y: 50, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.9, ease: 'expo.out', clearProps: 'willChange' }
       );
 
       if (quoteMark) {
-        gsap.fromTo(quoteMark,
+        tl.fromTo(quoteMark,
           { scale: 0.7, opacity: 0 },
-          {
-            scale: 1,
-            opacity: 1,
-            duration: 0.8,
-            ease: 'back.out(1.7)',
-            delay: 0.1,
-            scrollTrigger: {
-              trigger: item,
-              start: 'top 88%',
-              once: true
-            }
-          }
+          { scale: 1, opacity: 1, duration: 0.8, ease: 'back.out(1.7)', clearProps: 'willChange' },
+          '-=0.7'
         );
       }
 
       if (decNumber) {
-        gsap.fromTo(decNumber,
+        tl.fromTo(decNumber,
           { x: 20, opacity: 0 },
-          {
-            x: 0,
-            opacity: 0.05,
-            duration: 0.8,
-            ease: 'power3.out',
-            scrollTrigger: {
-              trigger: item,
-              start: 'top 88%',
-              once: true
-            }
-          }
+          { x: 0, opacity: 0.05, duration: 0.8, ease: 'power3.out', clearProps: 'willChange' },
+          '-=0.7'
         );
       }
     });
   } else if (testSection && isReducedMotion) {
-    gsap.set(testSection, { clipPath: 'inset(0 0 0 0)' });
-    gsap.set(testInner, { y: 0, opacity: 1 });
     gsap.set([testEyebrow, ...testItems], { opacity: 1, y: 0 });
     testItems.forEach(item => {
       const q = item.querySelector('.c-testimonials__quote-mark');
