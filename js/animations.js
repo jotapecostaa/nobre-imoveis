@@ -565,10 +565,235 @@ function initAnimations() {
         }
       });
     }
-  } else if (howSection && isReducedMotion) {
     // Fallback
     gsap.set([howHeader, ...howSteps], { opacity: 1, y: 0 });
     if (howSvgPath) gsap.set(howSvgPath, { strokeDashoffset: 0 });
+  }
+
+  // ── 10. TESTIMONIALS ANIMATIONS ──
+  const testSection = document.querySelector('.c-testimonials');
+  const testEyebrow = document.querySelector('.c-testimonials__eyebrow');
+  const testItems = document.querySelectorAll('.c-testimonials__item');
+
+  if (testSection && !isReducedMotion) {
+    // Eyebrow entrance
+    gsap.to(testEyebrow, {
+      opacity: 1,
+      y: 0,
+      duration: 0.6,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: testSection,
+        start: 'top 82%',
+        once: true
+      }
+    });
+
+    // Animate each row item
+    testItems.forEach(item => {
+      const quoteMark = item.querySelector('.c-testimonials__quote-mark');
+      const decNumber = item.querySelector('.c-testimonials__right');
+
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: item,
+          start: 'top 88%',
+          once: true
+        }
+      });
+
+      tl.to(item, {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: 'power3.out'
+      });
+
+      if (quoteMark) {
+        tl.to(quoteMark, {
+          opacity: 0.3,
+          scale: 1,
+          duration: 0.6,
+          ease: 'back.out(1.5)'
+        }, '-=0.5');
+      }
+
+      if (decNumber) {
+        tl.to(decNumber, {
+          opacity: 0.05,
+          duration: 0.8
+        }, '-=0.6');
+      }
+    });
+  } else if (testSection && isReducedMotion) {
+    gsap.set([testEyebrow, ...testItems], { opacity: 1, y: 0 });
+    testItems.forEach(item => {
+      const q = item.querySelector('.c-testimonials__quote-mark');
+      const n = item.querySelector('.c-testimonials__right');
+      if (q) gsap.set(q, { opacity: 0.3, scale: 1 });
+      if (n) gsap.set(n, { opacity: 0.05 });
+    });
+  }
+
+  // ── 11. LOCATIONS GRID ANIMATIONS ──
+  const locSection = document.querySelector('.c-locations');
+  const locHeader = document.querySelector('.c-locations__header');
+  const locGrid = document.querySelector('.c-locations__grid');
+  const locCards = document.querySelectorAll('.c-locations-card');
+
+  if (locSection && !isReducedMotion) {
+    // Header entry
+    gsap.to(locHeader, {
+      opacity: 1,
+      y: 0,
+      duration: 0.8,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: locSection,
+        start: 'top 82%',
+        once: true
+      }
+    });
+
+    // Cards entrance
+    gsap.to(locCards, {
+      opacity: 1,
+      y: 0,
+      duration: 0.8,
+      stagger: 0.1,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: locGrid,
+        start: 'top 85%',
+        once: true
+      }
+    });
+
+    // Parallax scroll on location backgrounds
+    const mmLoc = gsap.matchMedia();
+    mmLoc.add('(min-width: 769px)', () => {
+      locCards.forEach(card => {
+        const bgImg = card.querySelector('.c-locations-card__bg');
+        const speed = parseFloat(card.getAttribute('data-speed')) || -5;
+        
+        if (bgImg) {
+          gsap.to(bgImg, {
+            yPercent: speed,
+            ease: 'none',
+            scrollTrigger: {
+              trigger: card,
+              start: 'top bottom',
+              end: 'bottom top',
+              scrub: true
+            }
+          });
+        }
+      });
+    });
+  } else if (locSection && isReducedMotion) {
+    gsap.set([locHeader, ...locCards], { opacity: 1, y: 0 });
+    locCards.forEach(card => {
+      const img = card.querySelector('.c-locations-card__bg');
+      if (img) gsap.set(img, { yPercent: 0 });
+    });
+  }
+
+  // ── 12. CTA FINAL ANIMATIONS ──
+  const ctaSection = document.querySelector('.c-cta-final');
+  const ctaBgLetter = document.querySelector('.c-cta-final__bg-letter');
+  const ctaHeadline = document.getElementById('cta-headline');
+  const ctaSubtext = document.getElementById('cta-subtext');
+  const ctaButton = document.getElementById('cta-button');
+  const ctaEmail = document.getElementById('cta-email');
+
+  if (ctaSection && !isReducedMotion) {
+    // clip-path wipe in
+    gsap.fromTo(ctaSection,
+      { clipPath: 'inset(100% 0% 0% 0%)' },
+      {
+        clipPath: 'inset(0% 0% 0% 0%)',
+        ease: 'none',
+        scrollTrigger: {
+          trigger: ctaSection,
+          start: 'top bottom',
+          end: 'top top',
+          scrub: 1
+        }
+      }
+    );
+
+    // Entrance animation once section triggers
+    const splitCta = new SplitText(ctaHeadline, { type: 'words', wordsClass: 'word' });
+    const ctaWords = splitCta.words;
+
+    ScrollTrigger.create({
+      trigger: ctaSection,
+      start: 'top 40%',
+      once: true,
+      onEnter: () => {
+        // Headline stagger
+        gsap.to(ctaWords, {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          stagger: 0.1,
+          ease: 'expo.out'
+        });
+
+        // Subtext
+        gsap.to(ctaSubtext, {
+          opacity: 1,
+          y: 0,
+          duration: 0.7,
+          ease: 'power3.out',
+          delay: 0.6
+        });
+
+        // Button
+        gsap.to(ctaButton, {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          ease: 'power3.out',
+          delay: 0.8,
+          onComplete: () => {
+            // Pulse loop
+            gsap.to(ctaButton, {
+              scale: 1.02,
+              duration: 1.5,
+              repeat: -1,
+              yoyo: true,
+              ease: 'sine.inOut'
+            });
+          }
+        });
+
+        // Email
+        gsap.to(ctaEmail, {
+          opacity: 1,
+          duration: 0.6,
+          ease: 'power2.out',
+          delay: 1.0
+        });
+
+        // Decorative background letter 'N'
+        if (ctaBgLetter) {
+          gsap.to(ctaBgLetter, {
+            opacity: 0.04,
+            scale: 1,
+            duration: 1.5,
+            ease: 'power2.out',
+            delay: 0.2
+          });
+        }
+      }
+    });
+  } else if (ctaSection && isReducedMotion) {
+    gsap.set(ctaSection, { clipPath: 'inset(0% 0% 0% 0%)' });
+    const splitCta = new SplitText(ctaHeadline, { type: 'words', wordsClass: 'word' });
+    gsap.set(splitCta.words, { opacity: 1, y: 0 });
+    gsap.set([ctaSubtext, ctaButton, ctaEmail], { opacity: 1, y: 0 });
+    if (ctaBgLetter) gsap.set(ctaBgLetter, { opacity: 0.03, scale: 1 });
   }
 
   return {
