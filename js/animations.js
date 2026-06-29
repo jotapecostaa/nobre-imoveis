@@ -8,23 +8,18 @@ function initAnimations() {
   const mainNav = document.getElementById('main-nav');
   let lastScrollY = 0;
 
-  // Triggered on scroll by smooth-scroll Lenis sync
   function updateNavState(scrollY) {
-    // 80px scrolled styling
     if (scrollY > 80) {
       mainNav.classList.add('c-nav--scrolled');
     } else {
       mainNav.classList.remove('c-nav--scrolled');
     }
 
-    // Show/Hide header on scroll down/up
     if (scrollY > 150) {
       if (scrollY > lastScrollY) {
-        // Scrolling down
         mainNav.classList.add('c-header--hidden');
         mainNav.classList.remove('c-header--revealed');
       } else {
-        // Scrolling up
         mainNav.classList.add('c-header--revealed');
         mainNav.classList.remove('c-header--hidden');
       }
@@ -99,17 +94,14 @@ function initAnimations() {
       closeTimeout = setTimeout(closeMegaMenu, 120);
     }
 
-    // Hover on the parent <li> opens the menu
     if (megaMenuLi) {
       megaMenuLi.addEventListener('mouseenter', openMegaMenu);
       megaMenuLi.addEventListener('mouseleave', scheduleClose);
     }
 
-    // Keep menu open while hovering the panel itself
     megaMenuPanel.addEventListener('mouseenter', cancelClose);
     megaMenuPanel.addEventListener('mouseleave', scheduleClose);
     
-    // Close menu when cursor moves to logo or non-dropdown nav links
     const logoEl = document.querySelector('.c-nav__logo');
     if (logoEl) logoEl.addEventListener('mouseenter', closeMegaMenu);
 
@@ -171,19 +163,43 @@ function initAnimations() {
 
     hamburgerBtn.addEventListener('click', toggleMobileMenu);
 
-    // Auto-close on link selection
     mobileLinks.forEach(link => {
       link.addEventListener('click', () => {
         if (isMobileMenuOpen) toggleMobileMenu();
       });
     });
 
-    // Close on Escape keyboard trigger
     window.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && isMobileMenuOpen) {
         toggleMobileMenu();
       }
     });
+  }
+
+  // ── WHATSAPP BUTTON ANIMATION ──
+  const whatsappBtn = document.getElementById('whatsapp-btn');
+  if (whatsappBtn && !isReducedMotion) {
+    gsap.fromTo(whatsappBtn, 
+      { autoAlpha: 0, y: 20 },
+      {
+        autoAlpha: 1,
+        y: 0,
+        duration: 0.6,
+        ease: 'power3.out',
+        delay: 2.5,
+        onComplete: () => {
+          gsap.to(whatsappBtn, {
+            boxShadow: '0 12px 40px rgba(37,211,102,0.5)',
+            duration: 1.5,
+            repeat: -1,
+            yoyo: true,
+            ease: 'sine.inOut'
+          });
+        }
+      }
+    );
+  } else if (whatsappBtn) {
+    gsap.set(whatsappBtn, { autoAlpha: 1, y: 0 });
   }
 
   // ── 4. HERO ENTRANCE ANIMATION ──
@@ -277,14 +293,12 @@ function initAnimations() {
   const hscrollProgress = document.getElementById('hscroll-progress');
 
   if (hscrollSection && hscrollTrack && !isReducedMotion) {
-    // ponytail: only init on desktop
     const mmHscroll = gsap.matchMedia();
 
     mmHscroll.add('(min-width: 769px)', () => {
       const cards = hscrollTrack.querySelectorAll('.c-hscroll-card');
       const totalCards = cards.length;
 
-      // Calculate how far we need to scroll horizontally
       function getScrollDistance() {
         const trackWidth = hscrollTrack.scrollWidth;
         const introWidth = document.querySelector('.c-hscroll__intro').offsetWidth;
@@ -305,12 +319,10 @@ function initAnimations() {
           onUpdate: (self) => {
             const progress = self.progress;
 
-            // Update progress bar
             if (hscrollProgress) {
               hscrollProgress.style.width = (progress * 100) + '%';
             }
 
-            // Update counter: 01–05
             if (hscrollCounter) {
               const currentCard = Math.min(
                 totalCards,
@@ -322,8 +334,7 @@ function initAnimations() {
         }
       });
 
-      // Cards entrance: opacity 0.4→1, x: 40→0 as each enters viewport
-      cards.forEach((card, i) => {
+      cards.forEach((card) => {
         gsap.fromTo(card,
           { opacity: 0.4, x: 40 },
           {
@@ -341,10 +352,7 @@ function initAnimations() {
         );
       });
 
-      // Return cleanup for matchMedia
-      return () => {
-        // GSAP matchMedia handles cleanup automatically
-      };
+      return () => {};
     });
   }
 
@@ -354,8 +362,6 @@ function initAnimations() {
   const brandSubtext = document.getElementById('brand-subtext');
 
   if (brandSection && brandQuote && !isReducedMotion) {
-    // Transition clip-path reveal coordinated with horizontal-scroll trigger exits
-    // Pinned exit phase: clip-path inset(100% 0 0 0) -> inset(0 0 0 0)
     gsap.fromTo(brandSection,
       { clipPath: 'inset(100% 0% 0% 0%)' },
       {
@@ -370,11 +376,9 @@ function initAnimations() {
       }
     );
 
-    // Split text into words
     const splitQuote = new SplitText(brandQuote, { type: 'words', wordsClass: 'word' });
     const words = splitQuote.words;
 
-    // Word by word scroll-driven reveal (scrub: 2)
     const quoteTimeline = gsap.timeline({
       scrollTrigger: {
         trigger: brandSection,
@@ -390,7 +394,6 @@ function initAnimations() {
       ease: 'power1.out'
     });
 
-    // Subtext fades in once when the quote is completed
     gsap.fromTo(brandSubtext,
       { opacity: 0, y: 16 },
       {
@@ -406,82 +409,92 @@ function initAnimations() {
       }
     );
   } else if (brandSection && isReducedMotion) {
-    // Direct fallbacks for reduced-motion users
     gsap.set(brandSection, { clipPath: 'inset(0% 0% 0% 0%)' });
     const splitQuote = new SplitText(brandQuote, { type: 'words', wordsClass: 'word' });
     gsap.set(splitQuote.words, { opacity: 1 });
     gsap.set(brandSubtext, { opacity: 1, y: 0 });
   }
 
-  // ── 8. ABOUT SECTION ANIMATIONS ──
+  // ── SECTION TRANSITION: SOBRE ──
   const aboutSection = document.querySelector('.c-about');
-  const aboutText = document.querySelector('.c-about__text');
-  const aboutVisual = document.querySelector('.c-about__visual');
-  const aboutImg = document.querySelector('.c-about__img');
+  const aboutInner = document.querySelector('.c-about__inner');
+  if (aboutSection && aboutInner && !isReducedMotion) {
+    gsap.fromTo(aboutInner, 
+      { clipPath: 'inset(0 100% 0 0)' },
+      {
+        clipPath: 'inset(0 0% 0 0)',
+        ease: 'none',
+        scrollTrigger: {
+          trigger: aboutSection,
+          start: 'top 90%',
+          end: 'top 20%',
+          scrub: 1
+        }
+      }
+    );
+  }
+
+  // ── 8. ABOUT SECTION ANIMATIONS (UPGRADED) ──
+  const aboutEyebrow = document.querySelector('.c-about__eyebrow');
+  const aboutHeadline = document.querySelector('.c-about__headline');
+  const aboutBody = document.querySelectorAll('.c-about__body');
+  const aboutImageFrame = document.querySelector('.c-about__image-frame');
 
   if (aboutSection && !isReducedMotion) {
-    // Left column staggers
-    gsap.to(aboutText, {
-      opacity: 1,
-      x: 0,
-      duration: 1,
-      ease: 'power3.out',
-      clearProps: 'willChange',
-      scrollTrigger: {
-        trigger: aboutSection,
-        start: 'top 80%',
-        once: true
-      }
-    });
-
-    // Right column visual entry
-    if (aboutVisual) {
-      gsap.to(aboutVisual, {
+    const aboutSplit = new SplitText([aboutEyebrow, aboutHeadline], { type: 'words', wordsClass: 'word' });
+    gsap.fromTo(aboutSplit.words,
+      { y: 40, opacity: 0 },
+      {
+        y: 0,
         opacity: 1,
-        x: 0,
+        stagger: 0.08,
         duration: 1,
-        ease: 'power3.out',
-        clearProps: 'willChange',
+        ease: 'expo.out',
         scrollTrigger: {
           trigger: aboutSection,
-          start: 'top 80%',
+          start: 'top 75%',
           once: true
         }
-      });
-    }
+      }
+    );
 
-    // Parallax scroll on image (yPercent: 0 -> -10)
-    if (aboutImg) {
-      gsap.to(aboutImg, {
-        yPercent: -10,
-        ease: 'none',
+    gsap.fromTo(aboutBody,
+      { y: 24, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        stagger: 0.15,
+        duration: 1,
+        ease: 'power3.out',
         scrollTrigger: {
           trigger: aboutSection,
-          start: 'top bottom',
-          end: 'bottom top',
-          scrub: true
+          start: 'top 75%',
+          once: true
         }
-      });
+      }
+    );
 
-      // Ken burns subtle scale
-      gsap.to(aboutImg, {
-        scale: 1.06,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: aboutSection,
-          start: 'top bottom',
-          end: 'bottom top',
-          scrub: true
+    if (aboutImageFrame) {
+      gsap.fromTo(aboutImageFrame,
+        { x: 60, opacity: 0 },
+        {
+          x: 0,
+          opacity: 1,
+          duration: 1,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: aboutSection,
+            start: 'top 75%',
+            once: true
+          }
         }
-      });
+      );
     }
 
-    // Numbers counters anim
     const counterItems = document.querySelectorAll('.c-about__counter-item');
     counterItems.forEach(item => {
       const targetVal = parseFloat(item.getAttribute('data-target'));
       const numSpan = item.querySelector('.c-about__counter-num');
-      
       const counterObj = { val: 0 };
       
       gsap.to(counterObj, {
@@ -494,7 +507,6 @@ function initAnimations() {
           once: true
         },
         onUpdate: () => {
-          // Format decimals if needed (for R$ 2B+)
           if (targetVal % 1 !== 0) {
             numSpan.textContent = counterObj.val.toFixed(0);
           } else {
@@ -503,11 +515,9 @@ function initAnimations() {
         }
       });
     });
-
   } else if (aboutSection && isReducedMotion) {
-    // Reduced motion fallbacks
-    gsap.set([aboutText, aboutVisual], { opacity: 1, x: 0 });
-    if (aboutImg) gsap.set(aboutImg, { scale: 1, yPercent: 0 });
+    gsap.set(aboutInner, { clipPath: 'inset(0% 0% 0% 0%)' });
+    gsap.set([aboutEyebrow, aboutHeadline, aboutBody, aboutImageFrame], { opacity: 1, x: 0, y: 0 });
     const counterItems = document.querySelectorAll('.c-about__counter-item');
     counterItems.forEach(item => {
       const numSpan = item.querySelector('.c-about__counter-num');
@@ -515,49 +525,80 @@ function initAnimations() {
     });
   }
 
-  // ── 9. HOW IT WORKS ANIMATIONS ──
+  // ── SECTION TRANSITION: PROCESSO ──
   const howSection = document.querySelector('.c-how');
-  const howHeader = document.querySelector('.c-how__header');
+  const howInner = document.querySelector('.c-how__inner');
+  
+  if (howSection && howInner && !isReducedMotion) {
+    gsap.fromTo(aboutSection,
+      { scale: 1, opacity: 1 },
+      {
+        scale: 0.97, opacity: 0,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: howSection,
+          start: 'top 85%',
+          end: 'top top',
+          scrub: 1
+        }
+      }
+    );
+    gsap.fromTo(howInner,
+      { y: 60, opacity: 0 },
+      {
+        y: 0, opacity: 1,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: howSection,
+          start: 'top 85%',
+          end: 'top top',
+          scrub: 1
+        }
+      }
+    );
+  }
+
+  // ── 9. HOW IT WORKS ANIMATIONS (UPGRADED) ──
   const howSteps = document.querySelectorAll('.c-how__step');
+  const howIcons = document.querySelectorAll('.c-how__icon-container');
   const howSvgPath = document.getElementById('how-svg-path');
 
   if (howSection && !isReducedMotion) {
-    // Header entry
-    gsap.to(howHeader, {
-      opacity: 1,
-      y: 0,
-      duration: 0.8,
-      ease: 'power3.out',
-      clearProps: 'willChange',
-      scrollTrigger: {
-        trigger: howSection,
-        start: 'top 82%',
-        once: true
+    gsap.fromTo(howSteps,
+      { y: 50, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        stagger: 0.18,
+        duration: 0.9,
+        ease: 'expo.out',
+        scrollTrigger: {
+          trigger: howSection,
+          start: 'top 78%',
+          once: true
+        }
       }
-    });
+    );
 
-    // Steps staggered entry
-    gsap.to(howSteps, {
-      opacity: 1,
-      y: 0,
-      duration: 0.8,
-      stagger: 0.15,
-      ease: 'power3.out',
-      clearProps: 'willChange',
-      scrollTrigger: {
-        trigger: howSection,
-        start: 'top 82%',
-        once: true
+    gsap.fromTo(howIcons,
+      { scale: 0.85, opacity: 0 },
+      {
+        scale: 1,
+        opacity: 1,
+        stagger: 0.18,
+        duration: 0.9,
+        ease: 'expo.out',
+        scrollTrigger: {
+          trigger: howSection,
+          start: 'top 78%',
+          once: true
+        }
       }
-    });
+    );
 
-    // SVG Connecting Line dashoffset scrub drawing
     if (howSvgPath) {
-      // Get length
       const pathLength = howSvgPath.getTotalLength();
-      // Set properties
       gsap.set(howSvgPath, { strokeDasharray: pathLength, strokeDashoffset: pathLength });
-
       gsap.to(howSvgPath, {
         strokeDashoffset: 0,
         ease: 'none',
@@ -569,18 +610,50 @@ function initAnimations() {
         }
       });
     }
-    // Fallback
-    gsap.set([howHeader, ...howSteps], { opacity: 1, y: 0 });
+  } else if (howSection && isReducedMotion) {
+    gsap.set(howInner, { y: 0, opacity: 1 });
+    gsap.set([howSteps, howIcons], { opacity: 1, y: 0, scale: 1 });
     if (howSvgPath) gsap.set(howSvgPath, { strokeDashoffset: 0 });
   }
 
-  // ── 10. TESTIMONIALS ANIMATIONS ──
+  // ── SECTION TRANSITION: DEPOIMENTOS ──
   const testSection = document.querySelector('.c-testimonials');
+  const testInner = document.querySelector('.c-testimonials__inner');
+  
+  if (testSection && testInner && !isReducedMotion) {
+    gsap.fromTo(testSection,
+      { clipPath: 'inset(100% 0 0 0)' },
+      {
+        clipPath: 'inset(0 0 0 0)',
+        ease: 'none',
+        scrollTrigger: {
+          trigger: testSection,
+          start: 'top bottom',
+          end: 'top top',
+          scrub: 1
+        }
+      }
+    );
+    gsap.fromTo(testInner,
+      { y: 40, opacity: 0 },
+      {
+        y: 0, opacity: 1,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: testSection,
+          start: 'top bottom',
+          end: 'top top',
+          scrub: 1
+        }
+      }
+    );
+  }
+
+  // ── 10. TESTIMONIALS ANIMATIONS (UPGRADED) ──
   const testEyebrow = document.querySelector('.c-testimonials__eyebrow');
   const testItems = document.querySelectorAll('.c-testimonials__item');
 
   if (testSection && !isReducedMotion) {
-    // Eyebrow entrance
     gsap.to(testEyebrow, {
       opacity: 1,
       y: 0,
@@ -594,63 +667,79 @@ function initAnimations() {
       }
     });
 
-    // Animate each row item
     testItems.forEach(item => {
       const quoteMark = item.querySelector('.c-testimonials__quote-mark');
       const decNumber = item.querySelector('.c-testimonials__right');
 
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: item,
-          start: 'top 88%',
-          once: true
+      gsap.fromTo(item,
+        { y: 50, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.9,
+          stagger: 0.25,
+          ease: 'expo.out',
+          scrollTrigger: {
+            trigger: item,
+            start: 'top 88%',
+            once: true
+          }
         }
-      });
-
-      tl.to(item, {
-        opacity: 1,
-        y: 0,
-        duration: 0.8,
-        ease: 'power3.out',
-        clearProps: 'willChange'
-      });
+      );
 
       if (quoteMark) {
-        tl.to(quoteMark, {
-          opacity: 0.3,
-          scale: 1,
-          duration: 0.6,
-          ease: 'back.out(1.5)',
-          clearProps: 'willChange'
-        }, '-=0.5');
+        gsap.fromTo(quoteMark,
+          { scale: 0.7, opacity: 0 },
+          {
+            scale: 1,
+            opacity: 1,
+            duration: 0.8,
+            ease: 'back.out(1.7)',
+            delay: 0.1,
+            scrollTrigger: {
+              trigger: item,
+              start: 'top 88%',
+              once: true
+            }
+          }
+        );
       }
 
       if (decNumber) {
-        tl.to(decNumber, {
-          opacity: 0.05,
-          duration: 0.8,
-          clearProps: 'willChange'
-        }, '-=0.6');
+        gsap.fromTo(decNumber,
+          { x: 20, opacity: 0 },
+          {
+            x: 0,
+            opacity: 0.05,
+            duration: 0.8,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: item,
+              start: 'top 88%',
+              once: true
+            }
+          }
+        );
       }
     });
   } else if (testSection && isReducedMotion) {
+    gsap.set(testSection, { clipPath: 'inset(0 0 0 0)' });
+    gsap.set(testInner, { y: 0, opacity: 1 });
     gsap.set([testEyebrow, ...testItems], { opacity: 1, y: 0 });
     testItems.forEach(item => {
       const q = item.querySelector('.c-testimonials__quote-mark');
       const n = item.querySelector('.c-testimonials__right');
-      if (q) gsap.set(q, { opacity: 0.3, scale: 1 });
-      if (n) gsap.set(n, { opacity: 0.05 });
+      if (q) gsap.set(q, { opacity: 1, scale: 1 });
+      if (n) gsap.set(n, { opacity: 0.05, x: 0 });
     });
   }
 
-  // ── 11. LOCATIONS GRID ANIMATIONS ──
+  // ── 11. LOCATIONS GRID ANIMATIONS (UPGRADED) ──
   const locSection = document.querySelector('.c-locations');
   const locHeader = document.querySelector('.c-locations__header');
-  const locGrid = document.querySelector('.c-locations__grid');
   const locCards = document.querySelectorAll('.c-locations-card');
 
   if (locSection && !isReducedMotion) {
-    // Header entry
     gsap.to(locHeader, {
       opacity: 1,
       y: 0,
@@ -664,22 +753,26 @@ function initAnimations() {
       }
     });
 
-    // Cards entrance
-    gsap.to(locCards, {
-      opacity: 1,
-      y: 0,
-      duration: 0.8,
-      stagger: 0.1,
-      ease: 'power3.out',
-      clearProps: 'willChange',
-      scrollTrigger: {
-        trigger: locGrid,
-        start: 'top 85%',
-        once: true
-      }
+    locCards.forEach((card, index) => {
+      gsap.fromTo(card,
+        { clipPath: 'inset(0 0 100% 0)' },
+        {
+          clipPath: 'inset(0 0 0% 0)',
+          duration: 0.8,
+          ease: 'power3.out',
+          delay: index * 0.08,
+          scrollTrigger: {
+            trigger: '.c-locations__grid',
+            start: 'top 80%',
+            once: true
+          },
+          onComplete: () => {
+            gsap.set(card, { clearProps: 'clipPath' });
+          }
+        }
+      );
     });
 
-    // Parallax scroll on location backgrounds
     const mmLoc = gsap.matchMedia();
     mmLoc.add('(min-width: 769px)', () => {
       locCards.forEach(card => {
@@ -701,7 +794,7 @@ function initAnimations() {
       });
     });
   } else if (locSection && isReducedMotion) {
-    gsap.set([locHeader, ...locCards], { opacity: 1, y: 0 });
+    gsap.set([locHeader, ...locCards], { opacity: 1, y: 0, clipPath: 'inset(0 0 0% 0)' });
     locCards.forEach(card => {
       const img = card.querySelector('.c-locations-card__bg');
       if (img) gsap.set(img, { yPercent: 0 });
@@ -717,7 +810,6 @@ function initAnimations() {
   const ctaEmail = document.getElementById('cta-email');
 
   if (ctaSection && !isReducedMotion) {
-    // clip-path wipe in
     gsap.fromTo(ctaSection,
       { clipPath: 'inset(100% 0% 0% 0%)' },
       {
@@ -732,7 +824,6 @@ function initAnimations() {
       }
     );
 
-    // Entrance animation once section triggers
     const splitCta = new SplitText(ctaHeadline, { type: 'words', wordsClass: 'word' });
     const ctaWords = splitCta.words;
 
@@ -741,7 +832,6 @@ function initAnimations() {
       start: 'top 40%',
       once: true,
       onEnter: () => {
-        // Headline stagger
         gsap.to(ctaWords, {
           opacity: 1,
           y: 0,
@@ -751,7 +841,6 @@ function initAnimations() {
           clearProps: 'willChange'
         });
 
-        // Subtext
         gsap.to(ctaSubtext, {
           opacity: 1,
           y: 0,
@@ -761,7 +850,6 @@ function initAnimations() {
           clearProps: 'willChange'
         });
 
-        // Button
         gsap.to(ctaButton, {
           opacity: 1,
           y: 0,
@@ -770,7 +858,6 @@ function initAnimations() {
           delay: 0.8,
           clearProps: 'willChange',
           onComplete: () => {
-            // Pulse loop
             gsap.to(ctaButton, {
               scale: 1.02,
               duration: 1.5,
@@ -781,7 +868,6 @@ function initAnimations() {
           }
         });
 
-        // Email
         gsap.to(ctaEmail, {
           opacity: 1,
           duration: 0.6,
@@ -790,7 +876,6 @@ function initAnimations() {
           clearProps: 'willChange'
         });
 
-        // Decorative background letter 'N'
         if (ctaBgLetter) {
           gsap.to(ctaBgLetter, {
             opacity: 0.04,
@@ -805,10 +890,11 @@ function initAnimations() {
     });
   } else if (ctaSection && isReducedMotion) {
     gsap.set(ctaSection, { clipPath: 'inset(0% 0% 0% 0%)' });
-    const splitCta = new SplitText(ctaHeadline, { type: 'words', wordsClass: 'word' });
-    gsap.set(splitCta.words, { opacity: 1, y: 0 });
-    gsap.set([ctaSubtext, ctaButton, ctaEmail], { opacity: 1, y: 0 });
-    if (ctaBgLetter) gsap.set(ctaBgLetter, { opacity: 0.03, scale: 1 });
+    if (ctaHeadline) {
+      const splitCta = new SplitText(ctaHeadline, { type: 'words', wordsClass: 'word' });
+      gsap.set(splitCta.words, { opacity: 1, y: 0 });
+    }
+    gsap.set([ctaSubtext, ctaButton, ctaEmail, ctaBgLetter], { opacity: 1, y: 0, scale: 1 });
   }
 
   // ── 13. FOOTER ANIMATIONS ──
