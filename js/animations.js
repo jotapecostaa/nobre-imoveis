@@ -426,6 +426,7 @@ function initAnimations() {
       x: 0,
       duration: 1,
       ease: 'power3.out',
+      clearProps: 'willChange',
       scrollTrigger: {
         trigger: aboutSection,
         start: 'top 80%',
@@ -440,6 +441,7 @@ function initAnimations() {
         x: 0,
         duration: 1,
         ease: 'power3.out',
+        clearProps: 'willChange',
         scrollTrigger: {
           trigger: aboutSection,
           start: 'top 80%',
@@ -526,6 +528,7 @@ function initAnimations() {
       y: 0,
       duration: 0.8,
       ease: 'power3.out',
+      clearProps: 'willChange',
       scrollTrigger: {
         trigger: howSection,
         start: 'top 82%',
@@ -540,6 +543,7 @@ function initAnimations() {
       duration: 0.8,
       stagger: 0.15,
       ease: 'power3.out',
+      clearProps: 'willChange',
       scrollTrigger: {
         trigger: howSection,
         start: 'top 82%',
@@ -582,6 +586,7 @@ function initAnimations() {
       y: 0,
       duration: 0.6,
       ease: 'power3.out',
+      clearProps: 'willChange',
       scrollTrigger: {
         trigger: testSection,
         start: 'top 82%',
@@ -606,7 +611,8 @@ function initAnimations() {
         opacity: 1,
         y: 0,
         duration: 0.8,
-        ease: 'power3.out'
+        ease: 'power3.out',
+        clearProps: 'willChange'
       });
 
       if (quoteMark) {
@@ -614,14 +620,16 @@ function initAnimations() {
           opacity: 0.3,
           scale: 1,
           duration: 0.6,
-          ease: 'back.out(1.5)'
+          ease: 'back.out(1.5)',
+          clearProps: 'willChange'
         }, '-=0.5');
       }
 
       if (decNumber) {
         tl.to(decNumber, {
           opacity: 0.05,
-          duration: 0.8
+          duration: 0.8,
+          clearProps: 'willChange'
         }, '-=0.6');
       }
     });
@@ -648,6 +656,7 @@ function initAnimations() {
       y: 0,
       duration: 0.8,
       ease: 'power3.out',
+      clearProps: 'willChange',
       scrollTrigger: {
         trigger: locSection,
         start: 'top 82%',
@@ -662,6 +671,7 @@ function initAnimations() {
       duration: 0.8,
       stagger: 0.1,
       ease: 'power3.out',
+      clearProps: 'willChange',
       scrollTrigger: {
         trigger: locGrid,
         start: 'top 85%',
@@ -737,7 +747,8 @@ function initAnimations() {
           y: 0,
           duration: 1,
           stagger: 0.1,
-          ease: 'expo.out'
+          ease: 'expo.out',
+          clearProps: 'willChange'
         });
 
         // Subtext
@@ -746,7 +757,8 @@ function initAnimations() {
           y: 0,
           duration: 0.7,
           ease: 'power3.out',
-          delay: 0.6
+          delay: 0.6,
+          clearProps: 'willChange'
         });
 
         // Button
@@ -756,6 +768,7 @@ function initAnimations() {
           duration: 0.6,
           ease: 'power3.out',
           delay: 0.8,
+          clearProps: 'willChange',
           onComplete: () => {
             // Pulse loop
             gsap.to(ctaButton, {
@@ -773,7 +786,8 @@ function initAnimations() {
           opacity: 1,
           duration: 0.6,
           ease: 'power2.out',
-          delay: 1.0
+          delay: 1.0,
+          clearProps: 'willChange'
         });
 
         // Decorative background letter 'N'
@@ -783,7 +797,8 @@ function initAnimations() {
             scale: 1,
             duration: 1.5,
             ease: 'power2.out',
-            delay: 0.2
+            delay: 0.2,
+            clearProps: 'willChange'
           });
         }
       }
@@ -794,6 +809,57 @@ function initAnimations() {
     gsap.set(splitCta.words, { opacity: 1, y: 0 });
     gsap.set([ctaSubtext, ctaButton, ctaEmail], { opacity: 1, y: 0 });
     if (ctaBgLetter) gsap.set(ctaBgLetter, { opacity: 0.03, scale: 1 });
+  }
+
+  // ── 13. FOOTER ANIMATIONS ──
+  const footerSection = document.querySelector('.c-footer');
+  const footerGrid = document.getElementById('footer-grid');
+  const footerCols = document.querySelectorAll('.c-footer__col');
+  const footerBottom = document.getElementById('footer-bottom');
+
+  if (footerSection && !isReducedMotion) {
+    // Top grid column staggers
+    gsap.to(footerGrid, {
+      opacity: 1,
+      y: 0,
+      duration: 0.7,
+      ease: 'power3.out',
+      clearProps: 'willChange',
+      scrollTrigger: {
+        trigger: footerSection,
+        start: 'top 92%',
+        once: true
+      }
+    });
+
+    gsap.to(footerCols, {
+      opacity: 1,
+      y: 0,
+      duration: 0.7,
+      stagger: 0.15,
+      ease: 'power3.out',
+      clearProps: 'willChange',
+      scrollTrigger: {
+        trigger: footerSection,
+        start: 'top 90%',
+        once: true
+      }
+    });
+
+    // Bottom copyright row fade
+    gsap.to(footerBottom, {
+      opacity: 1,
+      duration: 0.6,
+      clearProps: 'willChange',
+      scrollTrigger: {
+        trigger: footerSection,
+        start: 'top 95%',
+        once: true
+      }
+    });
+  } else if (footerSection && isReducedMotion) {
+    gsap.set([footerGrid, footerBottom], { opacity: 1, y: 0 });
+    gsap.set(footerCols, { opacity: 1, y: 0 });
   }
 
   return {

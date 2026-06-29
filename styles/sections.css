@@ -1400,4 +1400,137 @@
 }
 
 
+/* ── FOOTER SECTION ── */
+.c-footer {
+  width: 100%;
+  background-color: var(--color-charcoal);
+  padding: 0 var(--content-padding) var(--space-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Thin accent color line at very top */
+.c-footer__line {
+  height: 1px;
+  background-color: var(--color-terracotta);
+  opacity: 0.35;
+  width: 100%;
+  margin-bottom: var(--space-xl);
+}
+
+.c-footer__inner {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 4-column layout */
+.c-footer__grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: var(--space-lg);
+  padding-bottom: var(--space-xl);
+  border-bottom: 1px solid rgba(184, 92, 66, 0.1);
+  margin-bottom: var(--space-lg);
+  opacity: 0;
+  transform: translateY(20px);
+  will-change: transform, opacity;
+}
+
+.c-footer__col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.c-footer__col--brand .c-nav__logo {
+  color: var(--color-bone);
+  margin-bottom: var(--space-sm);
+  pointer-events: none;
+}
+
+.c-footer__tagline {
+  font-family: var(--font-ui);
+  font-weight: 300;
+  font-size: 0.875rem;
+  color: rgba(250, 248, 245, 0.35);
+  line-height: 1.65;
+  max-width: 26ch;
+}
+
+.c-footer__title {
+  font-family: var(--font-ui);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(250, 248, 245, 0.3);
+  margin-bottom: var(--space-md);
+}
+
+.c-footer__links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.c-footer__link {
+  font-family: var(--font-ui);
+  font-size: 0.875rem;
+  font-weight: 300;
+  color: rgba(250, 248, 245, 0.5);
+  transition: color 0.25s var(--ease-out);
+}
+
+.c-footer__link:hover {
+  color: var(--color-terracotta);
+}
+
+.c-footer__text {
+  font-family: var(--font-ui);
+  font-size: 0.875rem;
+  font-weight: 300;
+  color: rgba(250, 248, 245, 0.5);
+}
+
+/* Footer Bottom Layout */
+.c-footer__bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  opacity: 0;
+  will-change: opacity;
+}
+
+.c-footer__copy,
+.c-footer__note {
+  font-family: var(--font-ui);
+  font-size: 0.75rem;
+  color: rgba(250, 248, 245, 0.2);
+}
+
+/* Responsive Footer */
+@media (max-width: 1024px) {
+  .c-footer__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .c-footer__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+
+  .c-footer__bottom {
+    flex-direction: column;
+    gap: var(--space-sm);
+    text-align: center;
+  }
+}
+
+
+
 
